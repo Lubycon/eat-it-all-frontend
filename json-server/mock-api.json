@@ -1,0 +1,81 @@
+{
+  "restaurants": {
+    "code": 200,
+    "success": true,
+    "message": "OK",
+    "timestamp": "2021-05-24T09:39:35.212+00:00",
+    "data": {
+      "restaurants": [
+        {
+          "restaurantId": 1,
+          "name": "알라보 강남점",
+          "hashtags": "아보카도,닭가슴살",
+          "thumbnailImageUrl": null,
+          "address": "서울 강남구 테헤란로 129 강남N타워 1층 4호",
+          "kakaoMap": {
+            "kakaoMapId": 1,
+            "mapLatitude": 11.11,
+            "mapLongitude": 11.11
+          }
+        },
+        {
+          "restaurantId": 2,
+          "name": "칙피스",
+          "hashtags": "비건샐러드,치킨샐러드",
+          "thumbnailImageUrl": null,
+          "address": "서울 강남구 강남대로152길 69",
+          "kakaoMap": {
+            "kakaoMapId": 2,
+            "mapLatitude": 22.22,
+            "mapLongitude": 22.22
+          }
+        }
+      ]
+    },
+    "error": null
+  },
+  "restaurant": {
+    "code": 200,
+    "success": true,
+    "message": "OK",
+    "timestamp": "2021-05-24T09:38:51.585+00:00",
+    "data": {
+      "restaurant": {
+        "restaurantId": 1,
+        "name": "알라보 강남점",
+        "description": null,
+        "hashtags": "아보카도,닭가슴살",
+        "thumbnailImageUrl": null,
+        "address": "서울 강남구 테헤란로 129 강남N타워 1층 4호",
+        "kakaoMap": {
+          "kakaoMapId": 1,
+          "mapLatitude": 11.11,
+          "mapLongitude": 11.11
+        },
+        "curations": [
+          {
+            "curationId": 1,
+            "title": "맛있고 포만감있는 샐러드"
+          }
+        ],
+        "menus": [
+          {
+            "menuId": 1,
+            "restaurantId": 1,
+            "name": "아보카도샐러드",
+            "description": null,
+            "price": 1000
+          },
+          {
+            "menuId": 2,
+            "restaurantId": 1,
+            "name": "닭가슴살샐러드",
+            "description": null,
+            "price": 2000
+          }
+        ]
+      }
+    },
+    "error": null
+  }
+}
