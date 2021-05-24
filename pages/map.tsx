@@ -3,8 +3,7 @@ import styled from "@emotion/styled";
 
 const Styled = {
   MapContainer: styled.div`
-    width: 500px;
-    height: 500px;
+    height: 100vh;
   `,
 };
 
@@ -14,20 +13,27 @@ declare global {
   }
 }
 
-function Map() {
-  React.useEffect(() => {
-    const { kakao } = window;
+const 강남역 = {
+  lat: 37.498122,
+  lng: 127.027683,
+};
 
-    const container = document.getElementById("map");
+function Map() {
+  const kakaoMap = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    if (kakaoMap == null || kakaoMap.current == null) return;
+
+    const { kakao } = window;
     const options = {
-      center: new window.kakao.maps.LatLng(33.450701, 126.570667),
-      level: 3,
+      center: new kakao.maps.LatLng(강남역.lat, 강남역.lng),
+      level: 4,
     };
 
-    new kakao.maps.Map(container, options);
+    new kakao.maps.Map(kakaoMap.current, options);
   }, []);
 
-  return <Styled.MapContainer id="map"></Styled.MapContainer>;
+  return <Styled.MapContainer ref={kakaoMap}></Styled.MapContainer>;
 }
 
 export default Map;
