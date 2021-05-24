@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { 강남역 } from "../lib/constants";
 
 const Styled = {
   MapContainer: styled.div`
@@ -12,11 +13,6 @@ declare global {
     kakao: any;
   }
 }
-
-const 강남역 = {
-  lat: 37.498122,
-  lng: 127.027683,
-};
 
 function Map() {
   const kakaoMap = React.useRef<HTMLDivElement>(null);
@@ -33,7 +29,7 @@ function Map() {
     new kakao.maps.Map(kakaoMap.current, options);
   }, []);
 
-  return <Styled.MapContainer ref={kakaoMap}></Styled.MapContainer>;
+  return <Styled.MapContainer ref={kakaoMap} />;
 }
 
 export default Map;
