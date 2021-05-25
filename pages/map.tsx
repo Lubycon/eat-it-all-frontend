@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { 강남역 } from "../lib/constants";
 import useSWR from "swr";
 import { mockClient } from "../lib/api";
+import { IRestaurants } from "../types";
 
 const Styled = {
   MapContainer: styled.div`
@@ -18,7 +19,9 @@ declare global {
 
 function Map() {
   const kakaoMap = React.useRef<HTMLDivElement>(null);
-  const { data } = useSWR("/restaurants", (url) => mockClient.get(url));
+  const { data: { data } = {} } = useSWR<IRestaurants>("/restaurants", (url) =>
+    mockClient.get(url)
+  );
 
   console.log(`data`, data);
 
