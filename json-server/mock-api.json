@@ -4,24 +4,24 @@
       "restaurantId": 1,
       "name": "알라보 강남점",
       "hashtags": ["아보카도", "닭가슴살"],
-      "thumbnailImageUrl": null,
+      "thumbnailImageUrl": "image_url",
       "address": "서울 강남구 테헤란로 129 강남N타워 1층 4호",
       "kakaoMap": {
         "kakaoMapId": 1,
-        "mapLatitude": 11.11,
-        "mapLongitude": 11.11
+        "mapLatitude": 37.49988054670467,
+        "mapLongitude": 127.03252443497523
       }
     },
     {
       "restaurantId": 2,
       "name": "칙피스",
       "hashtags": ["비건샐러드", "치킨샐러드"],
-      "thumbnailImageUrl": null,
+      "thumbnailImageUrl": "image_url",
       "address": "서울 강남구 강남대로152길 69",
       "kakaoMap": {
         "kakaoMapId": 2,
-        "mapLatitude": 22.22,
-        "mapLongitude": 22.22
+        "mapLatitude": 37.4973218875522,
+        "mapLongitude": 127.03029730445482
       }
     }
   ],
@@ -30,12 +30,12 @@
     "name": "알라보 강남점",
     "description": null,
     "hashtags": ["아보카도", "닭가슴살"],
-    "thumbnailImageUrl": null,
+    "thumbnailImageUrl": "image_url",
     "address": "서울 강남구 테헤란로 129 강남N타워 1층 4호",
     "kakaoMap": {
       "kakaoMapId": 1,
-      "mapLatitude": 11.11,
-      "mapLongitude": 11.11
+      "mapLatitude": 37.49988054670467,
+      "mapLongitude": 127.03252443497523
     },
     "curations": [
       {
