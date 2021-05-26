@@ -8,6 +8,11 @@ import { IRestaurants } from "../types";
 const Styled = {
   MapContainer: styled.div`
     height: 100vh;
+
+    .overlay-background {
+      background-color: #fff;
+      padding: 12px;
+    }
   `,
 };
 
@@ -19,11 +24,17 @@ declare global {
 
 function Map() {
   const kakaoMap = React.useRef<HTMLDivElement>(null);
-  const { data: { data } = {} } = useSWR<IRestaurants>("/restaurants", (url) =>
-    mockClient.get(url)
+  const { data: { data: restaurants } = {} } = useSWR<IRestaurants>(
+    "/restaurants",
+    (url) => mockClient.get(url)
   );
 
-  console.log(`data`, data);
+  const contentTemplate = (name: string, hashTags: string[]) => `
+    <div class="overlay-background">
+      <div class="overlay-title">${name}</div>
+      <div class="overlay-hashtags">${hashTags.map((hashTag) => hashTag)}</div>
+    </div>
+  `;
 
   React.useEffect(() => {
     if (kakaoMap == null || kakaoMap.current == null) return;
@@ -34,8 +45,20 @@ function Map() {
       level: 4,
     };
 
-    new kakao.maps.Map(kakaoMap.current, options);
-  }, []);
+    const map = new kakao.maps.Map(kakaoMap.current, options);
+
+    restaurants?.map((restaurant) => {
+      const overlay = new kakao.maps.CustomOverlay({
+        position: new kakao.maps.LatLng(
+          restaurant.kakaoMap.mapLatitude,
+          restaurant.kakaoMap.mapLongitude
+        ),
+        content: contentTemplate(restaurant.name, restaurant.hashtags),
+      });
+
+      overlay.setMap(map);
+    });
+  }, [restaurants]);
 
   return <Styled.MapContainer ref={kakaoMap} />;
 }
