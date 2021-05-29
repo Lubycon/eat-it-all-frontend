@@ -3,13 +3,13 @@ export interface IRestaurants {
 }
 
 export interface IRestaurant {
-  restaurantId: number;
+  id: number;
   name: string;
   hashtags: string[];
   thumbnailImageUrl: string;
   address: string;
   kakaoMap: {
-    kakaoMapId: number;
+    id: number;
     mapLatitude: number;
     mapLongitude: number;
   };
