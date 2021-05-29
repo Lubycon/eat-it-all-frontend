@@ -6,12 +6,6 @@ const Styled = {
   Root: styled.div<{ width: string; height: string }>`
     width: ${({ width }) => width};
     height: ${({ height }) => height};
-
-    .overlay-background {
-      background-color: #fff;
-      padding: 12px;
-      border-radius: 12px;
-    }
   `,
 };
 
@@ -39,15 +33,6 @@ function KakaoMapContainer({
   children: overlayNodes,
 }: Props) {
   const kakaoMap = React.useRef<HTMLDivElement>(null);
-
-  const contentTemplate = (name: string, hashTags: string[]) => `
-    <div class="overlay-background" onclick="https://apis.map.kakao.com/web/sample/customOverlay1/" >
-      <a href="https://map.kakao.com/link/map/11394059" target="_blank">
-        <div class="overlay-title">${name}</div>
-        <div class="overlay-hashtags">${hashTags.map((hashTag) => hashTag)}</div>
-      </a>
-    </div>
-  `;
 
   React.useEffect(() => {
     if (kakaoMap == null || kakaoMap.current == null) return;
