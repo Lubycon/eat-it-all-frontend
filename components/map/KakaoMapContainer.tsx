@@ -3,8 +3,9 @@ import styled from "@emotion/styled";
 import { 강남역 } from "../../lib/constants";
 
 const Styled = {
-  Root: styled.div`
-    height: 100vh;
+  Root: styled.div<{ width: string; height: string }>`
+    width: ${({ width }) => width};
+    height: ${({ height }) => height};
 
     .overlay-background {
       background-color: #fff;
@@ -21,10 +22,22 @@ declare global {
 }
 
 interface Props {
+  width?: string;
+  height?: string;
+  lat?: number;
+  lng?: number;
+  level: number;
   children: ReactNode;
 }
 
-function KakaoMapContainer({ children: overlayNodes }: Props) {
+function KakaoMapContainer({
+  width = "auto",
+  height = "100vh",
+  lat = 강남역.lat,
+  lng = 강남역.lng,
+  level = 4,
+  children: overlayNodes,
+}: Props) {
   const kakaoMap = React.useRef<HTMLDivElement>(null);
 
   const contentTemplate = (name: string, hashTags: string[]) => `
@@ -42,8 +55,8 @@ function KakaoMapContainer({ children: overlayNodes }: Props) {
     const { kakao } = window;
 
     const initialOptions = {
-      center: new kakao.maps.LatLng(강남역.lat, 강남역.lng),
-      level: 4,
+      center: new kakao.maps.LatLng(lat, lng),
+      level,
     };
 
     const map = new kakao.maps.Map(kakaoMap.current, initialOptions);
@@ -60,7 +73,7 @@ function KakaoMapContainer({ children: overlayNodes }: Props) {
     });
   }, [overlayNodes]);
 
-  return <Styled.Root ref={kakaoMap} />;
+  return <Styled.Root ref={kakaoMap} width={width} height={height} />;
 }
 
 export default KakaoMapContainer;
