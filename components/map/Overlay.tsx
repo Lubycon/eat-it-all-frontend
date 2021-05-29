@@ -1,14 +1,11 @@
-import React from "react";
-
 interface Props {
-  name: string;
-  hashTags: string[];
   lat: number;
   lng: number;
+  content: string;
 }
 
-function Overlay({ name, hashTags, lat, lng }: Props) {
-  return <div>Overlay</div>;
+function Overlay({ lat, lng, content }: Props) {
+  return null;
 }
 
 export default Overlay;

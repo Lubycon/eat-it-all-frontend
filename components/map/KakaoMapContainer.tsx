@@ -26,7 +26,7 @@ interface Props {
   height?: string;
   lat?: number;
   lng?: number;
-  level: number;
+  level?: number;
   children: ReactNode;
 }
 
@@ -62,11 +62,11 @@ function KakaoMapContainer({
     const map = new kakao.maps.Map(kakaoMap.current, initialOptions);
 
     (overlayNodes as ReactElement[])?.map((overlayNode) => {
-      const { name, hashTags, lat, lng } = (overlayNode as ReactElement)?.props;
+      const { lat, lng, content } = (overlayNode as ReactElement)?.props;
 
       const overlay = new kakao.maps.CustomOverlay({
         position: new kakao.maps.LatLng(lat, lng),
-        content: contentTemplate(name, hashTags),
+        content: content,
       });
 
       overlay.setMap(map);
