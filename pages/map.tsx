@@ -1,9 +1,8 @@
 import React from "react";
-import { 강남역 } from "../lib/constants";
 import useSWR from "swr";
 import { mockClient } from "../lib/api";
 import { IRestaurants } from "../types";
-import MapContainer from "../components/map/MapContainer";
+import KakaoMapContainer from "../components/map/KakaoMapContainer";
 import Overlay from "../components/map/Overlay";
 
 function Map() {
@@ -13,7 +12,7 @@ function Map() {
   );
 
   return (
-    <MapContainer>
+    <KakaoMapContainer>
       {restaurants?.map((restaurant) => (
         <Overlay
           key={restaurant.id}
@@ -23,7 +22,7 @@ function Map() {
           lng={restaurant.kakaoMap.mapLongitude}
         />
       ))}
-    </MapContainer>
+    </KakaoMapContainer>
   );
 }
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement, ReactNode } from "react";
 import styled from "@emotion/styled";
 import { 강남역 } from "../../lib/constants";
 
@@ -21,20 +21,17 @@ declare global {
 }
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-function MapContainer({ children: overlays }: Props) {
+function KakaoMapContainer({ children: overlayNodes }: Props) {
   const kakaoMap = React.useRef<HTMLDivElement>(null);
-  console.log(`overlays`, overlays);
 
   const contentTemplate = (name: string, hashTags: string[]) => `
     <div class="overlay-background" onclick="https://apis.map.kakao.com/web/sample/customOverlay1/" >
       <a href="https://map.kakao.com/link/map/11394059" target="_blank">
         <div class="overlay-title">${name}</div>
-        <div class="overlay-hashtags">${hashTags.map(
-          (hashTag) => hashTag
-        )}</div>
+        <div class="overlay-hashtags">${hashTags.map((hashTag) => hashTag)}</div>
       </a>
     </div>
   `;
@@ -51,21 +48,19 @@ function MapContainer({ children: overlays }: Props) {
 
     const map = new kakao.maps.Map(kakaoMap.current, initialOptions);
 
-    (overlays as React.ReactNode[])?.map((overlayItem) => {
-      const { name, hashTags, lat, lng } = overlayItem?.props;
+    (overlayNodes as ReactElement[])?.map((overlayNode) => {
+      const { name, hashTags, lat, lng } = (overlayNode as ReactElement)?.props;
 
       const overlay = new kakao.maps.CustomOverlay({
         position: new kakao.maps.LatLng(lat, lng),
         content: contentTemplate(name, hashTags),
       });
 
-      console.log(`overlay`, overlay);
-
       overlay.setMap(map);
     });
-  }, []);
+  }, [overlayNodes]);
 
   return <Styled.Root ref={kakaoMap} />;
 }
 
-export default MapContainer;
+export default KakaoMapContainer;
