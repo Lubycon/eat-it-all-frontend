@@ -30,8 +30,6 @@ function KakaoMapContainer({
   const kakaoMap = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    if (kakaoMap == null || kakaoMap.current == null) return;
-
     const { kakao } = window;
 
     const initialOptions = {
