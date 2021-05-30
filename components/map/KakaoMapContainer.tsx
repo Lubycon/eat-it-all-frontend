@@ -9,12 +9,6 @@ const Styled = {
   `,
 };
 
-declare global {
-  interface Window {
-    kakao: any;
-  }
-}
-
 interface Props {
   width?: string;
   height?: string;

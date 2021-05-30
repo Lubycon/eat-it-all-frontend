@@ -1,3 +1,9 @@
+declare global {
+  interface Window {
+    kakao: any;
+  }
+}
+
 export interface IRestaurants {
   data: IRestaurant[];
 }
