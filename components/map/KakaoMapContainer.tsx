@@ -39,16 +39,17 @@ function KakaoMapContainer({
 
     const map = new kakao.maps.Map(kakaoMap.current, initialOptions);
 
-    overlayNodes?.map((overlayNode) => {
-      const { lat, lng, content } = overlayNode.props;
+    overlayNodes &&
+      React.Children.map(overlayNodes, (overlayNode) => {
+        const { lat, lng, content } = overlayNode.props;
 
-      const overlay = new kakao.maps.CustomOverlay({
-        position: new kakao.maps.LatLng(lat, lng),
-        content: content,
+        const overlay = new kakao.maps.CustomOverlay({
+          position: new kakao.maps.LatLng(lat, lng),
+          content: content,
+        });
+
+        overlay.setMap(map);
       });
-
-      overlay.setMap(map);
-    });
   }, [overlayNodes]);
 
   return <Styled.Root ref={kakaoMap} width={width} height={height} />;
