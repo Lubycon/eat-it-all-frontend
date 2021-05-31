@@ -25,6 +25,7 @@ const Styled = {
     background-color: ${({ selected }) => (selected ? `${colors.green}` : `${colors.black}`)};
     opacity: ${({ selected }) => (selected ? 0.8 : 0.5)};
     z-index: -1;
+    transition: 0.1s;
   `,
 
   Title: styled.div`
