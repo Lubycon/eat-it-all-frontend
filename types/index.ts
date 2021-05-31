@@ -8,6 +8,7 @@ export interface IRestaurant {
   hashtags: string[];
   thumbnailImageUrl: string;
   address: string;
+  curationId: number;
   kakaoMap: {
     id: number;
     mapLatitude: number;

@@ -15,10 +15,7 @@ const Styled = {
 };
 
 function CurationList() {
-  const { data } = useGetCuration();
-
-  /** FIX: Curation list가 화면을 넘어갈 때 테스트용 */
-  const curations = data?.concat(data);
+  const { data: curations } = useGetCuration();
 
   return (
     <Styled.Root>
