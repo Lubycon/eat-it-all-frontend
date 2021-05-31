@@ -12,7 +12,7 @@ import { useRouter } from "next/dist/client/router";
 function Map() {
   const { data: { data: restaurants } = {} } = useSWR<IRestaurants>("/restaurants", (url) => mockClient.get(url));
   const {
-    query: { selectedCurationId },
+    query: { curationId: selectedCurationId },
   } = useRouter();
 
   return (
