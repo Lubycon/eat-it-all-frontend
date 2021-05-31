@@ -23,7 +23,12 @@ function CurationList() {
   return (
     <Styled.Root>
       {curations?.map((curation) => (
-        <CurationItem key={curation.id} title={curation.title} description="설명설명설명설명설명설명설명설명설명" />
+        <CurationItem
+          key={curation.id}
+          id={curation.id}
+          title={curation.title}
+          description="설명설명설명설명설명설명설명설명설명"
+        />
       ))}
     </Styled.Root>
   );

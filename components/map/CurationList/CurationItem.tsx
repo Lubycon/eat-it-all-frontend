@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { useRouter } from "next/dist/client/router";
 import React, { ReactElement } from "react";
 import { colors } from "../../../lib/constants/colors";
 
@@ -11,6 +12,7 @@ const Styled = {
     padding: 16px 16px 20px 16px;
     background: ${({ imageUrl }) => (imageUrl ? `url(${imageUrl})` : 'url("/assets/images/curation_background.png")')};
     filter: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.2));
+    cursor: pointer;
   `,
 
   BackgroundImage: styled.div`
@@ -46,14 +48,23 @@ const Styled = {
 };
 
 interface Props {
+  id: number;
   title: string;
   description: string;
   imageUrl?: string;
 }
 
-function CurationItem({ title, description, imageUrl }: Props): ReactElement {
+function CurationItem({ id, title, description, imageUrl }: Props): ReactElement {
+  const router = useRouter();
+
+  const handleClick = (id: number) => () => {
+    const { pathname, query: prevQuery } = router;
+    const query = { ...prevQuery, curationId: id };
+    router.push({ pathname, query });
+  };
+
   return (
-    <Styled.Root imageUrl={imageUrl}>
+    <Styled.Root imageUrl={imageUrl} onClick={handleClick(id)}>
       <Styled.Title>{title}</Styled.Title>
       <Styled.Description>{description}</Styled.Description>
       <Styled.BackgroundImage />
