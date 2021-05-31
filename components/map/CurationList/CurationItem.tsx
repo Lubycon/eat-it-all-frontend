@@ -15,15 +15,15 @@ const Styled = {
     cursor: pointer;
   `,
 
-  BackgroundImage: styled.div`
+  BackgroundImage: styled.div<{ selected: boolean }>`
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     border-radius: 10px;
-    background-color: ${colors.black};
-    opacity: 0.5;
+    background-color: ${({ selected }) => (selected ? `${colors.green}` : `${colors.black}`)};
+    opacity: ${({ selected }) => (selected ? 0.8 : 0.5)};
     z-index: -1;
   `,
 
@@ -56,6 +56,7 @@ interface Props {
 
 function CurationItem({ id, title, description, imageUrl }: Props): ReactElement {
   const router = useRouter();
+  const { curationId } = router.query;
 
   const handleClick = (id: number) => () => {
     const { pathname, query: prevQuery } = router;
@@ -67,7 +68,7 @@ function CurationItem({ id, title, description, imageUrl }: Props): ReactElement
     <Styled.Root imageUrl={imageUrl} onClick={handleClick(id)}>
       <Styled.Title>{title}</Styled.Title>
       <Styled.Description>{description}</Styled.Description>
-      <Styled.BackgroundImage />
+      <Styled.BackgroundImage selected={Number(curationId) === id} />
     </Styled.Root>
   );
 }
