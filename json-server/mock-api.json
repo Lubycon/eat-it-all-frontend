@@ -6,6 +6,7 @@
       "hashtags": ["아보카도", "닭가슴살"],
       "thumbnailImageUrl": "image_url",
       "address": "서울 강남구 테헤란로 129 강남N타워 1층 4호",
+      "curationId": 1,
       "kakaoMap": {
         "id": 1,
         "mapLatitude": 37.49988054670467,
@@ -18,6 +19,7 @@
       "hashtags": ["비건샐러드", "치킨샐러드"],
       "thumbnailImageUrl": "image_url",
       "address": "서울 강남구 강남대로152길 69",
+      "curationId": 2,
       "kakaoMap": {
         "id": 2,
         "mapLatitude": 37.4973218875522,

@@ -6,10 +6,25 @@
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
 }
 
+.selected-overlay-wrapper {
+  min-width: 140px;
+  background-color: #366a35;
+  padding: 12px 12px 12px 12px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+}
+
 .overlay-title {
   font-weight: bold;
   font-size: 16px;
   color: #3d3d3d;
+  margin-bottom: 6px;
+}
+
+.selected-overlay-title {
+  font-weight: bold;
+  font-size: 16px;
+  color: #fff;
   margin-bottom: 6px;
 }
 
