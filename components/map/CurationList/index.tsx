@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import React from "react";
-import { useGetCuration } from "../../../hooks/api";
+import { useGetCuration } from "../../../hooks/api/curation";
 import CurationItem from "./CurationItem";
 
 const Styled = {
