@@ -1,11 +1,8 @@
 import useSWR from "swr";
-import { client } from "../lib/api";
+import http from "../lib/api";
 import { ICuration } from "../types";
 
 export const useGetCuration = () => {
-  const { data, error } = useSWR("/curation", (url) => client.get(url));
-
-  const curationList: ICuration[] = data?.data.data.curations;
-
-  return { data: curationList, error };
+  const { data, error } = useSWR("/curation", (url) => http.get<{ curations: ICuration[] }>(url));
+  return { data: data?.curations, error };
 };

@@ -17,9 +17,11 @@ const Styled = {
 function CurationList() {
   const { data: curations } = useGetCuration();
 
+  if (curations == null) return <div>Loading...</div>;
+
   return (
     <Styled.Root>
-      {curations?.map((curation) => (
+      {curations.map((curation) => (
         <CurationItem
           key={curation.id}
           id={curation.id}
