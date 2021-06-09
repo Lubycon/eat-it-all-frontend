@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import GoToMapButton from "./GoToMapButton";
 
 const Styled = {
   Root: styled.div`
@@ -26,7 +27,7 @@ function Header() {
     <Styled.Root>
       <Styled.NavBar>
         <div>Logo</div>
-        <img src="/assets/icons/map_ivory.svg" />
+        <GoToMapButton />
       </Styled.NavBar>
     </Styled.Root>
   );
