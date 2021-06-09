@@ -26,7 +26,7 @@ function Header() {
   return (
     <Styled.Root>
       <Styled.NavBar>
-        <div>Logo</div>
+        <div style={{ fontSize: "32px" }}>Logo</div>
         <GoToMapButton />
       </Styled.NavBar>
     </Styled.Root>
