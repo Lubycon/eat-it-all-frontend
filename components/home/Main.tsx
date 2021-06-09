@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import React from "react";
+import { colors } from "../../lib/constants/colors";
 import CategoryCarousel from "./CategoryCarousel";
 
 const Styled = {
@@ -8,7 +9,6 @@ const Styled = {
   `,
 
   Contents: styled.div`
-    background-color: red;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,7 +19,28 @@ const Styled = {
     }
   `,
 
-  Headline: styled.div``,
+  Headline: styled.div`
+    margin-right: 92px;
+    & > h1 {
+      font-size: 52px;
+      line-height: 66px;
+      font-weight: bold;
+      color: ${colors.green50};
+      & > div {
+        text-decoration-line: line-through;
+        text-decoration-color: ${colors.orange50};
+      }
+      & > strong {
+        color: ${colors.orange50};
+      }
+    }
+    & > h2 {
+      margin-top: 18px;
+      font-weight: bold;
+      font-size: 18px;
+      color: ${colors.green50};
+    }
+  `,
 };
 
 function Main() {
