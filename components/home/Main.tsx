@@ -6,13 +6,15 @@ import CategoryCarousel from "./CategoryCarousel";
 const Styled = {
   Root: styled.div`
     height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   `,
 
   Contents: styled.div`
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin: 32px 0 54px 0;
+    margin: 32px 0 72px 0;
 
     @media (max-width: 768px) {
       flex-direction: column;
@@ -41,6 +43,11 @@ const Styled = {
       color: ${colors.green50};
     }
   `,
+
+  CategoryCarouselWrapper: styled.div`
+    width: 1200px;
+    padding: 0 16px;
+  `,
 };
 
 function Main() {
@@ -57,7 +64,9 @@ function Main() {
         </Styled.Headline>
         <img src="/assets/images/food_background.png" />
       </Styled.Contents>
-      <CategoryCarousel />
+      <Styled.CategoryCarouselWrapper>
+        <CategoryCarousel />
+      </Styled.CategoryCarouselWrapper>
     </Styled.Root>
   );
 }
