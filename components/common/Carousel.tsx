@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
 import React from "react";
+import styled from "@emotion/styled";
 import { colors } from "../../lib/constants/colors";
 
 const Styled = {

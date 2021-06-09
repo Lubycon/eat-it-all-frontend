@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
 import React from "react";
+import styled from "@emotion/styled";
 import Carousel from "../common/Carousel";
 import { colors } from "../../lib/constants/colors";
 
@@ -7,6 +7,7 @@ const Styled = {
   Root: styled.div`
     width: 100%;
   `,
+
   Title: styled.div`
     font-weight: bold;
     font-size: 18px;

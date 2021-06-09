@@ -1,7 +1,7 @@
-import styled from "@emotion/styled";
 import React from "react";
-import { colors } from "../../lib/constants/colors";
+import styled from "@emotion/styled";
 import CategoryCarousel from "./CategoryCarousel";
+import { colors } from "../../lib/constants/colors";
 
 const Styled = {
   Root: styled.div`

@@ -1,7 +1,6 @@
 import React from "react";
-import Link from "next/link";
-import Header from "../components/common/Header";
 import Main from "../components/home/Main";
+import Header from "../components/common/Header";
 
 function Home() {
   return (

@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import styled from "@emotion/styled";
-import { colors } from "../../lib/constants/colors";
 import mixin from "../../lib/style/mixin";
+import { colors } from "../../lib/constants/colors";
 
 const Styled = {
   Root: styled.img`
