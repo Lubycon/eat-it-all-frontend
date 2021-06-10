@@ -22,7 +22,7 @@ function Map() {
           const isSelected = curationIds.includes(String(selectedCurationId));
 
           return (
-            <Overlay key={id} lat={longitude} lng={latitude} content={contentLayout(name, hashtags, isSelected)} />
+            <Overlay key={id} lat={latitude} lng={longitude} content={contentLayout(name, hashtags, isSelected)} />
           );
         })}
       </KakaoMapContainer>
