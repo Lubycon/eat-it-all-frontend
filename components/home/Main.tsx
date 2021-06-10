@@ -62,7 +62,7 @@ function Main() {
           </h2>
           <h1>다이어터 외식 추천 서비스, 다먹어</h1>
         </Styled.Headline>
-        <img src="/assets/images/food_background.png" />
+        <img src="/assets/images/food_background.png" alt="" />
       </Styled.Contents>
       <Styled.CategoryCarouselWrapper>
         <CategoryCarousel />
