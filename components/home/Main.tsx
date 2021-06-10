@@ -23,7 +23,7 @@ const Styled = {
 
   Headline: styled.div`
     margin-right: 92px;
-    & > h1 {
+    & > h2 {
       font-size: 52px;
       line-height: 66px;
       font-weight: bold;
@@ -36,7 +36,7 @@ const Styled = {
         color: ${colors.orange50};
       }
     }
-    & > h2 {
+    & > h1 {
       margin-top: 18px;
       font-weight: bold;
       font-size: 18px;
@@ -55,12 +55,12 @@ function Main() {
     <Styled.Root>
       <Styled.Contents>
         <Styled.Headline>
-          <h1>
+          <h2>
             <div>더 이상</div>
             <strong>다이어트 중</strong>이라는 말로
             <br /> 약속을 피하지 마세요
-          </h1>
-          <h2>다이어터 외식 추천 서비스, 다먹어</h2>
+          </h2>
+          <h1>다이어터 외식 추천 서비스, 다먹어</h1>
         </Styled.Headline>
         <img src="/assets/images/food_background.png" />
       </Styled.Contents>
