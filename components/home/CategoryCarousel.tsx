@@ -29,14 +29,33 @@ const Styled = {
   `,
 
   SliderItem: styled.div`
+    padding: 8px;
+  `,
+
+  CurationContent: styled.div`
     height: 200px;
-    padding: 16px;
-    background-color: #fff;
-    border: 1px solid red;
-    font-size: 32px;
+    padding: 24px;
+    border-radius: 10px;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/assets/images/curation_content.png");
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    font-size: 24px;
+    color: #ffffff;
+    font-weight: bold;
+
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-end;
+
+    @media (max-width: calc(1200px + 32px)) {
+      background-size: 100% auto;
+      height: 180px;
+    }
+
+    & > div {
+      width: 180px;
+      line-height: 1.2;
+    }
   `,
 };
 
@@ -69,12 +88,13 @@ function CategoryCarousel() {
     <Styled.Root>
       <Styled.Title>Category</Styled.Title>
       <Slider {...sliderProps}>
-        <Styled.SliderItem>1</Styled.SliderItem>
-        <Styled.SliderItem>2</Styled.SliderItem>
-        <Styled.SliderItem>3</Styled.SliderItem>
-        <Styled.SliderItem>4</Styled.SliderItem>
-        <Styled.SliderItem>5</Styled.SliderItem>
-        <Styled.SliderItem>6</Styled.SliderItem>
+        {curations?.map((curation) => (
+          <Styled.SliderItem key={curation.id}>
+            <Styled.CurationContent>
+              <div>{curation.title}</div>
+            </Styled.CurationContent>
+          </Styled.SliderItem>
+        ))}
       </Slider>
     </Styled.Root>
   );
