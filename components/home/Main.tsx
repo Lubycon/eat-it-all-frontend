@@ -43,11 +43,6 @@ const Styled = {
       color: ${colors.green50};
     }
   `,
-
-  CategoryCarouselWrapper: styled.div`
-    width: 1200px;
-    padding: 0 16px;
-  `,
 };
 
 function Main() {
@@ -64,9 +59,7 @@ function Main() {
         </Styled.Headline>
         <img src="/assets/images/food_background.png" alt="" />
       </Styled.Contents>
-      <Styled.CategoryCarouselWrapper>
-        <CategoryCarousel />
-      </Styled.CategoryCarouselWrapper>
+      <CategoryCarousel />
     </Styled.Root>
   );
 }
