@@ -5,10 +5,11 @@ import { colors } from "../../lib/constants/colors";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider, { Settings } from "react-slick";
+import { useGetCuration } from "../../hooks/api/curation";
 
 const Styled = {
   Root: styled.div`
-    /* width: 100%; */
+    width: 100%;
   `,
 
   Title: styled.div`
@@ -69,8 +70,11 @@ const sliderProps: Settings = {
 };
 
 function CategoryCarousel() {
+  const { data: curations } = useGetCuration();
+  console.log(`curations`, curations);
+
   return (
-    <div>
+    <Styled.Root>
       <Styled.Title>Category</Styled.Title>
       <Slider {...sliderProps}>
         <Styled.SliderItem>1</Styled.SliderItem>
@@ -80,7 +84,7 @@ function CategoryCarousel() {
         <Styled.SliderItem>5</Styled.SliderItem>
         <Styled.SliderItem>6</Styled.SliderItem>
       </Slider>
-    </div>
+    </Styled.Root>
   );
 }
 
