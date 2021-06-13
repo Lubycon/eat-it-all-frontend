@@ -7,7 +7,7 @@ function Home() {
     <>
       <Header />
       <Main />
-      <div style={{ height: "400px", backgroundColor: "blue" }} />
+      <div style={{ height: "1400px", backgroundColor: "blue" }} />
     </>
   );
 }
