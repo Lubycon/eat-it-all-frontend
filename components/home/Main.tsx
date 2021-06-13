@@ -28,8 +28,7 @@ const Styled = {
       line-height: 66px;
       font-weight: bold;
       color: ${colors.green50};
-      & > div {
-        text-decoration-line: line-through;
+      & > del {
         text-decoration-color: ${colors.orange50};
       }
       & > strong {
@@ -56,7 +55,8 @@ function Main() {
       <Styled.Contents>
         <Styled.Headline>
           <h2>
-            <div>더 이상</div>
+            <del>더 이상</del>
+            <br />
             <strong>다이어트 중</strong>이라는 말로
             <br /> 약속을 피하지 마세요
           </h2>
