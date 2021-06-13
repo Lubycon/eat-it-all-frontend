@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import CategoryCarousel from "./CategoryCarousel";
 import { colors } from "../../lib/constants/colors";
+import ScrollDownButton from "../common/ScrollDownButton";
 
 const Styled = {
   Root: styled.div`
@@ -9,6 +10,7 @@ const Styled = {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
   `,
 
   Contents: styled.div`
@@ -60,6 +62,7 @@ function Main() {
         <img src="/assets/images/food_background.png" alt="" />
       </Styled.Contents>
       <CategoryCarousel />
+      <ScrollDownButton />
     </Styled.Root>
   );
 }
