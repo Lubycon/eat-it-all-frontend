@@ -1,14 +1,14 @@
 import React from "react";
-import Link from "next/link";
+import Main from "../components/home/Main";
+import Header from "../components/common/Header";
 
 function Home() {
   return (
-    <div>
-      <h1>Home</h1>
-      <Link href="/map">
-        <button>지도로 이동</button>
-      </Link>
-    </div>
+    <>
+      <Header />
+      <Main />
+      <div style={{ height: "400px", backgroundColor: "blue" }} />
+    </>
   );
 }
 
