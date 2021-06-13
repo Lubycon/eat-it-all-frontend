@@ -18,6 +18,13 @@ const Styled = {
     @media (max-width: calc(1024px + 32px)) {
       width: calc(768px - 32px);
     }
+
+    .slick-arrow {
+      &:before {
+        color: ${colors.green50};
+        font-size: 24px;
+      }
+    }
   `,
 
   Title: styled.div`
