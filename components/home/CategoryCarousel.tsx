@@ -37,20 +37,15 @@ const Styled = {
     padding: 24px;
     border-radius: 10px;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/assets/images/curation_content.png");
-    background-size: auto 100%;
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     font-size: 24px;
     color: #ffffff;
     font-weight: bold;
-
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
-
-    @media (max-width: calc(1200px + 32px)) {
-      background-size: 100% auto;
-      height: 180px;
-    }
 
     & > div {
       width: 180px;
