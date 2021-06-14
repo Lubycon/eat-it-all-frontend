@@ -12,7 +12,7 @@ const Styled = {
     padding: 0 16px;
 
     @media (max-width: calc(1200px + 32px)) {
-      width: 1024px;
+      width: 960px;
     }
 
     @media (max-width: calc(1024px + 32px)) {
