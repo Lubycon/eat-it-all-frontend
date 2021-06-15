@@ -15,7 +15,7 @@ function ScrollDownButton() {
   const size = useWindowSize();
 
   const scrollDown = () => {
-    window.scrollTo({ top: size.height, behavior: "smooth" });
+    window.scrollTo({ top: size?.height, behavior: "smooth" });
   };
 
   return <Styled.Img onClick={scrollDown} src="/assets/icons/scroll_down.svg" alt="scroll-down" />;

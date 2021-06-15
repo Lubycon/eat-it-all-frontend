@@ -85,7 +85,6 @@ const sliderProps: Settings = {
 
 function CategoryCarousel() {
   const { data: curations } = useGetCuration();
-  console.log(`curations`, curations);
 
   return (
     <Styled.Root>

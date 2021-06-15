@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import CategoryCarousel from "./CategoryCarousel";
 import { colors } from "../../lib/constants/colors";
 import ScrollDownButton from "../common/ScrollDownButton";
+import useWindowSize from "../../hooks/useWindowSize";
 
 const Styled = {
   Root: styled.div`
@@ -47,6 +48,9 @@ const Styled = {
 };
 
 function Main() {
+  const size = useWindowSize();
+  const isMobile = size && size?.width < 768;
+
   return (
     <Styled.Root>
       <Styled.Contents>
@@ -61,7 +65,7 @@ function Main() {
         </Styled.Headline>
         <img src="/assets/images/food_background.png" alt="" />
       </Styled.Contents>
-      <CategoryCarousel />
+      {isMobile || <CategoryCarousel />}
       <ScrollDownButton />
     </Styled.Root>
   );
