@@ -71,7 +71,7 @@ function CategoryCarousel() {
       <Slider {...sliderProps}>
         {curations?.map((curation) => (
           <Styled.SliderItem key={curation.id}>
-            <CurationContent title={curation.title} />
+            <CurationContent title={curation.title} height={200} />
           </Styled.SliderItem>
         ))}
       </Slider>

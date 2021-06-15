@@ -13,7 +13,11 @@ const Styled = {
     font-weight: bold;
     font-size: 18px;
     color: ${colors.beige30};
-    margin-bottom: 18px;
+    margin-bottom: 32px;
+  `,
+
+  CategoryItem: styled.div`
+    margin-bottom: 16px;
   `,
 };
 
@@ -23,9 +27,13 @@ function MobileCategoryList() {
   return (
     <Styled.Root>
       <Styled.Title>Category</Styled.Title>
-      {curations?.map((curation) => (
-        <CurationContent key={curation.id} title={curation.title} />
-      ))}
+      {curations?.map((curation) => {
+        return (
+          <Styled.CategoryItem key={curation.id}>
+            <CurationContent title={curation.title} height={126} />
+          </Styled.CategoryItem>
+        );
+      })}
     </Styled.Root>
   );
 }

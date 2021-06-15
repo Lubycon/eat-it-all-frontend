@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 import React from "react";
 
 const Styled = {
-  Root: styled.div`
-    height: 200px;
+  Root: styled.div<{ height: number }>`
+    height: ${({ height }) => `${height}px`};
     padding: 24px;
     border-radius: 10px;
     font-size: 24px;
@@ -27,10 +27,15 @@ const Styled = {
 
 interface Props {
   title: string;
+  height?: number;
 }
 
-function CurationContent({ title }: Props) {
-  return <Styled.Root>{title}</Styled.Root>;
+function CurationContent({ title, height = 200 }: Props) {
+  return (
+    <Styled.Root height={height}>
+      <div>{title}</div>
+    </Styled.Root>
+  );
 }
 
 export default CurationContent;
