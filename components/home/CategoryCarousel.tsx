@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider, { Settings } from "react-slick";
 import { useGetCuration } from "../../hooks/api/curation";
+import CurationContent from "./CurationContent";
 
 const Styled = {
   Root: styled.div`
@@ -38,28 +39,6 @@ const Styled = {
   SliderItem: styled.div`
     padding: 8px;
   `,
-
-  CurationContent: styled.div`
-    height: 200px;
-    padding: 24px;
-    border-radius: 10px;
-    font-size: 24px;
-    color: #ffffff;
-    font-weight: bold;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/assets/images/curation_content.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    & > div {
-      width: 180px;
-      line-height: 1.2;
-    }
-  `,
 };
 
 const sliderProps: Settings = {
@@ -92,9 +71,7 @@ function CategoryCarousel() {
       <Slider {...sliderProps}>
         {curations?.map((curation) => (
           <Styled.SliderItem key={curation.id}>
-            <Styled.CurationContent>
-              <div>{curation.title}</div>
-            </Styled.CurationContent>
+            <CurationContent title={curation.title} />
           </Styled.SliderItem>
         ))}
       </Slider>

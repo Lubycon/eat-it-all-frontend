@@ -49,7 +49,7 @@ const Styled = {
 
 function Main() {
   const size = useWindowSize();
-  const isMobile = size && size?.width < 768;
+  const isMobile = size && size.width < 768;
 
   return (
     <Styled.Root>
