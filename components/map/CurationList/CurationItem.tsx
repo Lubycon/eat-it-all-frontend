@@ -22,7 +22,7 @@ const Styled = {
     right: 0;
     bottom: 0;
     border-radius: 10px;
-    background-color: ${({ selected }) => (selected ? `${colors.green}` : `${colors.black}`)};
+    background-color: ${({ selected }) => (selected ? `${colors.green50}` : `${colors.black}`)};
     opacity: ${({ selected }) => (selected ? 0.8 : 0.5)};
     z-index: -1;
     transition: 0.1s;
