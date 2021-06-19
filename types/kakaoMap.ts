@@ -1,6 +1,16 @@
 declare global {
   interface Window {
-    kakao: any;
+    kakao: {
+      maps: {
+        Map: any;
+        CustomOverlay: any;
+        Size: any;
+        Point: any;
+        MarkerImage: any;
+        LatLng: any;
+        Marker: any;
+      };
+    };
   }
 }
 
