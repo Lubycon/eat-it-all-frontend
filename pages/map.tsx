@@ -6,6 +6,10 @@ import contentLayout from "../components/map/contentLayout";
 import CurationList from "../components/map/CurationList";
 import { useRouter } from "next/dist/client/router";
 import { useGetRestaurant } from "../hooks/api/restaurant";
+import dynamic from "next/dynamic";
+
+// const KakaoMapContainerNoSSR = dynamic(() => import("../components/map/KakaoMapContainer"), { ssr: false });
+// const OverlayNoSSR = dynamic(() => import("../components/map/Overlay"), { ssr: false });
 
 function Map() {
   const { data: restaurants } = useGetRestaurant();
