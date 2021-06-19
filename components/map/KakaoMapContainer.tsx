@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 import styled from "@emotion/styled";
 import { 강남역 } from "../../lib/constants";
 import { OverlayProps } from "./Overlay";
-import marker from "./Marker";
+import marker from "./marker";
 
 const Styled = {
   Root: styled.div<{ width: string; height: string }>`
@@ -29,34 +29,32 @@ function KakaoMapContainer({
   children: overlayNodes,
 }: Props) {
   const kakaoMap = React.useRef<HTMLDivElement>(null);
-  const [ka, setKa] = React.useState<any>(null);
-  console.log(`ka`, ka);
 
   React.useEffect(() => {
     const { kakao } = window;
-    setKa(kakao);
-  }, []);
 
-  const initialOptions = {
-    center: new ka.maps.LatLng(lat, lng),
-    level,
-  };
+    const initialOptions = {
+      center: new kakao.maps.LatLng(lat, lng),
+      level,
+    };
 
-  const map = new ka.maps.Map(kakaoMap.current, initialOptions);
+    const map = new kakao.maps.Map(kakaoMap.current, initialOptions);
 
-  overlayNodes &&
-    React.Children.map(overlayNodes, (overlayNode) => {
-      const { lat, lng, content } = overlayNode.props;
+    overlayNodes &&
+      React.Children.map(overlayNodes, (overlayNode) => {
+        const { lat, lng, content } = overlayNode.props;
 
-      marker(lat, lng, map);
+        marker(lat, lng).setMap(map);
 
-      const overlay = new ka.maps.CustomOverlay({
-        map: map,
-        content: content,
-        position: marker(lat, lng, map).getPosition(),
-        yAnchor: 1.5,
+        const overlay = new kakao.maps.CustomOverlay({
+          content: content,
+          position: marker(lat, lng).getPosition(),
+          yAnchor: 1.5,
+        });
+
+        overlay.setMap(map);
       });
-    });
+  }, [overlayNodes]);
 
   return <Styled.Root ref={kakaoMap} width={width} height={height} />;
 }

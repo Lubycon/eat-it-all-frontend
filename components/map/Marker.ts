@@ -1,4 +1,4 @@
-const marker = (lat: number, lng: number, map: any) => {
+const marker = (lat: number, lng: number) => {
   const { kakao } = window;
 
   const imageSrc = "/assets/icons/marker.svg";
@@ -9,7 +9,6 @@ const marker = (lat: number, lng: number, map: any) => {
   const markerPosition = new kakao.maps.LatLng(lat, lng);
 
   return new kakao.maps.Marker({
-    map: map,
     position: markerPosition,
     image: markerImage,
   });
