@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 import styled from "@emotion/styled";
 import { 강남역 } from "../../lib/constants";
-import { OverlayProps } from "./Overlay";
+import { PlaceProps } from "./Place";
 import marker from "./marker";
 
 const Styled = {
@@ -17,7 +17,7 @@ interface Props {
   lat?: number;
   lng?: number;
   level?: number;
-  children?: ReactElement<OverlayProps>[];
+  children?: ReactElement<PlaceProps>[];
 }
 
 function KakaoMapContainer({

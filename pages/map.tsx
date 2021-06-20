@@ -1,6 +1,6 @@
 import React from "react";
 import KakaoMapContainer from "../components/map/KakaoMapContainer";
-import Overlay from "../components/map/Overlay";
+import Place from "../components/map/Place";
 import { 강남역 } from "../lib/constants";
 import contentLayout from "../components/map/contentLayout";
 import CurationList from "../components/map/CurationList";
@@ -21,9 +21,7 @@ function Map() {
         {restaurants?.map(({ id, name, hashtags, curationIds, kakaoMap: { latitude, longitude } }) => {
           const isSelected = curationIds.includes(String(selectedCurationId));
 
-          return (
-            <Overlay key={id} lat={latitude} lng={longitude} content={contentLayout(name, hashtags, isSelected)} />
-          );
+          return <Place key={id} lat={latitude} lng={longitude} content={contentLayout(name, hashtags, isSelected)} />;
         })}
       </KakaoMapContainer>
       <CurationList />
