@@ -15,4 +15,5 @@ export interface IRestaurant {
 export interface ICuration {
   id: number;
   title: string;
+  imageUrl: string;
 }
