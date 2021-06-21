@@ -3,13 +3,13 @@ import React from "react";
 import { useGetCuration } from "../../hooks/api/curation";
 
 function Curation() {
-  const router = useRouter();
   const {
     query: { id: curationId },
-  } = router;
-  const { data } = useGetCuration(Number(curationId));
+  } = useRouter();
 
-  return <div></div>;
+  const { data: curation } = useGetCuration(Number(curationId));
+
+  return <div style={{ fontSize: "40px" }}>{curation?.title}</div>;
 }
 
 export default Curation;
