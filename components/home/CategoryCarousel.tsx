@@ -4,7 +4,7 @@ import { colors } from "../../lib/constants/colors";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider, { Settings } from "react-slick";
-import { useGetCuration } from "../../hooks/api/curation";
+import { useGetCuration, useGetCurations } from "../../hooks/api/curation";
 import CurationContent from "./CurationContent";
 
 const Styled = {
@@ -63,7 +63,7 @@ const sliderProps: Settings = {
 };
 
 function CategoryCarousel() {
-  const { data: curations } = useGetCuration();
+  const { data: curations } = useGetCurations();
 
   return (
     <Styled.Root>
