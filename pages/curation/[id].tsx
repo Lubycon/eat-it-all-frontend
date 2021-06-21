@@ -3,6 +3,7 @@ import { useRouter } from "next/dist/client/router";
 import React from "react";
 import { useGetCuration } from "../../hooks/api/curation";
 import { colors } from "../../lib/constants/colors";
+import CurationContentItem from "../../components/Curation/CurationContentItem";
 
 const Styled = {
   Header: styled.div<{ image?: string }>`
@@ -70,6 +71,16 @@ function Curation() {
           쏼라쏼라 쏼라쏼라 모밀은 메밀로 만들어져 저칼로리 음식의 대표주자 입니다. 쏼라쏼라 쏼라쏼라 쏼라쏼라 쏼라쏼라
           쏼라쏼라 쏼라쏼라 쏼라쏼라 모밀은 메밀로 만들어져 저칼로리 음식의 대표주자 입니다.
         </Styled.CurationDescription>
+        {curation.restaurants.map(({ id, name, hashtags, address, thumbnailImageUrl, description }) => (
+          <CurationContentItem
+            key={id}
+            name={name}
+            hashTags={hashtags}
+            address={address}
+            imageUrl={thumbnailImageUrl}
+            description={description}
+          />
+        ))}
       </Styled.CurationContent>
       <div style={{ height: "2400px" }} />
     </div>
