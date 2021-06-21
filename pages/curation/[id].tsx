@@ -14,6 +14,14 @@ const Styled = {
     background-position: bottom;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  `,
+
+  CurationTitle: styled.div`
+    width: calc(600px + 32px);
+    margin: 0 16px 24px 16px;
   `,
 };
 
@@ -26,7 +34,9 @@ function Curation() {
 
   return (
     <div>
-      <Styled.Header image={`https://file.eat-all.io${curation?.imageUrl}`}>{curation?.title}</Styled.Header>;
+      <Styled.Header image={`https://file.eat-all.io${curation?.imageUrl}`}>
+        <Styled.CurationTitle>{curation?.title}</Styled.CurationTitle>
+      </Styled.Header>
       <div style={{ height: "2400px" }} />
     </div>
   );
