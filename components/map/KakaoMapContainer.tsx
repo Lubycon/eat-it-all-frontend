@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { 강남역 } from "../../lib/constants";
 import { PlaceProps } from "./Place";
 import marker from "./marker";
+import overlay from "./overlay";
 
 const Styled = {
   Root: styled.div<{ width: string; height: string }>`
@@ -26,7 +27,7 @@ function KakaoMapContainer({
   lat = 강남역.lat,
   lng = 강남역.lng,
   level = 4,
-  children: overlayNodes,
+  children: places,
 }: Props) {
   const kakaoMap = React.useRef<HTMLDivElement>(null);
 
@@ -40,21 +41,14 @@ function KakaoMapContainer({
 
     const map = new kakao.maps.Map(kakaoMap.current, initialOptions);
 
-    overlayNodes &&
-      React.Children.map(overlayNodes, (overlayNode) => {
-        const { lat, lng, content } = overlayNode.props;
+    places &&
+      React.Children.map(places, (place) => {
+        const { lat, lng, content } = place.props;
 
         marker(lat, lng).setMap(map);
-
-        const overlay = new kakao.maps.CustomOverlay({
-          content: content,
-          position: marker(lat, lng).getPosition(),
-          yAnchor: 1.5,
-        });
-
-        overlay.setMap(map);
+        overlay(marker(lat, lng).getPosition(), content).setMap(map);
       });
-  }, [overlayNodes]);
+  }, [places]);
 
   return <Styled.Root ref={kakaoMap} width={width} height={height} />;
 }
