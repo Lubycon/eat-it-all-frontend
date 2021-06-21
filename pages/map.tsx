@@ -13,7 +13,7 @@ function Map() {
   return (
     <>
       <KakaoMapContainer lat={강남역.lat} lng={강남역.lng} level={4}>
-        {restaurants?.map(({ id, name, hashtags, kakaoMap: { latitude, longitude } }) => (
+        {restaurants?.map(({ id, name, kakaoMap: { latitude, longitude } }) => (
           <Place key={id} lat={latitude} lng={longitude} content={overlayContent(name)} />
         ))}
       </KakaoMapContainer>
