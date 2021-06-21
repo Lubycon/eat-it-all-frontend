@@ -1,7 +1,7 @@
 import "reset-css";
 import Head from "next/head";
 import "../styles/globals.css";
-import "../styles/contentLayout.css";
+import "../styles/overlayContent.css";
 import type { AppProps } from "next/app";
 
 function MyApp({ Component, pageProps }: AppProps) {

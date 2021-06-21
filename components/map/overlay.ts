@@ -4,7 +4,7 @@ const overlay = (markerPosition: any, content: string) => {
   return new kakao.maps.CustomOverlay({
     content: content,
     position: markerPosition,
-    yAnchor: 1.5,
+    yAnchor: 2.3,
   });
 };
 
