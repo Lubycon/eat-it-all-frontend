@@ -74,6 +74,7 @@ const Styled = {
   ThumbnailImage: styled.img`
     width: 100%;
     border-radius: 2px;
+    margin-bottom: 18px;
   `,
 };
 
@@ -101,6 +102,7 @@ function CurationContentItem({ name, hashTags, address, imageUrl, description }:
         <Styled.ArrowIcon src="/assets/icons/ic_arrow.svg" alt="상세보기" />
       </Styled.Header>
       <Styled.ThumbnailImage src={`https://file.eat-all.io${imageUrl}`} alt={name} />
+      <div className="description">{description}</div>
     </Styled.Root>
   );
 }
