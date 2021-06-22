@@ -39,8 +39,12 @@ const Styled = {
 
     .description {
       font-size: 18px;
-      line-height: 1.8;
+      line-height: 1.6;
       color: ${colors.gray90};
+
+      @media (max-width: 768px) {
+        font-size: 16px;
+      }
     }
   `,
 
@@ -82,7 +86,6 @@ function Curation() {
           />
         ))}
       </Styled.CurationContent>
-      <div style={{ height: "2400px" }} />
     </div>
   );
 }

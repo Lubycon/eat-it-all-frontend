@@ -11,6 +11,10 @@ const Styled = {
     display: flex;
     justify-content: space-between;
     margin-bottom: 18px;
+
+    @media (max-width: 768px) {
+      margin-bottom: 12px;
+    }
   `,
 
   Main: styled.div``,
@@ -20,6 +24,11 @@ const Styled = {
     font-size: 24px;
     color: ${colors.gray90};
     margin-bottom: 8px;
+
+    @media (max-width: 768px) {
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
   `,
 
   Address: styled.div`
@@ -27,6 +36,11 @@ const Styled = {
     font-size: 14px;
     margin-bottom: 12px;
     color: ${colors.beige30};
+
+    @media (max-width: 768px) {
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
   `,
 
   TagWrapper: styled.div`
@@ -41,6 +55,20 @@ const Styled = {
     padding: 4px 6px;
     font-weight: 500;
     font-size: 14px;
+
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
+  `,
+
+  ArrowIcon: styled.img`
+    width: 48px;
+    height: 48px;
+
+    @media (max-width: 768px) {
+      width: 32px;
+      height: 32px;
+    }
   `,
 
   ThumbnailImage: styled.img`
@@ -70,7 +98,7 @@ function CurationContentItem({ name, hashTags, address, imageUrl, description }:
             ))}
           </Styled.TagWrapper>
         </Styled.Main>
-        <img src="/assets/icons/ic_arrow.svg" alt="상세보기" width={48} height={48} />
+        <Styled.ArrowIcon src="/assets/icons/ic_arrow.svg" alt="상세보기" />
       </Styled.Header>
       <Styled.ThumbnailImage src={`https://file.eat-all.io${imageUrl}`} alt={name} />
     </Styled.Root>
