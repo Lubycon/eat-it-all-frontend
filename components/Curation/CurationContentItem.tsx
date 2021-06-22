@@ -19,13 +19,33 @@ const Styled = {
     font-weight: bold;
     font-size: 24px;
     color: ${colors.gray90};
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   `,
 
   Address: styled.div`
     font-weight: 500;
     font-size: 14px;
+    margin-bottom: 12px;
     color: ${colors.beige30};
+  `,
+
+  TagWrapper: styled.div`
+    display: flex;
+  `,
+
+  Tag: styled.div`
+    border-radius: 5px;
+    margin-right: 6px;
+    color: ${colors.beige40};
+    background-color: ${colors.beige10};
+    padding: 4px 6px;
+    font-weight: 500;
+    font-size: 14px;
+  `,
+
+  ThumbnailImage: styled.img`
+    width: 100%;
+    border-radius: 2px;
   `,
 };
 
@@ -44,10 +64,15 @@ function CurationContentItem({ name, hashTags, address, imageUrl, description }:
         <Styled.Main>
           <Styled.Title>{name}</Styled.Title>
           <Styled.Address>{address}</Styled.Address>
+          <Styled.TagWrapper>
+            {hashTags.map((hashTag) => (
+              <Styled.Tag key={hashTag}>{hashTag}</Styled.Tag>
+            ))}
+          </Styled.TagWrapper>
         </Styled.Main>
         <img src="/assets/icons/ic_arrow.svg" alt="상세보기" width={48} height={48} />
       </Styled.Header>
-      <img src={`https://file.eat-all.io${imageUrl}`} alt="name" width={600} />
+      <Styled.ThumbnailImage src={`https://file.eat-all.io${imageUrl}`} alt={name} />
     </Styled.Root>
   );
 }
