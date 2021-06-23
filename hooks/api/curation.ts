@@ -1,13 +1,13 @@
 import useSWR from "swr";
 import http from "../../lib/api";
-import { ICuration } from "../../types";
+import { Curation } from "../../types";
 
 interface GetCurations {
-  curations: ICuration[];
+  curations: Curation[];
 }
 
 interface GetCuration {
-  curation: ICuration;
+  curation: Curation;
 }
 
 export const useGetCurations = () => {

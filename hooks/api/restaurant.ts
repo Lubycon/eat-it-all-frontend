@@ -1,9 +1,9 @@
 import useSWR from "swr";
 import http from "../../lib/api";
-import { IRestaurant } from "../../types";
+import { Restaurant } from "../../types";
 
 interface GetRestaurant {
-  restaurants: IRestaurant[];
+  restaurants: Restaurant[];
 }
 
 export const useGetRestaurant = () => {
