@@ -12,11 +12,11 @@ const Styled = {
     z-index: 10;
   `,
 
-  DropdownHeader: styled.div`
+  DropdownHeader: styled.div<{ isFocus: boolean }>`
     width: 400px;
     background: ${colors.white};
     box-shadow: 0px 3px 15px rgba(79, 62, 43, 0.45);
-    border-radius: 5px;
+    border-radius: 6px;
     padding: 12px 12px;
     font-weight: bold;
     font-size: 18px;
@@ -24,7 +24,7 @@ const Styled = {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 2px solid ${colors.white};
+    border: 2px solid ${({ isFocus }) => (isFocus ? colors.green40 : colors.white)};
     transition: 0.2s ease-in-out;
     ${clickable}
 
@@ -66,7 +66,7 @@ function CurationDropdown() {
 
   return (
     <Styled.Root>
-      <Styled.DropdownHeader onClick={() => setOpenDropdown((prevState) => !prevState)}>
+      <Styled.DropdownHeader isFocus={openDropdown} onClick={() => setOpenDropdown((prevState) => !prevState)}>
         <Styled.CurationLeft>
           <img src="/assets/icons/ic_curation_star.svg" />
           <div>{dropdownItem[1]}</div>
