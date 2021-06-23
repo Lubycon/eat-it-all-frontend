@@ -1,75 +1,54 @@
 import styled from "@emotion/styled";
-import { useRouter } from "next/dist/client/router";
 import React, { ReactElement } from "react";
 import { colors } from "../../../lib/constants/colors";
+import { truncateText } from "../../../lib/style/mixin";
 
 const Styled = {
   Root: styled.div<{ imageUrl?: string }>`
     position: relative;
-    width: 225px;
+    width: 224px;
     height: 96px;
     margin-bottom: 16px;
-    padding: 16px 16px 20px 16px;
-    background: ${({ imageUrl }) => (imageUrl ? `url(${imageUrl})` : 'url("/assets/images/curation_background.png")')};
-    filter: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.2));
+    padding: 20px 16px 28px 16px;
     cursor: pointer;
-  `,
-
-  BackgroundImage: styled.div<{ selected: boolean }>`
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    background-color: ${colors.ivory10};
     border-radius: 10px;
-    background-color: ${({ selected }) => (selected ? `${colors.green50}` : `${colors.black}`)};
-    opacity: ${({ selected }) => (selected ? 0.8 : 0.5)};
-    z-index: -1;
-    transition: 0.1s;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
   `,
 
   Title: styled.div`
-    color: ${colors.white};
+    color: ${colors.green50};
     font-weight: bold;
     font-size: 18px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+    ${truncateText}
   `,
 
   Description: styled.div`
-    color: ${colors.white};
+    color: ${colors.green50};
     font-weight: 500;
     font-size: 16px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    ${truncateText}
   `,
 };
 
 interface Props {
   id: number;
-  title: string;
+  name: string;
   description: string;
-  imageUrl?: string;
 }
 
-function RestaurantListItem({ id, title, description, imageUrl }: Props): ReactElement {
-  const router = useRouter();
-  const { curationId } = router.query;
-
-  const handleClick = (id: number) => () => {
-    const { pathname, query: prevQuery } = router;
-    const query = { ...prevQuery, curationId: id };
-    router.push({ pathname, query });
-  };
+function RestaurantListItem({ id, name, description }: Props): ReactElement {
+  // const handleClick = (id: number) => () => {
+  //   const { pathname, query: prevQuery } = router;
+  //   const query = { ...prevQuery, curationId: id };
+  //   router.push({ pathname, query });
+  // };
 
   return (
-    <Styled.Root imageUrl={imageUrl} onClick={handleClick(id)}>
-      <Styled.Title>{title}</Styled.Title>
+    <Styled.Root>
+      <Styled.Title>{name}</Styled.Title>
       <Styled.Description>{description}</Styled.Description>
-      <Styled.BackgroundImage selected={Number(curationId) === id} />
     </Styled.Root>
   );
 }

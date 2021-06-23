@@ -35,7 +35,7 @@ function RestaurantList() {
         <RestaurantListItem
           key={id}
           id={id}
-          title={name}
+          name={name}
           description={description || "설명설명설명설명설명설명설명설명설명"}
         />
       ))}
