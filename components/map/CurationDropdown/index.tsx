@@ -4,6 +4,7 @@ import DropdownMenu from "./DropdownMenu";
 import { clickable } from "../../../lib/style/mixin";
 import { colors } from "../../../lib/constants/colors";
 import { useGetCurations } from "../../../hooks/api/curation";
+import { Curation } from "../../../types";
 
 const Styled = {
   Root: styled.div`
@@ -55,19 +56,24 @@ function CurationDropdown() {
 
   if (curations == null) return <div>Loading...</div>;
 
-  const dropdownItems = ["전체", ...curations.map((curation) => curation.title)];
-  console.log(`dropdownItems`, dropdownItems);
+  const all: Pick<Curation, "id" | "title" | "imageUrl"> = {
+    id: 0,
+    title: "전체",
+    imageUrl: "",
+  };
+
+  const dropdownItems = [all, ...curations];
 
   return (
     <Styled.Root>
       <Styled.DropdownHeader isFocus={openDropdown} onClick={() => setOpenDropdown((prevState) => !prevState)}>
         <Styled.CurationLeft>
           <img src="/assets/icons/ic_curation_star.svg" />
-          <div>{dropdownItems[1]}</div>
+          <div>{dropdownItems[1].title}</div>
         </Styled.CurationLeft>
         <Styled.ArrowIcon src="/assets/icons/ic_dropdown.svg" isRotate={openDropdown} />
       </Styled.DropdownHeader>
-      {openDropdown && <DropdownMenu items={dropdownItems} />}
+      {openDropdown && <DropdownMenu items={dropdownItems} setOpenDropdown={setOpenDropdown} />}
     </Styled.Root>
   );
 }
