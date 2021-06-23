@@ -26,17 +26,17 @@ function RestaurantList() {
   if (allRestaurants == null) return <div>Loading...</div>;
 
   const restaurants = curationId
-    ? allRestaurants.filter(({ curationIds }) => curationIds.includes(String(curationId)))
+    ? allRestaurants.filter(({ curationIds }) => curationIds?.includes(String(curationId)))
     : allRestaurants;
 
   return (
     <Styled.Root>
-      {restaurants.map((restaurant) => (
+      {restaurants.map(({ id, name, description }) => (
         <RestaurantListItem
-          key={restaurant.id}
-          id={restaurant.id}
-          title={restaurant.title}
-          description="설명설명설명설명설명설명설명설명설명"
+          key={id}
+          id={id}
+          title={name}
+          description={description || "설명설명설명설명설명설명설명설명설명"}
         />
       ))}
     </Styled.Root>
