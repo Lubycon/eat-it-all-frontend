@@ -5,6 +5,7 @@ import { clickable } from "../../../lib/style/mixin";
 import { colors } from "../../../lib/constants/colors";
 import { useGetCurations } from "../../../hooks/api/curation";
 import { Curation } from "../../../types";
+import { useRouter } from "next/router";
 
 const Styled = {
   Root: styled.div`
@@ -50,13 +51,18 @@ const Styled = {
   `,
 };
 
+type DropdownItem = Pick<Curation, "id" | "title" | "imageUrl">;
+
 function CurationDropdown() {
   const { data: curations } = useGetCurations();
+  const {
+    query: { curationId },
+  } = useRouter();
   const [openDropdown, setOpenDropdown] = React.useState(false);
 
   if (curations == null) return <div>Loading...</div>;
 
-  const all: Pick<Curation, "id" | "title" | "imageUrl"> = {
+  const all: DropdownItem = {
     id: 0,
     title: "전체",
     imageUrl: "",
@@ -64,12 +70,20 @@ function CurationDropdown() {
 
   const dropdownItems = [all, ...curations];
 
+  const selectedDropdownItem = dropdownItems.find((item) => {
+    if (curationId == null) {
+      return item.id === 0;
+    }
+
+    return item.id === Number(curationId);
+  }) as DropdownItem;
+
   return (
     <Styled.Root>
       <Styled.DropdownHeader isFocus={openDropdown} onClick={() => setOpenDropdown((prevState) => !prevState)}>
         <Styled.CurationLeft>
           <img src="/assets/icons/ic_curation_star.svg" />
-          <div>{dropdownItems[1].title}</div>
+          <div>{selectedDropdownItem.title}</div>
         </Styled.CurationLeft>
         <Styled.ArrowIcon src="/assets/icons/ic_dropdown.svg" isRotate={openDropdown} />
       </Styled.DropdownHeader>
