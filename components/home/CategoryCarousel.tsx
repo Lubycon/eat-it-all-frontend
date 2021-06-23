@@ -4,8 +4,10 @@ import { colors } from "../../lib/constants/colors";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider, { Settings } from "react-slick";
-import { useGetCuration } from "../../hooks/api/curation";
+import { useGetCurations } from "../../hooks/api/curation";
 import CurationContent from "./CurationContent";
+import Link from "next/link";
+import { clickable } from "../../lib/style/mixin";
 
 const Styled = {
   Root: styled.div`
@@ -38,6 +40,7 @@ const Styled = {
 
   SliderItem: styled.div`
     padding: 8px;
+    ${clickable}
   `,
 };
 
@@ -63,16 +66,18 @@ const sliderProps: Settings = {
 };
 
 function CategoryCarousel() {
-  const { data: curations } = useGetCuration();
+  const { data: curations } = useGetCurations();
 
   return (
     <Styled.Root>
       <Styled.Title>Category</Styled.Title>
       <Slider {...sliderProps}>
         {curations?.map((curation) => (
-          <Styled.SliderItem key={curation.id}>
-            <CurationContent title={curation.title} height={200} />
-          </Styled.SliderItem>
+          <Link key={curation.id} href={`/curation/${curation.id}`}>
+            <Styled.SliderItem>
+              <CurationContent title={curation.title} height={200} />
+            </Styled.SliderItem>
+          </Link>
         ))}
       </Slider>
     </Styled.Root>
