@@ -1,8 +1,9 @@
-import styled from "@emotion/styled";
 import React from "react";
-import { useGetCurations } from "../../../hooks/api/curation";
-import { colors } from "../../../lib/constants/colors";
+import styled from "@emotion/styled";
+import DropdownMenu from "./DropdownMenu";
 import { clickable } from "../../../lib/style/mixin";
+import { colors } from "../../../lib/constants/colors";
+import { useGetCurations } from "../../../hooks/api/curation";
 
 const Styled = {
   Root: styled.div`
@@ -33,14 +34,6 @@ const Styled = {
     }
   `,
 
-  DropdownMenu: styled.div`
-    position: absolute;
-    top: 66px;
-    width: 400px;
-    height: 400px;
-    background: ${colors.white};
-  `,
-
   CurationLeft: styled.div`
     display: flex;
     align-items: center;
@@ -62,18 +55,19 @@ function CurationDropdown() {
 
   if (curations == null) return <div>Loading...</div>;
 
-  const dropdownItem = ["전체", ...curations.map((curation) => curation.title)];
+  const dropdownItems = ["전체", ...curations.map((curation) => curation.title)];
+  console.log(`dropdownItems`, dropdownItems);
 
   return (
     <Styled.Root>
       <Styled.DropdownHeader isFocus={openDropdown} onClick={() => setOpenDropdown((prevState) => !prevState)}>
         <Styled.CurationLeft>
           <img src="/assets/icons/ic_curation_star.svg" />
-          <div>{dropdownItem[1]}</div>
+          <div>{dropdownItems[1]}</div>
         </Styled.CurationLeft>
         <Styled.ArrowIcon src="/assets/icons/ic_dropdown.svg" isRotate={openDropdown} />
       </Styled.DropdownHeader>
-      {openDropdown && <Styled.DropdownMenu></Styled.DropdownMenu>}
+      {openDropdown && <DropdownMenu items={dropdownItems} />}
     </Styled.Root>
   );
 }
