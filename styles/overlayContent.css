@@ -1,0 +1,23 @@
+.overlay-wrapper {
+  background-color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.overlay-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: calc(50% - 10px);
+  border-bottom: 0px solid transparent;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #fff;
+}
+
+.overlay-title {
+  font-weight: bold;
+  font-size: 16px;
+  color: #3d3d3d;
+}
