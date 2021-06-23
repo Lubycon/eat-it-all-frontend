@@ -12,7 +12,7 @@ function Map() {
   console.log(`restaurants`, restaurants);
 
   const size = useWindowSize();
-  const isMobile = size && size.width < 768;
+  const isDesktop = size && size.width > 768;
 
   return (
     <>
@@ -21,7 +21,7 @@ function Map() {
           <Place key={id} lat={latitude} lng={longitude} content={overlayContent(name)} />
         ))}
       </KakaoMapContainer>
-      {isMobile && <RestaurantList />}
+      {isDesktop && <RestaurantList />}
     </>
   );
 }
