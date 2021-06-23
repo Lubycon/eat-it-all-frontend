@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
+import { useRouter } from "next/dist/client/router";
 import React from "react";
 import { useGetCurations } from "../../../hooks/api/curation";
-import CurationItem from "./CurationItem";
+import { useGetRestaurant } from "../../../hooks/api/restaurant";
+import RestaurantListItem from "./RestaurantListItem";
 
 const Styled = {
   Root: styled.div`
@@ -14,15 +16,22 @@ const Styled = {
   `,
 };
 
-function CurationList() {
+function RestaurantList() {
   const { data: curations } = useGetCurations();
+  const {
+    query: { curationId },
+  } = useRouter();
+
+  if (!curationId) {
+    const { data } = useGetRestaurant();
+  }
 
   if (curations == null) return <div>Loading...</div>;
 
   return (
     <Styled.Root>
       {curations.map((curation) => (
-        <CurationItem
+        <RestaurantListItem
           key={curation.id}
           id={curation.id}
           title={curation.title}
@@ -33,4 +42,4 @@ function CurationList() {
   );
 }
 
-export default CurationList;
+export default RestaurantList;

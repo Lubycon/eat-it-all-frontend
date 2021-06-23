@@ -55,7 +55,7 @@ interface Props {
   imageUrl?: string;
 }
 
-function CurationItem({ id, title, description, imageUrl }: Props): ReactElement {
+function RestaurantListItem({ id, title, description, imageUrl }: Props): ReactElement {
   const router = useRouter();
   const { curationId } = router.query;
 
@@ -74,4 +74,4 @@ function CurationItem({ id, title, description, imageUrl }: Props): ReactElement
   );
 }
 
-export default CurationItem;
+export default RestaurantListItem;
