@@ -10,7 +10,7 @@ const Styled = {
     top: 0;
     bottom: 0;
     right: 24px;
-    padding: 72px 16px;
+    padding: 36px 16px;
     overflow-x: scroll;
     z-index: 10;
   `,
@@ -32,12 +32,7 @@ function RestaurantList() {
   return (
     <Styled.Root>
       {restaurants.map(({ id, name, description }) => (
-        <RestaurantListItem
-          key={id}
-          id={id}
-          name={name}
-          description={description || "설명설명설명설명설명설명설명설명설명"}
-        />
+        <RestaurantListItem key={id} id={id} name={name} description={description} />
       ))}
     </Styled.Root>
   );

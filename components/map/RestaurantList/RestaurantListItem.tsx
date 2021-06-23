@@ -39,12 +39,6 @@ interface Props {
 }
 
 function RestaurantListItem({ id, name, description }: Props): ReactElement {
-  // const handleClick = (id: number) => () => {
-  //   const { pathname, query: prevQuery } = router;
-  //   const query = { ...prevQuery, curationId: id };
-  //   router.push({ pathname, query });
-  // };
-
   return (
     <Styled.Root>
       <Styled.Title>{name}</Styled.Title>
