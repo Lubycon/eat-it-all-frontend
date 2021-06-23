@@ -17,24 +17,25 @@ const Styled = {
 };
 
 function RestaurantList() {
-  const { data: curations } = useGetCurations();
+  const { data: allRestaurants } = useGetRestaurant();
+
   const {
     query: { curationId },
   } = useRouter();
 
-  if (!curationId) {
-    const { data } = useGetRestaurant();
-  }
+  if (allRestaurants == null) return <div>Loading...</div>;
 
-  if (curations == null) return <div>Loading...</div>;
+  const restaurants = curationId
+    ? allRestaurants.filter(({ curationIds }) => curationIds.includes(String(curationId)))
+    : allRestaurants;
 
   return (
     <Styled.Root>
-      {curations.map((curation) => (
+      {restaurants.map((restaurant) => (
         <RestaurantListItem
-          key={curation.id}
-          id={curation.id}
-          title={curation.title}
+          key={restaurant.id}
+          id={restaurant.id}
+          title={restaurant.title}
           description="설명설명설명설명설명설명설명설명설명"
         />
       ))}
