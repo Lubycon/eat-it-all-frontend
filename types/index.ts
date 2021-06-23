@@ -1,4 +1,4 @@
-export interface IRestaurant {
+export interface Restaurant {
   id: number;
   name: string;
   hashtags: string[];
@@ -13,10 +13,10 @@ export interface IRestaurant {
   curationIds: string[];
 }
 
-export interface ICuration {
+export interface Curation {
   content: string;
   id: number;
   title: string;
   imageUrl: string;
-  restaurants: IRestaurant[];
+  restaurants: Restaurant[];
 }
