@@ -1,10 +1,12 @@
 import styled from "@emotion/styled";
 import React from "react";
 import { colors } from "../../lib/constants/colors";
+import { clickable } from "../../lib/style/mixin";
 
 const Styled = {
   Root: styled.div`
     margin: 64px 0;
+    ${clickable};
   `,
 
   Header: styled.div`
@@ -27,7 +29,7 @@ const Styled = {
 
     @media (max-width: 768px) {
       font-size: 18px;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
   `,
 
