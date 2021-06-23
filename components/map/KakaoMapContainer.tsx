@@ -26,7 +26,7 @@ function KakaoMapContainer({
   height = "100vh",
   lat = 강남역.lat,
   lng = 강남역.lng,
-  level = 4,
+  level = 3,
   children: places,
 }: Props) {
   const kakaoMap = React.useRef<HTMLDivElement>(null);
