@@ -4,6 +4,7 @@ import marker from "./marker";
 import overlay from "./overlay";
 import { PlaceProps } from "./Place";
 import { 강남역 } from "../../lib/constants";
+import { useRouter } from "next/router";
 
 const Styled = {
   Root: styled.div<{ width: string; height: string }>`
@@ -30,6 +31,9 @@ function KakaoMapContainer({
   children: places,
 }: Props) {
   const kakaoMap = React.useRef<HTMLDivElement>(null);
+  const {
+    query: { curationId },
+  } = useRouter();
 
   React.useEffect(() => {
     const { kakao } = window;
@@ -48,7 +52,7 @@ function KakaoMapContainer({
         marker(lat, lng).setMap(map);
         overlay(marker(lat, lng).getPosition(), content).setMap(map);
       });
-  }, [places]);
+  }, [curationId]);
 
   return <Styled.Root ref={kakaoMap} width={width} height={height} />;
 }
