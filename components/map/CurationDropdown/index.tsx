@@ -69,21 +69,14 @@ function CurationDropdown() {
   };
 
   const dropdownItems = [all, ...curations];
-
-  const selectedDropdownItem = dropdownItems.find((item) => {
-    if (curationId == null) {
-      return item.id === 0;
-    }
-
-    return item.id === Number(curationId);
-  }) as DropdownItem;
+  const selectedDropdownItem = dropdownItems.find((item) => item.id === Number(curationId)) as DropdownItem;
 
   return (
     <Styled.Root>
       <Styled.DropdownHeader isFocus={openDropdown} onClick={() => setOpenDropdown((prevState) => !prevState)}>
         <Styled.CurationLeft>
           <img src="/assets/icons/ic_curation_star.svg" />
-          <div>{selectedDropdownItem.title}</div>
+          <div>{selectedDropdownItem?.title}</div>
         </Styled.CurationLeft>
         <Styled.ArrowIcon src="/assets/icons/ic_dropdown.svg" isRotate={openDropdown} />
       </Styled.DropdownHeader>
