@@ -1,9 +1,9 @@
-import React, { ReactElement } from "react";
 import styled from "@emotion/styled";
-import { 강남역 } from "../../lib/constants";
-import { PlaceProps } from "./Place";
+import React, { ReactElement } from "react";
 import marker from "./marker";
 import overlay from "./overlay";
+import { PlaceProps } from "./Place";
+import { 강남역 } from "../../lib/constants";
 
 const Styled = {
   Root: styled.div<{ width: string; height: string }>`
