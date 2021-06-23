@@ -66,9 +66,11 @@ function DropdownMenu({ items, setOpenDropdown }: Props) {
   const handleDropdownClick = (id: number) => () => {
     const { pathname, query: prevQuery } = router;
 
-    /** "전체"의 경우 */
+    /** "전체"를 클릭했을 경우 */
     if (id === 0) {
       router.push({ pathname });
+
+      /** "큐레이션"을 클릭했을 경우 */
     } else {
       const query = { ...prevQuery, curationId: id };
       router.push({ pathname, query });
