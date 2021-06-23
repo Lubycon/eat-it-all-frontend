@@ -19,7 +19,7 @@ const Styled = {
 
 function GoToMapButton() {
   return (
-    <Link href="/map">
+    <Link href="/map?curationId=0">
       <Styled.Root src="/assets/icons/map_ivory.svg" />
     </Link>
   );
