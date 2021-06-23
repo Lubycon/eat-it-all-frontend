@@ -32,12 +32,7 @@ function RestaurantList() {
   return (
     <Styled.Root>
       {restaurants.map(({ id, name, description }) => (
-        <RestaurantListItem
-          key={id}
-          id={id}
-          name={name}
-          description={description || "설명설명설명설명설명설명설명설명설명"}
-        />
+        <RestaurantListItem key={id} id={id} name={name} description={description} />
       ))}
     </Styled.Root>
   );
