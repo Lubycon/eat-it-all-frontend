@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import React from "react";
-import { useGetCuration } from "../../../hooks/api/curation";
+import { useGetCurations } from "../../../hooks/api/curation";
 import CurationItem from "./CurationItem";
 
 const Styled = {
@@ -15,7 +15,7 @@ const Styled = {
 };
 
 function CurationList() {
-  const { data: curations } = useGetCuration();
+  const { data: curations } = useGetCurations();
 
   if (curations == null) return <div>Loading...</div>;
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { colors } from "../../lib/constants/colors";
 import styled from "@emotion/styled";
-import { useGetCuration } from "../../hooks/api/curation";
+import { useGetCurations } from "../../hooks/api/curation";
 import CurationContent from "./CurationContent";
 
 const Styled = {
@@ -22,7 +22,7 @@ const Styled = {
 };
 
 function MobileCategoryList() {
-  const { data: curations } = useGetCuration();
+  const { data: curations } = useGetCurations();
 
   return (
     <Styled.Root>
