@@ -10,7 +10,7 @@ const Styled = {
     top: 0;
     bottom: 0;
     right: 24px;
-    padding: 72px 16px;
+    padding: 36px 16px;
     overflow-x: scroll;
     z-index: 10;
   `,
