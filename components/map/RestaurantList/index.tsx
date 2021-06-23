@@ -25,9 +25,10 @@ function RestaurantList() {
 
   if (allRestaurants == null) return <div>Loading...</div>;
 
-  const restaurants = curationId
-    ? allRestaurants.filter(({ curationIds }) => curationIds?.includes(String(curationId)))
-    : allRestaurants;
+  const restaurants =
+    Number(curationId) === 0
+      ? allRestaurants
+      : allRestaurants.filter(({ curationIds }) => curationIds?.includes(String(curationId)));
 
   return (
     <Styled.Root>
