@@ -66,7 +66,7 @@ function DropdownMenu({ items, setOpenDropdown }: Props) {
   const handleDropdownClick = (id: number) => () => {
     const { pathname, query: prevQuery } = router;
     const query = { ...prevQuery, curationId: id };
-    router.push({ pathname, query });
+    router.replace({ pathname, query });
 
     setOpenDropdown(false);
   };
