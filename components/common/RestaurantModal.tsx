@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import React from "react";
 import { useRecoilState } from "recoil";
 import { colors } from "../../lib/constants/colors";
-import { openModalState } from "../../store/mapStore";
+import { modalRestaurantIdState } from "../../store/mapStore";
 
 const Styled = {
   Dimmer: styled.div`
@@ -25,15 +25,32 @@ const Styled = {
     background-color: ${colors.ivory10};
     box-shadow: 0px 4px 32px rgba(79, 62, 43, 0.35);
     border-radius: 16px;
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translate(0, 30px);
+      }
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    animation: 0.4s ease fadeIn;
   `,
+
+  Header: styled.div``,
 };
 
 function RestaurantModal() {
-  const [openModal, setOpenModal] = useRecoilState(openModalState);
+  const [modalRestaurantId, setModalRestaurantId] = useRecoilState(modalRestaurantIdState);
 
   return (
-    <Styled.Dimmer onClick={() => setOpenModal(false)}>
-      <Styled.Modal></Styled.Modal>
+    <Styled.Dimmer>
+      <Styled.Modal>
+        <Styled.Header></Styled.Header>
+      </Styled.Modal>
     </Styled.Dimmer>
   );
 }

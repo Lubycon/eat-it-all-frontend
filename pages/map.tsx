@@ -11,14 +11,14 @@ import CurationDropdown from "../components/map/CurationDropdown";
 import RestaurantModal from "../components/common/RestaurantModal";
 import KakaoMapContainer from "../components/map/KakaoMapContainer";
 import { useRecoilValue } from "recoil";
-import { openModalState } from "../store/mapStore";
+import { modalRestaurantIdState } from "../store/mapStore";
 
 function Map() {
   const { data: allRestaurants } = useGetRestaurant();
   const {
     query: { curationId },
   } = useRouter();
-  const openModal = useRecoilValue(openModalState);
+  const modalRestaurantId = useRecoilValue(modalRestaurantIdState);
 
   const size = useWindowSize();
   const isDesktop = size && size.width > 768;
@@ -35,11 +35,11 @@ function Map() {
       <CurationDropdown />
       <KakaoMapContainer lat={강남역.lat} lng={강남역.lng} level={6}>
         {restaurants.map(({ id, name, kakaoMap: { latitude, longitude } }) => (
-          <Place key={id} lat={latitude} lng={longitude} content={overlayContent(name)} />
+          <Place key={id} id={id} lat={latitude} lng={longitude} content={overlayContent(name)} />
         ))}
       </KakaoMapContainer>
       {isDesktop && <RestaurantList />}
-      {openModal && <RestaurantModal />}
+      {modalRestaurantId !== null && <RestaurantModal />}
     </>
   );
 }

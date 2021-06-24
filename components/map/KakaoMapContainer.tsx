@@ -6,7 +6,7 @@ import { PlaceProps } from "./Place";
 import { 강남역 } from "../../lib/constants";
 import { useRouter } from "next/router";
 import { useSetRecoilState } from "recoil";
-import { openModalState } from "../../store/mapStore";
+import { modalRestaurantIdState } from "../../store/mapStore";
 
 const Styled = {
   Root: styled.div<{ width: string; height: string }>`
@@ -36,7 +36,7 @@ function KakaoMapContainer({
   const {
     query: { curationId },
   } = useRouter();
-  const setOpenModal = useSetRecoilState(openModalState);
+  const setModalRestaurantId = useSetRecoilState(modalRestaurantIdState);
 
   React.useEffect(() => {
     const { kakao } = window;
@@ -49,14 +49,14 @@ function KakaoMapContainer({
     const map = new kakao.maps.Map(kakaoMap.current, initialOptions);
 
     React.Children.map(places, (place) => {
-      const { lat, lng, content } = place.props;
+      const { id, lat, lng, content } = place.props;
       const placeMarker = marker(lat, lng);
       const placeOverlay = overlay(placeMarker.getPosition(), content);
 
       placeMarker.setMap(map);
       placeOverlay.setMap(map);
 
-      kakao.maps.event.addListener(placeMarker, "click", () => setOpenModal(true));
+      kakao.maps.event.addListener(placeMarker, "click", () => setModalRestaurantId(id));
     });
   }, [curationId]);
 
