@@ -19,7 +19,7 @@ interface Props {
   lat?: number;
   lng?: number;
   level?: number;
-  children?: ReactElement<PlaceProps>[];
+  children: ReactElement<PlaceProps>[];
 }
 
 function KakaoMapContainer({
@@ -45,13 +45,12 @@ function KakaoMapContainer({
 
     const map = new kakao.maps.Map(kakaoMap.current, initialOptions);
 
-    places &&
-      React.Children.map(places, (place) => {
-        const { lat, lng, content } = place.props;
+    React.Children.map(places, (place) => {
+      const { lat, lng, content } = place.props;
 
-        marker(lat, lng).setMap(map);
-        overlay(marker(lat, lng).getPosition(), content).setMap(map);
-      });
+      marker(lat, lng).setMap(map);
+      overlay(marker(lat, lng).getPosition(), content).setMap(map);
+    });
   }, [curationId]);
 
   return <Styled.Root ref={kakaoMap} width={width} height={height} />;
