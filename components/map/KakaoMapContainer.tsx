@@ -5,6 +5,8 @@ import overlay from "./overlay";
 import { PlaceProps } from "./Place";
 import { 강남역 } from "../../lib/constants";
 import { useRouter } from "next/router";
+import { useSetRecoilState } from "recoil";
+import { openModalState } from "../../store/mapStore";
 
 const Styled = {
   Root: styled.div<{ width: string; height: string }>`
@@ -30,11 +32,11 @@ function KakaoMapContainer({
   level = 3,
   children: places,
 }: Props) {
-  const [openModal, setOpenModal] = React.useState(false);
   const kakaoMap = React.useRef<HTMLDivElement>(null);
   const {
     query: { curationId },
   } = useRouter();
+  const setOpenModal = useSetRecoilState(openModalState);
 
   React.useEffect(() => {
     const { kakao } = window;
@@ -48,11 +50,13 @@ function KakaoMapContainer({
 
     React.Children.map(places, (place) => {
       const { lat, lng, content } = place.props;
+      const placeMarker = marker(lat, lng);
+      const placeOverlay = overlay(placeMarker.getPosition(), content);
 
-      marker(lat, lng).setMap(map);
-      overlay(marker(lat, lng).getPosition(), content).setMap(map);
+      placeMarker.setMap(map);
+      placeOverlay.setMap(map);
 
-      kakao.maps.event.addListener(overlay, "click", () => setOpenModal(true));
+      kakao.maps.event.addListener(placeMarker, "click", () => setOpenModal(true));
     });
   }, [curationId]);
 

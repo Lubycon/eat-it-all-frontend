@@ -8,13 +8,17 @@ import { useGetRestaurant } from "../hooks/api/restaurant";
 import overlayContent from "../components/map/overlayContent";
 import RestaurantList from "../components/map/RestaurantList";
 import CurationDropdown from "../components/map/CurationDropdown";
+import RestaurantModal from "../components/common/RestaurantModal";
 import KakaoMapContainer from "../components/map/KakaoMapContainer";
+import { useRecoilValue } from "recoil";
+import { openModalState } from "../store/mapStore";
 
 function Map() {
   const { data: allRestaurants } = useGetRestaurant();
   const {
     query: { curationId },
   } = useRouter();
+  const openModal = useRecoilValue(openModalState);
 
   const size = useWindowSize();
   const isDesktop = size && size.width > 768;
@@ -35,6 +39,7 @@ function Map() {
         ))}
       </KakaoMapContainer>
       {isDesktop && <RestaurantList />}
+      {openModal && <RestaurantModal />}
     </>
   );
 }
