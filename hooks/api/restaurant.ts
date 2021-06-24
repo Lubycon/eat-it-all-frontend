@@ -6,7 +6,7 @@ interface GetRestaurant {
   restaurants: Restaurant[];
 }
 
-export const useGetRestaurant = () => {
+export const useGetRestaurants = () => {
   const { data, error } = useSWR("/restaurant", (url) => http.get<GetRestaurant>(url));
   return { data: data?.restaurants, error };
 };

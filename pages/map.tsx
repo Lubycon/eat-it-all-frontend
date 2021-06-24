@@ -4,7 +4,7 @@ import { 강남역 } from "../lib/constants";
 import Place from "../components/map/Place";
 import Spinner from "../components/common/Spinner";
 import useWindowSize from "../hooks/useWindowSize";
-import { useGetRestaurant } from "../hooks/api/restaurant";
+import { useGetRestaurants } from "../hooks/api/restaurant";
 import overlayContent from "../components/map/overlayContent";
 import RestaurantList from "../components/map/RestaurantList";
 import CurationDropdown from "../components/map/CurationDropdown";
@@ -14,7 +14,7 @@ import { useRecoilValue } from "recoil";
 import { modalRestaurantIdState } from "../store/mapStore";
 
 function Map() {
-  const { data: allRestaurants } = useGetRestaurant();
+  const { data: allRestaurants } = useGetRestaurants();
   const {
     query: { curationId },
   } = useRouter();

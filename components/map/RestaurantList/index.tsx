@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 import RestaurantListItem from "./RestaurantListItem";
-import { useGetRestaurant } from "../../../hooks/api/restaurant";
+import { useGetRestaurants } from "../../../hooks/api/restaurant";
 
 const Styled = {
   Root: styled.div`
@@ -17,7 +17,7 @@ const Styled = {
 };
 
 function RestaurantList() {
-  const { data: allRestaurants } = useGetRestaurant();
+  const { data: allRestaurants } = useGetRestaurants();
 
   const {
     query: { curationId },
