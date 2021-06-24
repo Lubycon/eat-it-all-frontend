@@ -2,6 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import { 강남역 } from "../lib/constants";
 import Place from "../components/map/Place";
+import Spinner from "../components/common/Spinner";
 import useWindowSize from "../hooks/useWindowSize";
 import { useGetRestaurant } from "../hooks/api/restaurant";
 import overlayContent from "../components/map/overlayContent";
@@ -18,7 +19,7 @@ function Map() {
   const size = useWindowSize();
   const isDesktop = size && size.width > 768;
 
-  if (!allRestaurants) return <div>Loading...</div>;
+  if (!allRestaurants) return <Spinner />;
 
   const restaurants =
     Number(curationId) === 0
