@@ -3,10 +3,11 @@ import Head from "next/head";
 import "../styles/globals.css";
 import "../styles/overlayContent.css";
 import type { AppProps } from "next/app";
+import { RecoilRoot } from "recoil";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <RecoilRoot>
       <Head>
         <title>다이어트 중이지만 맛있는건 먹고싶어</title>
         <link rel="icon" href="/favicon.ico" />
@@ -28,7 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         ></script>
       </Head>
       <Component {...pageProps} />
-    </>
+    </RecoilRoot>
   );
 }
 export default MyApp;
