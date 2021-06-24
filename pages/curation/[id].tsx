@@ -1,8 +1,9 @@
-import styled from "@emotion/styled";
-import { useRouter } from "next/dist/client/router";
 import React from "react";
-import { useGetCuration } from "../../hooks/api/curation";
+import styled from "@emotion/styled";
+import { useRouter } from "next/router";
 import { colors } from "../../lib/constants/colors";
+import Spinner from "../../components/common/Spinner";
+import { useGetCuration } from "../../hooks/api/curation";
 import CurationContentItem from "../../components/Curation/CurationContentItem";
 
 const Styled = {
@@ -61,7 +62,7 @@ function Curation() {
   const { data: curation } = useGetCuration(Number(curationId));
   console.log(`curation`, curation);
 
-  if (curation == null) return <div>Loading...</div>;
+  if (curation == null) return <Spinner />;
 
   return (
     <div>
