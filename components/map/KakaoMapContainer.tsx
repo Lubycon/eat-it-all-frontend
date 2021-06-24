@@ -51,7 +51,7 @@ function KakaoMapContainer({
       marker(lat, lng).setMap(map);
       overlay(marker(lat, lng).getPosition(), content).setMap(map);
     });
-  }, []);
+  }, [curationId]);
 
   return <Styled.Root ref={kakaoMap} width={width} height={height} />;
 }
