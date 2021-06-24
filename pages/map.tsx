@@ -15,19 +15,21 @@ function Map() {
     query: { curationId },
   } = useRouter();
 
+  const size = useWindowSize();
+  const isDesktop = size && size.width > 768;
+
+  if (!allRestaurants) return <div>Loading...</div>;
+
   const restaurants =
     Number(curationId) === 0
       ? allRestaurants
-      : allRestaurants?.filter(({ curationIds }) => curationIds?.includes(String(curationId)));
-
-  const size = useWindowSize();
-  const isDesktop = size && size.width > 768;
+      : allRestaurants.filter(({ curationIds }) => curationIds?.includes(String(curationId)));
 
   return (
     <>
       <CurationDropdown />
       <KakaoMapContainer lat={강남역.lat} lng={강남역.lng} level={6}>
-        {restaurants?.map(({ id, name, kakaoMap: { latitude, longitude } }) => (
+        {restaurants.map(({ id, name, kakaoMap: { latitude, longitude } }) => (
           <Place key={id} lat={latitude} lng={longitude} content={overlayContent(name)} />
         ))}
       </KakaoMapContainer>
