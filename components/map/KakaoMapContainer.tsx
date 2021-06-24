@@ -30,6 +30,7 @@ function KakaoMapContainer({
   level = 3,
   children: places,
 }: Props) {
+  const [openModal, setOpenModal] = React.useState(false);
   const kakaoMap = React.useRef<HTMLDivElement>(null);
   const {
     query: { curationId },
@@ -50,6 +51,8 @@ function KakaoMapContainer({
 
       marker(lat, lng).setMap(map);
       overlay(marker(lat, lng).getPosition(), content).setMap(map);
+
+      kakao.maps.event.addListener(overlay, "click", () => setOpenModal(true));
     });
   }, [curationId]);
 
