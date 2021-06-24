@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import React from "react";
-import BounceLoader from "react-spinners/BounceLoader";
+import MoonLoader from "react-spinners/MoonLoader";
 import { colors } from "../../lib/constants/colors";
 
 const Styled = {
@@ -19,7 +19,7 @@ interface Props {
 function Spinner({ size = 60 }: Props) {
   return (
     <Styled.Root>
-      <BounceLoader color={colors.green50} size={size} />
+      <MoonLoader color={colors.green50} size={size} />
     </Styled.Root>
   );
 }
