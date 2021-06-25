@@ -1,3 +1,11 @@
+export interface Menu {
+  id: number;
+  number: string;
+  price: number;
+  restaurantId: number;
+  description: string | null;
+}
+
 export interface Restaurant {
   id: number;
   name: string;
@@ -11,6 +19,12 @@ export interface Restaurant {
   };
   description: string;
   curationIds: string[];
+  menus: Menu[];
+  material: {
+    id: number;
+    contents: string;
+    name: string;
+  };
 }
 
 export interface Curation {
