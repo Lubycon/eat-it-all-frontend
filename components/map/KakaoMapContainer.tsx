@@ -6,7 +6,7 @@ import { PlaceProps } from "./Place";
 import { 강남역 } from "../../lib/constants";
 import { useRouter } from "next/router";
 import { useSetRecoilState } from "recoil";
-import { modalRestaurantIdState } from "../../store/mapStore";
+import { modalRestaurantIdState } from "../../store";
 
 const Styled = {
   Root: styled.div<{ width: string; height: string }>`

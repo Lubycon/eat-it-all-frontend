@@ -4,20 +4,20 @@ import { useRecoilState } from "recoil";
 import { useGetRestaurant } from "../../../hooks/api/restaurant";
 import { colors } from "../../../lib/constants/colors";
 import { clickable } from "../../../lib/style/mixin";
-import { modalRestaurantIdState } from "../../../store/mapStore";
+import { modalRestaurantIdState } from "../../../store";
 import Spinner from "../Spinner";
 import RestaurantMenu from "./RestaurantMenu";
 import MainIngredientContent from "./MainIngredientContent";
 
 const Styled = {
   Dimmer: styled.div`
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 100;
-    background: rgba(23, 23, 23, 0.15);
+    background: rgba(23, 23, 23, 0.5);
 
     display: flex;
     justify-content: center;
@@ -130,6 +130,18 @@ function RestaurantModal({ headerHeight = 164, showMap = true }: Props) {
   const [modalRestaurantId, setModalRestaurantId] = useRecoilState(modalRestaurantIdState);
   const { data: restaurant } = useGetRestaurant(modalRestaurantId as number);
   console.log(`restaurant`, restaurant);
+
+  // React.useEffect(() => {
+  //   function noScroll() {
+  //     window.scrollTo(0, 0);
+  //   }
+
+  //   // add listener to disable scroll
+  //   window.addEventListener("scroll", noScroll);
+
+  //   // Remove listener to re-enable scroll
+  //   return () => window.removeEventListener("scroll", noScroll);
+  // }, []);
 
   if (restaurant == null) return <Spinner />;
 

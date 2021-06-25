@@ -5,6 +5,9 @@ import { colors } from "../../lib/constants/colors";
 import Spinner from "../../components/common/Spinner";
 import { useGetCuration } from "../../hooks/api/curation";
 import CurationContentItem from "../../components/Curation/CurationContentItem";
+import RestaurantModal from "../../components/common/RestaurantModal";
+import { useRecoilValue } from "recoil";
+import { modalRestaurantIdState } from "../../store";
 
 const Styled = {
   Header: styled.div<{ image?: string }>`
@@ -58,14 +61,13 @@ function Curation() {
   const {
     query: { id: curationId },
   } = useRouter();
-
   const { data: curation } = useGetCuration(Number(curationId));
-  console.log(`curation`, curation);
+  const modalRestaurantId = useRecoilValue(modalRestaurantIdState);
 
   if (curation == null) return <Spinner />;
 
   return (
-    <div>
+    <>
       <Styled.Header image={`https://file.eat-all.io${curation.imageUrl}`}>
         <Styled.CurationTitle>{curation.title}</Styled.CurationTitle>
       </Styled.Header>
@@ -79,6 +81,7 @@ function Curation() {
         {curation.restaurants.map(({ id, name, hashtags, address, thumbnailImageUrl, description }) => (
           <CurationContentItem
             key={id}
+            id={id}
             name={name}
             hashTags={hashtags}
             address={address}
@@ -87,7 +90,8 @@ function Curation() {
           />
         ))}
       </Styled.CurationContent>
-    </div>
+      {modalRestaurantId !== null && <RestaurantModal showMap />}
+    </>
   );
 }
 
