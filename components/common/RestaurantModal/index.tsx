@@ -131,17 +131,19 @@ function RestaurantModal({ headerHeight = 164, showMap = true }: Props) {
   const { data: restaurant } = useGetRestaurant(modalRestaurantId as number);
   console.log(`restaurant`, restaurant);
 
-  // React.useEffect(() => {
-  //   function noScroll() {
-  //     window.scrollTo(0, 0);
-  //   }
-
-  //   // add listener to disable scroll
-  //   window.addEventListener("scroll", noScroll);
-
-  //   // Remove listener to re-enable scroll
-  //   return () => window.removeEventListener("scroll", noScroll);
-  // }, []);
+  /** Dimmer 영역 스크롤 막기 */
+  React.useEffect(() => {
+    document.body.style.cssText = `
+      position: fixed; 
+      top: -${window.scrollY}px;
+      overflow-y: scroll;
+      width: 100%;`;
+    return () => {
+      const scrollY = document.body.style.top;
+      document.body.style.cssText = "";
+      window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+    };
+  }, []);
 
   if (restaurant == null) return <Spinner />;
 
