@@ -6,7 +6,6 @@ import { colors } from "../../../lib/constants/colors";
 import { useGetCurations } from "../../../hooks/api/curation";
 import { Curation } from "../../../types";
 import { useRouter } from "next/router";
-import Spinner from "../../common/Spinner";
 
 const Styled = {
   Root: styled.div`
