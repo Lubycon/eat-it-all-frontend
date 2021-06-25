@@ -8,6 +8,8 @@ import { modalRestaurantIdState } from "../../../store";
 import Spinner from "../Spinner";
 import RestaurantMenu from "./RestaurantMenu";
 import MainIngredientContent from "./MainIngredientContent";
+import KakaoMapContainer from "../../map/KakaoMapContainer";
+import Place from "../../map/Place";
 
 const Styled = {
   Dimmer: styled.div`
@@ -119,6 +121,12 @@ const Styled = {
     display: flex;
     margin: 12px 8px;
   `,
+
+  MapWrapper: styled.div`
+    margin: 20px 16px;
+    border-radius: 8px;
+    border: 1px solid #e9e9e9;
+  `,
 };
 
 interface Props {
@@ -166,6 +174,13 @@ function RestaurantModal({ headerHeight = 164, showMap = true }: Props) {
           <RestaurantMenu menus={restaurant.menus} />
           <MainIngredientContent ingredient={restaurant.material} />
         </Styled.Content>
+        {showMap && (
+          <Styled.MapWrapper>
+            <KakaoMapContainer height="260px" lat={restaurant.kakaoMap.latitude} lng={restaurant.kakaoMap.longitude}>
+              <Place lat={restaurant.kakaoMap.latitude} lng={restaurant.kakaoMap.longitude} id={restaurant.id} />
+            </KakaoMapContainer>
+          </Styled.MapWrapper>
+        )}
       </Styled.Modal>
     </Styled.Dimmer>
   );

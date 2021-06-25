@@ -21,7 +21,7 @@ interface Props {
   lat?: number;
   lng?: number;
   level?: number;
-  children: ReactElement<PlaceProps>[];
+  children: ReactElement<PlaceProps> | ReactElement<PlaceProps>[];
 }
 
 function KakaoMapContainer({
@@ -51,10 +51,10 @@ function KakaoMapContainer({
     React.Children.map(places, (place) => {
       const { id, lat, lng, content } = place.props;
       const placeMarker = marker(lat, lng);
-      const placeOverlay = overlay(placeMarker.getPosition(), content);
+      const placeOverlay = content && overlay(placeMarker.getPosition(), content);
 
       placeMarker.setMap(map);
-      placeOverlay.setMap(map);
+      content && placeOverlay.setMap(map);
 
       kakao.maps.event.addListener(placeMarker, "click", () => setModalRestaurantId(id));
     });
