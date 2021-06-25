@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import CategoryCarousel from "./CategoryCarousel";
 import { colors } from "../../lib/constants/colors";
 import ScrollDownButton from "../common/ScrollDownButton";
-import useWindowSize from "../../hooks/useWindowSize";
+import { useMobile } from "../../hooks/useMobile";
 
 const Styled = {
   Root: styled.div`
@@ -48,8 +48,7 @@ const Styled = {
 };
 
 function Main() {
-  const size = useWindowSize();
-  const isMobile = size && size.width < 768;
+  const isMobile = useMobile();
 
   return (
     <Styled.Root>

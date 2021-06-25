@@ -6,6 +6,7 @@ import { colors } from "../../../lib/constants/colors";
 import { useGetCurations } from "../../../hooks/api/curation";
 import { Curation } from "../../../types";
 import { useRouter } from "next/router";
+import { useMobile } from "../../../hooks/useMobile";
 
 const Styled = {
   Root: styled.div`
@@ -60,6 +61,7 @@ function CurationDropdown() {
     query: { curationId },
   } = useRouter();
   const [openDropdown, setOpenDropdown] = React.useState(false);
+  const isMobile = useMobile();
 
   if (curations == null)
     return (
