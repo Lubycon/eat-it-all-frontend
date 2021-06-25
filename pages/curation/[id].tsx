@@ -11,6 +11,7 @@ import RestaurantModal from "../../components/common/RestaurantModal";
 import CurationContentItem from "../../components/Curation/CurationContentItem";
 import useWindowSize from "../../hooks/useWindowSize";
 import GoToMapButton from "../../components/common/GoToMapButton";
+import { useMobile } from "../../hooks/useMobile";
 
 const Styled = {
   Header: styled.div<{ image?: string }>`
@@ -87,8 +88,7 @@ function Curation() {
   const { data: curation } = useGetCuration(Number(curationId));
   const modalRestaurantId = useRecoilValue(modalRestaurantIdState);
 
-  const size = useWindowSize();
-  const isMobile = size && size.width < 768;
+  const isMobile = useMobile();
 
   if (curation == null) return <Spinner />;
 
