@@ -96,7 +96,7 @@ function Curation() {
     <>
       {isMobile ? (
         <Styled.GoToMapBtnWrapper>
-          <GoToMapButton curationId={Number(curationId)} />
+          <GoToMapButton curationId={Number(curationId || 0)} />
         </Styled.GoToMapBtnWrapper>
       ) : (
         <Header />

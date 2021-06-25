@@ -8,6 +8,7 @@ import { Curation } from "../../../types";
 import { useRouter } from "next/router";
 import { useMobile } from "../../../hooks/useMobile";
 import { css } from "@emotion/react";
+import Link from "next/link";
 
 const Styled = {
   Root: styled.div<{ isMobile?: boolean }>`
@@ -44,6 +45,11 @@ const Styled = {
     transition: 0.2s ease-in-out;
     ${clickable}
 
+    @media (max-width: 768px) {
+      font-size: 16px;
+      line-height: 1.2;
+    }
+
     ${({ isMobile }) =>
       isMobile
         ? css`
@@ -61,6 +67,7 @@ const Styled = {
   CurationLeft: styled.div`
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     & > img {
       margin-right: 4px;
@@ -70,6 +77,10 @@ const Styled = {
   ArrowIcon: styled.img<{ isRotate: boolean }>`
     transition: 0.2s ease-in-out;
     transform: rotate(${({ isRotate }) => (isRotate ? "0.5turn" : "0turn")});
+  `,
+
+  BackIcon: styled.img`
+    transform: rotate(0.5turn);
   `,
 };
 
@@ -107,7 +118,13 @@ function CurationDropdown() {
         onClick={() => setOpenDropdown((prevState) => !prevState)}
       >
         <Styled.CurationLeft>
-          <img src="/assets/icons/ic_curation_star.svg" />
+          {isMobile ? (
+            <Link href="/">
+              <Styled.BackIcon src="/assets/icons/ic_arrow.svg" width={32} height={32} />
+            </Link>
+          ) : (
+            <img src="/assets/icons/ic_curation_star.svg" />
+          )}
           <div>{selectedDropdownItem?.title}</div>
         </Styled.CurationLeft>
         <Styled.ArrowIcon src="/assets/icons/ic_dropdown.svg" isRotate={openDropdown} />

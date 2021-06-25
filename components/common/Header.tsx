@@ -37,7 +37,7 @@ function Header() {
         <Link href="/">
           <div style={{ fontSize: "24px" }}>Logo</div>
         </Link>
-        <GoToMapButton curationId={Number(curationId)} />
+        <GoToMapButton curationId={Number(curationId || 0)} />
       </Styled.NavBar>
     </Styled.Root>
   );
