@@ -45,7 +45,7 @@ function RestaurantMenu({ menus }: Props) {
     <Styled.Root>
       <h5>대표 메뉴</h5>
       {menus.map((menu) => (
-        <Styled.MenuItem>
+        <Styled.MenuItem key={menu.id}>
           <h6>{menu.name}</h6>
           <div>{menu.price}원</div>
         </Styled.MenuItem>

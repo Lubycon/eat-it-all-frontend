@@ -25,7 +25,6 @@ const Styled = {
 
   Modal: styled.div`
     width: 600px;
-    height: 730px;
     background-color: ${colors.ivory10};
     box-shadow: 0px 4px 32px rgba(79, 62, 43, 0.35);
     border-radius: 16px;
@@ -44,8 +43,8 @@ const Styled = {
     animation: 0.4s ease fadeIn;
   `,
 
-  Header: styled.div<{ imageUrl: string }>`
-    height: 164px;
+  Header: styled.div<{ imageUrl: string; height: number }>`
+    height: ${({ height }) => `${height}px`};
     padding: 24px 24px;
     display: flex;
     justify-content: space-between;
@@ -121,7 +120,12 @@ const Styled = {
   `,
 };
 
-function RestaurantModal() {
+interface Props {
+  headerHeight?: number;
+  showMap?: boolean;
+}
+
+function RestaurantModal({ headerHeight = 164, showMap = true }: Props) {
   const [modalRestaurantId, setModalRestaurantId] = useRecoilState(modalRestaurantIdState);
   const { data: restaurant } = useGetRestaurant(modalRestaurantId as number);
   console.log(`restaurant`, restaurant);
@@ -131,7 +135,7 @@ function RestaurantModal() {
   return (
     <Styled.Dimmer>
       <Styled.Modal>
-        <Styled.Header imageUrl={restaurant.thumbnailImageUrl}>
+        <Styled.Header imageUrl={restaurant.thumbnailImageUrl} height={headerHeight}>
           <Styled.Main>
             <h2>{restaurant.name}</h2>
             <h4>{restaurant.address}</h4>
