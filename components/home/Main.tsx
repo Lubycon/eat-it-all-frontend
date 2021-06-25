@@ -7,7 +7,7 @@ import { useMobile } from "../../hooks/useMobile";
 
 const Styled = {
   Root: styled.div`
-    height: calc(100vh - 120px);
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;

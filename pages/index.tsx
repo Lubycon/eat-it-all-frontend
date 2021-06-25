@@ -13,7 +13,6 @@ function Home() {
       <Header />
       <Main />
       {isMobile && <MobileCategoryList />}
-      <div style={{ height: "1400px", backgroundColor: colors.beige30 }} />
     </>
   );
 }

@@ -17,7 +17,7 @@ const Styled = {
   `,
 
   NavBar: styled.div`
-    width: 1240px;
+    width: 1200px;
     height: 100%;
     padding: 0 16px;
     display: flex;
