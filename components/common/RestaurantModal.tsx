@@ -1,8 +1,10 @@
 import styled from "@emotion/styled";
 import React from "react";
 import { useRecoilState } from "recoil";
+import { useGetRestaurant } from "../../hooks/api/restaurant";
 import { colors } from "../../lib/constants/colors";
 import { modalRestaurantIdState } from "../../store/mapStore";
+import Spinner from "./Spinner";
 
 const Styled = {
   Dimmer: styled.div`
@@ -40,16 +42,35 @@ const Styled = {
     animation: 0.4s ease fadeIn;
   `,
 
-  Header: styled.div``,
+  Header: styled.div`
+    height: 164px;
+    padding: 32px 24px;
+  `,
+
+  TagWrapper: styled.div``,
+
+  Tag: styled.div``,
 };
 
 function RestaurantModal() {
   const [modalRestaurantId, setModalRestaurantId] = useRecoilState(modalRestaurantIdState);
+  const { data: restaurant } = useGetRestaurant(modalRestaurantId as number);
+  console.log(`restaurant`, restaurant);
+
+  if (restaurant == null) return <Spinner />;
 
   return (
     <Styled.Dimmer>
       <Styled.Modal>
-        <Styled.Header></Styled.Header>
+        <Styled.Header>
+          <h2>{restaurant.name}</h2>
+          <h4>{restaurant.address}</h4>
+          <Styled.TagWrapper>
+            {restaurant.hashtags.map((hashTag) => (
+              <Styled.Tag key={hashTag}>{hashTag}</Styled.Tag>
+            ))}
+          </Styled.TagWrapper>
+        </Styled.Header>
       </Styled.Modal>
     </Styled.Dimmer>
   );
