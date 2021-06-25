@@ -1,19 +1,22 @@
 import React from "react";
 import styled from "@emotion/styled";
+import Link from "next/link";
 import GoToMapButton from "./GoToMapButton";
+import { useRouter } from "next/router";
 
 const Styled = {
   Root: styled.div`
-    position: sticky;
+    position: fixed;
     top: 0;
-    height: 120px;
+    width: 100%;
+    height: 96px;
     display: flex;
     justify-content: center;
     align-items: center;
   `,
 
   NavBar: styled.div`
-    width: 1200px;
+    width: 1240px;
     height: 100%;
     padding: 0 16px;
     display: flex;
@@ -23,11 +26,17 @@ const Styled = {
 };
 
 function Header() {
+  const {
+    query: { id: curationId },
+  } = useRouter();
+
   return (
     <Styled.Root>
       <Styled.NavBar>
-        <div style={{ fontSize: "32px" }}>Logo</div>
-        <GoToMapButton />
+        <Link href="/">
+          <div style={{ fontSize: "24px" }}>Logo</div>
+        </Link>
+        <GoToMapButton curationId={Number(curationId)} />
       </Styled.NavBar>
     </Styled.Root>
   );

@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { useRecoilValue } from "recoil";
 import { useRouter } from "next/router";
+import Header from "../../components/common/Header";
 import { colors } from "../../lib/constants/colors";
+import { modalRestaurantIdState } from "../../store";
 import Spinner from "../../components/common/Spinner";
 import { useGetCuration } from "../../hooks/api/curation";
-import CurationContentItem from "../../components/Curation/CurationContentItem";
 import RestaurantModal from "../../components/common/RestaurantModal";
-import { useRecoilValue } from "recoil";
-import { modalRestaurantIdState } from "../../store";
+import CurationContentItem from "../../components/Curation/CurationContentItem";
 
 const Styled = {
   Header: styled.div<{ image?: string }>`
@@ -69,6 +70,7 @@ function Curation() {
 
   return (
     <>
+      <Header />
       <Styled.Header image={`https://file.eat-all.io${curation.imageUrl}`}>
         <Styled.CurationTitle>{curation.title}</Styled.CurationTitle>
       </Styled.Header>
