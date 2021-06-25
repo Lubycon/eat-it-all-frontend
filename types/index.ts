@@ -6,6 +6,12 @@ export interface Menu {
   description: string | null;
 }
 
+export interface Ingredient {
+  id: number;
+  contents: string;
+  name: string;
+}
+
 export interface Restaurant {
   id: number;
   name: string;
@@ -20,11 +26,7 @@ export interface Restaurant {
   description: string;
   curationIds: string[];
   menus: Menu[];
-  material: {
-    id: number;
-    contents: string;
-    name: string;
-  };
+  material: Ingredient;
 }
 
 export interface Curation {

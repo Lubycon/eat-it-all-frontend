@@ -7,6 +7,7 @@ import { clickable } from "../../../lib/style/mixin";
 import { modalRestaurantIdState } from "../../../store/mapStore";
 import Spinner from "../Spinner";
 import RestaurantMenu from "./RestaurantMenu";
+import MainIngredientContent from "./MainIngredientContent";
 
 const Styled = {
   Dimmer: styled.div`
@@ -149,7 +150,7 @@ function RestaurantModal({ headerHeight = 164, showMap = true }: Props) {
         </Styled.Header>
         <Styled.Content>
           <RestaurantMenu menus={restaurant.menus} />
-          <RestaurantMenu menus={restaurant.menus} />
+          <MainIngredientContent ingredient={restaurant.material} />
         </Styled.Content>
       </Styled.Modal>
     </Styled.Dimmer>
