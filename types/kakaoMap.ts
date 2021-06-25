@@ -9,6 +9,9 @@ declare global {
         MarkerImage: any;
         LatLng: any;
         Marker: any;
+        event: {
+          addListener: any;
+        };
       };
     };
   }

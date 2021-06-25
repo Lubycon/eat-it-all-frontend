@@ -15,8 +15,9 @@ const Styled = {
     z-index: 10;
   `,
 
-  DropdownHeader: styled.div<{ isFocus: boolean }>`
+  DropdownHeader: styled.div<{ isFocus?: boolean }>`
     width: 400px;
+    height: 60px;
     background: ${colors.white};
     box-shadow: 0px 3px 15px rgba(79, 62, 43, 0.45);
     border-radius: 6px;
@@ -60,7 +61,12 @@ function CurationDropdown() {
   } = useRouter();
   const [openDropdown, setOpenDropdown] = React.useState(false);
 
-  if (curations == null) return <div>Loading...</div>;
+  if (curations == null)
+    return (
+      <Styled.Root>
+        <Styled.DropdownHeader>Loading...</Styled.DropdownHeader>
+      </Styled.Root>
+    );
 
   const all: DropdownItem = {
     id: 0,

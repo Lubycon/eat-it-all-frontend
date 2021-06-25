@@ -1,10 +1,11 @@
 export interface PlaceProps {
+  id: number;
   lat: number;
   lng: number;
   content: string;
 }
 
-function Place({ lat, lng, content }: PlaceProps) {
+function Place({ id, lat, lng, content }: PlaceProps) {
   return null;
 }
 

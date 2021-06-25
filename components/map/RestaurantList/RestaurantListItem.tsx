@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
 import React, { ReactElement } from "react";
+import { useSetRecoilState } from "recoil";
 import { colors } from "../../../lib/constants/colors";
 import { truncateText } from "../../../lib/style/mixin";
+import { modalRestaurantIdState } from "../../../store/mapStore";
 
 const Styled = {
   Root: styled.div<{ imageUrl?: string }>`
@@ -39,8 +41,14 @@ interface Props {
 }
 
 function RestaurantListItem({ id, name, description }: Props): ReactElement {
+  const setModalRestaurantId = useSetRecoilState(modalRestaurantIdState);
+
+  const handleClick = (id: number) => () => {
+    setModalRestaurantId(id);
+  };
+
   return (
-    <Styled.Root>
+    <Styled.Root onClick={handleClick(id)}>
       <Styled.Title>{name}</Styled.Title>
       <Styled.Description>{description}</Styled.Description>
     </Styled.Root>
