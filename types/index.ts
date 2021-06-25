@@ -30,7 +30,7 @@ export interface Restaurant {
 }
 
 export interface Curation {
-  content: string;
+  contents: string;
   id: number;
   title: string;
   imageUrl: string;

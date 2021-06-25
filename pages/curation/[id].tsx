@@ -63,6 +63,7 @@ function Curation() {
   } = useRouter();
   const { data: curation } = useGetCuration(Number(curationId));
   const modalRestaurantId = useRecoilValue(modalRestaurantIdState);
+  console.log(`curation`, curation);
 
   if (curation == null) return <Spinner />;
 
@@ -72,12 +73,7 @@ function Curation() {
         <Styled.CurationTitle>{curation.title}</Styled.CurationTitle>
       </Styled.Header>
       <Styled.CurationContent>
-        <Styled.CurationDescription className="description">
-          모밀은 메밀로 만들어져 저칼로리 음식의 대표주자 입니다. 쏼라쏼라 쏼라쏼라 쏼라쏼라 쏼라쏼라 쏼라쏼라 쏼라쏼라
-          쏼라쏼라 모밀은 메밀로 만들어져 저칼로리 음식의 대표주자 입니다. 쏼라쏼라 쏼라쏼라 쏼라쏼라 쏼라쏼라 쏼라쏼라
-          쏼라쏼라 쏼라쏼라 모밀은 메밀로 만들어져 저칼로리 음식의 대표주자 입니다. 쏼라쏼라 쏼라쏼라 쏼라쏼라 쏼라쏼라
-          쏼라쏼라 쏼라쏼라 쏼라쏼라 모밀은 메밀로 만들어져 저칼로리 음식의 대표주자 입니다.
-        </Styled.CurationDescription>
+        <Styled.CurationDescription className="description">{curation.contents}</Styled.CurationDescription>
         {curation.restaurants.map(({ id, name, hashtags, address, thumbnailImageUrl, description }) => (
           <CurationContentItem
             key={id}
