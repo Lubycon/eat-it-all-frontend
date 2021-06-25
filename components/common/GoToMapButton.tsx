@@ -9,10 +9,16 @@ const Styled = {
     border-radius: 50px;
     background-color: ${colors.green50};
     display: flex;
+    justify-content: center;
     align-items: center;
     padding: 13px 24px;
     transition: 0.2s ease-in-out;
     ${clickable};
+
+    @media (max-width: 768px) {
+      width: 180px;
+      padding: 8px 12px;
+    }
 
     &:hover {
       box-shadow: 0px 4px 8px rgba(155, 110, 69, 0.25);
@@ -24,11 +30,20 @@ const Styled = {
       font-size: 18px;
       color: ${colors.ivory10};
       margin-right: 4px;
+
+      @media (max-width: 768px) {
+        font-size: 14px;
+      }
     }
 
     & > img {
       width: 28px;
       height: 28px;
+
+      @media (max-width: 768px) {
+        width: 22px;
+        height: 22px;
+      }
     }
   `,
 };

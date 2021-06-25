@@ -13,6 +13,7 @@ const Styled = {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 20;
   `,
 
   NavBar: styled.div`

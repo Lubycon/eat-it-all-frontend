@@ -9,6 +9,8 @@ import Spinner from "../../components/common/Spinner";
 import { useGetCuration } from "../../hooks/api/curation";
 import RestaurantModal from "../../components/common/RestaurantModal";
 import CurationContentItem from "../../components/Curation/CurationContentItem";
+import useWindowSize from "../../hooks/useWindowSize";
+import GoToMapButton from "../../components/common/GoToMapButton";
 
 const Styled = {
   Header: styled.div<{ image?: string }>`
@@ -56,6 +58,26 @@ const Styled = {
   CurationDescription: styled.div`
     margin-bottom: 88px;
   `,
+
+  GoToMapBtnWrapper: styled.div`
+    position: fixed;
+    bottom: 20px;
+    left: calc(50% - 90px);
+    z-index: 20;
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translate(0, 30px);
+      }
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+
+    animation: 0.8s ease fadeIn;
+  `,
 };
 
 function Curation() {
@@ -64,13 +86,21 @@ function Curation() {
   } = useRouter();
   const { data: curation } = useGetCuration(Number(curationId));
   const modalRestaurantId = useRecoilValue(modalRestaurantIdState);
-  console.log(`curation`, curation);
+
+  const size = useWindowSize();
+  const isMobile = size && size.width < 768;
 
   if (curation == null) return <Spinner />;
 
   return (
     <>
-      <Header />
+      {isMobile ? (
+        <Styled.GoToMapBtnWrapper>
+          <GoToMapButton curationId={Number(curationId)} />
+        </Styled.GoToMapBtnWrapper>
+      ) : (
+        <Header />
+      )}
       <Styled.Header image={`https://file.eat-all.io${curation.imageUrl}`}>
         <Styled.CurationTitle>{curation.title}</Styled.CurationTitle>
       </Styled.Header>
