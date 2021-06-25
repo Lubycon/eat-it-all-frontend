@@ -4,20 +4,22 @@ import { useRecoilState } from "recoil";
 import { useGetRestaurant } from "../../../hooks/api/restaurant";
 import { colors } from "../../../lib/constants/colors";
 import { clickable } from "../../../lib/style/mixin";
-import { modalRestaurantIdState } from "../../../store/mapStore";
+import { modalRestaurantIdState } from "../../../store";
 import Spinner from "../Spinner";
 import RestaurantMenu from "./RestaurantMenu";
 import MainIngredientContent from "./MainIngredientContent";
+import KakaoMapContainer from "../../map/KakaoMapContainer";
+import Place from "../../map/Place";
 
 const Styled = {
   Dimmer: styled.div`
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 100;
-    background: rgba(23, 23, 23, 0.15);
+    background: rgba(23, 23, 23, 0.5);
 
     display: flex;
     justify-content: center;
@@ -119,6 +121,12 @@ const Styled = {
     display: flex;
     margin: 12px 8px;
   `,
+
+  MapWrapper: styled.div`
+    margin: 20px 16px;
+    border-radius: 8px;
+    border: 1px solid #e9e9e9;
+  `,
 };
 
 interface Props {
@@ -130,6 +138,20 @@ function RestaurantModal({ headerHeight = 164, showMap = true }: Props) {
   const [modalRestaurantId, setModalRestaurantId] = useRecoilState(modalRestaurantIdState);
   const { data: restaurant } = useGetRestaurant(modalRestaurantId as number);
   console.log(`restaurant`, restaurant);
+
+  /** Dimmer 영역 스크롤 막기 */
+  React.useEffect(() => {
+    document.body.style.cssText = `
+      position: fixed; 
+      top: -${window.scrollY}px;
+      overflow-y: scroll;
+      width: 100%;`;
+    return () => {
+      const scrollY = document.body.style.top;
+      document.body.style.cssText = "";
+      window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+    };
+  }, []);
 
   if (restaurant == null) return <Spinner />;
 
@@ -152,6 +174,13 @@ function RestaurantModal({ headerHeight = 164, showMap = true }: Props) {
           <RestaurantMenu menus={restaurant.menus} />
           <MainIngredientContent ingredient={restaurant.material} />
         </Styled.Content>
+        {showMap && (
+          <Styled.MapWrapper>
+            <KakaoMapContainer height="260px" lat={restaurant.kakaoMap.latitude} lng={restaurant.kakaoMap.longitude}>
+              <Place lat={restaurant.kakaoMap.latitude} lng={restaurant.kakaoMap.longitude} id={restaurant.id} />
+            </KakaoMapContainer>
+          </Styled.MapWrapper>
+        )}
       </Styled.Modal>
     </Styled.Dimmer>
   );

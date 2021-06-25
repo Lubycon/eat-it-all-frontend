@@ -6,7 +6,7 @@ import Place from "../components/map/Place";
 import Spinner from "../components/common/Spinner";
 import useWindowSize from "../hooks/useWindowSize";
 import BackHomeIcon from "../components/map/BackHomeIcon";
-import { modalRestaurantIdState } from "../store/mapStore";
+import { modalRestaurantIdState } from "../store";
 import { useGetRestaurants } from "../hooks/api/restaurant";
 import overlayContent from "../components/map/overlayContent";
 import RestaurantList from "../components/map/RestaurantList";

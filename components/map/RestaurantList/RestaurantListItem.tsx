@@ -3,7 +3,7 @@ import React, { ReactElement } from "react";
 import { useSetRecoilState } from "recoil";
 import { colors } from "../../../lib/constants/colors";
 import { truncateText } from "../../../lib/style/mixin";
-import { modalRestaurantIdState } from "../../../store/mapStore";
+import { modalRestaurantIdState } from "../../../store";
 
 const Styled = {
   Root: styled.div<{ imageUrl?: string }>`

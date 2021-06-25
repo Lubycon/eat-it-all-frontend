@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
 import React from "react";
+import { useSetRecoilState } from "recoil";
 import { colors } from "../../lib/constants/colors";
 import { clickable } from "../../lib/style/mixin";
+import { modalRestaurantIdState } from "../../store";
 
 const Styled = {
   Root: styled.div`
@@ -81,6 +83,7 @@ const Styled = {
 };
 
 interface Props {
+  id: number;
   name: string;
   hashTags: string[];
   address: string;
@@ -88,9 +91,11 @@ interface Props {
   description: string;
 }
 
-function CurationContentItem({ name, hashTags, address, imageUrl, description }: Props) {
+function CurationContentItem({ id, name, hashTags, address, imageUrl, description }: Props) {
+  const setModalRestaurantId = useSetRecoilState(modalRestaurantIdState);
+
   return (
-    <Styled.Root>
+    <Styled.Root onClick={() => setModalRestaurantId(id)}>
       <Styled.Header>
         <Styled.Main>
           <Styled.Title>{name}</Styled.Title>

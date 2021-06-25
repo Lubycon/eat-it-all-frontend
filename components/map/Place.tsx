@@ -2,7 +2,7 @@ export interface PlaceProps {
   id: number;
   lat: number;
   lng: number;
-  content: string;
+  content?: string;
 }
 
 function Place({ id, lat, lng, content }: PlaceProps) {

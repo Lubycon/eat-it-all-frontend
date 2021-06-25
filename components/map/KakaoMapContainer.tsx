@@ -6,7 +6,7 @@ import { PlaceProps } from "./Place";
 import { 강남역 } from "../../lib/constants";
 import { useRouter } from "next/router";
 import { useSetRecoilState } from "recoil";
-import { modalRestaurantIdState } from "../../store/mapStore";
+import { modalRestaurantIdState } from "../../store";
 
 const Styled = {
   Root: styled.div<{ width: string; height: string }>`
@@ -21,7 +21,7 @@ interface Props {
   lat?: number;
   lng?: number;
   level?: number;
-  children: ReactElement<PlaceProps>[];
+  children: ReactElement<PlaceProps> | ReactElement<PlaceProps>[];
 }
 
 function KakaoMapContainer({
@@ -51,10 +51,10 @@ function KakaoMapContainer({
     React.Children.map(places, (place) => {
       const { id, lat, lng, content } = place.props;
       const placeMarker = marker(lat, lng);
-      const placeOverlay = overlay(placeMarker.getPosition(), content);
+      const placeOverlay = content && overlay(placeMarker.getPosition(), content);
 
       placeMarker.setMap(map);
-      placeOverlay.setMap(map);
+      content && placeOverlay.setMap(map);
 
       kakao.maps.event.addListener(placeMarker, "click", () => setModalRestaurantId(id));
     });
