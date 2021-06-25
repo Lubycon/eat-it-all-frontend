@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
 import React from "react";
 import { useRecoilState } from "recoil";
-import { useGetRestaurant } from "../../hooks/api/restaurant";
-import { colors } from "../../lib/constants/colors";
-import { clickable } from "../../lib/style/mixin";
-import { modalRestaurantIdState } from "../../store/mapStore";
-import Spinner from "./Spinner";
+import { useGetRestaurant } from "../../../hooks/api/restaurant";
+import { colors } from "../../../lib/constants/colors";
+import { clickable } from "../../../lib/style/mixin";
+import { modalRestaurantIdState } from "../../../store/mapStore";
+import Spinner from "../Spinner";
+import RestaurantMenu from "./RestaurantMenu";
 
 const Styled = {
   Dimmer: styled.div`
@@ -113,6 +114,11 @@ const Styled = {
       font-size: 12px;
     }
   `,
+
+  Content: styled.div`
+    display: flex;
+    margin: 12px 8px;
+  `,
 };
 
 function RestaurantModal() {
@@ -137,6 +143,10 @@ function RestaurantModal() {
           </Styled.Main>
           <Styled.CancelIcon onClick={() => setModalRestaurantId(null)} src="/assets/icons/ic_cancel.svg" alt="닫기" />
         </Styled.Header>
+        <Styled.Content>
+          <RestaurantMenu menus={restaurant.menus} />
+          <RestaurantMenu menus={restaurant.menus} />
+        </Styled.Content>
       </Styled.Modal>
     </Styled.Dimmer>
   );

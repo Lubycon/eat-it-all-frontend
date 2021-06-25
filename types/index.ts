@@ -1,6 +1,6 @@
 export interface Menu {
   id: number;
-  number: string;
+  name: string;
   price: number;
   restaurantId: number;
   description: string | null;
