@@ -1,16 +1,16 @@
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 import React from "react";
+import { useMobile } from "../../../hooks/useMobile";
 import { colors } from "../../../lib/constants/colors";
 import { clickable } from "../../../lib/style/mixin";
 import { Curation } from "../../../types";
 
 const Styled = {
-  Root: styled.div`
+  Root: styled.div<{ isMobile?: boolean }>`
     position: absolute;
     top: 66px;
-    width: 400px;
-    height: 400px;
+    width: ${({ isMobile }) => (isMobile ? "calc(100% - 32px)" : "400px")};
     background: ${colors.ivory10};
     box-shadow: 0px 3px 15px rgba(79, 62, 43, 0.45);
     border-radius: 6px;
@@ -62,6 +62,7 @@ interface Props {
 
 function DropdownMenu({ items, setOpenDropdown }: Props) {
   const router = useRouter();
+  const isMobile = useMobile();
 
   const handleDropdownClick = (id: number) => () => {
     const { pathname, query: prevQuery } = router;
@@ -72,7 +73,7 @@ function DropdownMenu({ items, setOpenDropdown }: Props) {
   };
 
   return (
-    <Styled.Root>
+    <Styled.Root isMobile={isMobile}>
       {items.map((item) => (
         <Styled.MenuItem key={item.id} onClick={handleDropdownClick(item.id)}>
           {item.title}

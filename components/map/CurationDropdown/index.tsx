@@ -7,17 +7,28 @@ import { useGetCurations } from "../../../hooks/api/curation";
 import { Curation } from "../../../types";
 import { useRouter } from "next/router";
 import { useMobile } from "../../../hooks/useMobile";
+import { css } from "@emotion/react";
 
 const Styled = {
-  Root: styled.div`
+  Root: styled.div<{ isMobile?: boolean }>`
     position: absolute;
     top: 36px;
-    left: calc(50% - 200px);
     z-index: 10;
+
+    ${({ isMobile }) =>
+      isMobile
+        ? css`
+            width: 100%;
+            top: 16px;
+            padding: 0 16px;
+          `
+        : css`
+            left: calc(50% - 200px);
+            top: 36px;
+          `}
   `,
 
-  DropdownHeader: styled.div<{ isFocus?: boolean }>`
-    width: 400px;
+  DropdownHeader: styled.div<{ isFocus?: boolean; isMobile?: boolean }>`
     height: 60px;
     background: ${colors.white};
     box-shadow: 0px 3px 15px rgba(79, 62, 43, 0.45);
@@ -32,6 +43,15 @@ const Styled = {
     border: 2px solid ${({ isFocus }) => (isFocus ? colors.green40 : colors.white)};
     transition: 0.2s ease-in-out;
     ${clickable}
+
+    ${({ isMobile }) =>
+      isMobile
+        ? css`
+            width: 100%;
+          `
+        : css`
+            width: 400px;
+          `}
 
     &:hover {
       border: 2px solid ${colors.green40};
@@ -80,8 +100,12 @@ function CurationDropdown() {
   const selectedDropdownItem = dropdownItems.find((item) => item.id === Number(curationId)) as DropdownItem;
 
   return (
-    <Styled.Root>
-      <Styled.DropdownHeader isFocus={openDropdown} onClick={() => setOpenDropdown((prevState) => !prevState)}>
+    <Styled.Root isMobile={isMobile}>
+      <Styled.DropdownHeader
+        isFocus={openDropdown}
+        isMobile={isMobile}
+        onClick={() => setOpenDropdown((prevState) => !prevState)}
+      >
         <Styled.CurationLeft>
           <img src="/assets/icons/ic_curation_star.svg" />
           <div>{selectedDropdownItem?.title}</div>
