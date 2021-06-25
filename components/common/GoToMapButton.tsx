@@ -27,7 +27,7 @@ const Styled = {
 
     & > div {
       font-weight: bold;
-      font-size: 18px;
+      font-size: 16px;
       color: ${colors.ivory10};
       margin-right: 4px;
 
