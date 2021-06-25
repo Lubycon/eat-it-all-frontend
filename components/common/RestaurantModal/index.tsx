@@ -134,7 +134,7 @@ interface Props {
   showMap?: boolean;
 }
 
-function RestaurantModal({ headerHeight = 164, showMap = true }: Props) {
+function RestaurantModal({ headerHeight = 164, showMap = false }: Props) {
   const [modalRestaurantId, setModalRestaurantId] = useRecoilState(modalRestaurantIdState);
   const { data: restaurant } = useGetRestaurant(modalRestaurantId as number);
   console.log(`restaurant`, restaurant);
