@@ -35,7 +35,7 @@ const Styled = {
     font-size: 18px;
     color: ${colors.beige30};
     padding: 10px;
-    margin-bottom: 18px;
+    margin-bottom: 12px;
   `,
 
   SliderItem: styled.div`
@@ -70,7 +70,7 @@ function CategoryCarousel() {
 
   return (
     <Styled.Root>
-      <Styled.Title>Category</Styled.Title>
+      <Styled.Title>🥗 상황에 맞는 큐레이션을 선택해보세요</Styled.Title>
       <Slider {...sliderProps}>
         {curations?.map((curation) => (
           <Link key={curation.id} href={`/curation/${curation.id}`}>

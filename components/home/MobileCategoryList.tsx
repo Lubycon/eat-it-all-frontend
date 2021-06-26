@@ -6,7 +6,7 @@ import CurationContent from "./CurationContent";
 
 const Styled = {
   Root: styled.div`
-    margin: 0 32px;
+    margin: 80px 32px;
   `,
 
   Title: styled.div`
@@ -26,11 +26,11 @@ function MobileCategoryList() {
 
   return (
     <Styled.Root>
-      <Styled.Title>Category</Styled.Title>
+      <Styled.Title>🥗 상황에 맞는 큐레이션을 선택해보세요</Styled.Title>
       {curations?.map((curation) => {
         return (
           <Styled.CategoryItem key={curation.id}>
-            <CurationContent title={curation.title} height={126} />
+            <CurationContent title={curation.title} height={126} imageUrl={curation.imageUrl} />
           </Styled.CategoryItem>
         );
       })}
