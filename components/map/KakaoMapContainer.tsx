@@ -12,6 +12,8 @@ const Styled = {
   Root: styled.div<{ width: string; height: string }>`
     width: ${({ width }) => width};
     height: ${({ height }) => height};
+
+    overflow: hidden;
   `,
 };
 
