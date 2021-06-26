@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import Link from "next/link";
 import GoToMapButton from "./GoToMapButton";
 import { useRouter } from "next/router";
+import { clickable } from "../../lib/style/mixin";
 
 const Styled = {
   Root: styled.div`
@@ -17,12 +18,16 @@ const Styled = {
   `,
 
   NavBar: styled.div`
-    width: 1240px;
+    width: 1200px;
     height: 100%;
     padding: 0 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+  `,
+
+  Logo: styled.img`
+    ${clickable}
   `,
 };
 
@@ -35,7 +40,7 @@ function Header() {
     <Styled.Root>
       <Styled.NavBar>
         <Link href="/">
-          <div style={{ fontSize: "24px" }}>Logo</div>
+          <Styled.Logo src="/assets/icons/logo.svg" />
         </Link>
         <GoToMapButton curationId={Number(curationId || 0)} />
       </Styled.NavBar>

@@ -7,7 +7,8 @@ import { useMobile } from "../../hooks/useMobile";
 
 const Styled = {
   Root: styled.div`
-    height: calc(100vh - 120px);
+    margin-top: 96px;
+    height: calc(100vh - 96px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,7 +18,7 @@ const Styled = {
   Contents: styled.div`
     display: flex;
     align-items: center;
-    margin: 32px 0 72px 0;
+    margin: 48px 0 88px 0;
 
     @media (max-width: 768px) {
       flex-direction: column;
@@ -25,10 +26,10 @@ const Styled = {
   `,
 
   Headline: styled.div`
-    margin-right: 92px;
+    /* margin-right: 92px; */
     & > h2 {
       font-size: 52px;
-      line-height: 66px;
+      line-height: 1.4;
       font-weight: bold;
       color: ${colors.green50};
       & > del {
@@ -43,6 +44,25 @@ const Styled = {
       font-weight: bold;
       font-size: 18px;
       color: ${colors.green50};
+    }
+
+    @media (max-width: 768px) {
+      margin-bottom: 36px;
+
+      & > h2 {
+        font-size: 32px;
+        font-weight: bold;
+      }
+    }
+  `,
+
+  Illust: styled.img`
+    width: 328px;
+    height: 328px;
+
+    @media (max-width: 768px) {
+      width: 280px;
+      height: 280px;
     }
   `,
 };
@@ -62,10 +82,10 @@ function Main() {
           </h2>
           <h1>다이어터 외식 추천 서비스, 다먹어</h1>
         </Styled.Headline>
-        <img src="/assets/images/food_background.png" alt="" />
+        <Styled.Illust src="/assets/images/main_illust.svg" alt="" />
       </Styled.Contents>
       {isMobile || <CategoryCarousel />}
-      <ScrollDownButton />
+      {isMobile && <ScrollDownButton />}
     </Styled.Root>
   );
 }
