@@ -23,7 +23,6 @@ const Styled = {
     background-size: cover;
     background-position: bottom;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     display: flex;
     justify-content: center;
     align-items: flex-end;
