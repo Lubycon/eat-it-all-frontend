@@ -7,13 +7,12 @@ import { 강남역 } from "../../lib/constants";
 import { useRouter } from "next/router";
 import { useSetRecoilState } from "recoil";
 import { modalRestaurantIdState } from "../../store";
+import useWindowSize from "../../hooks/useWindowSize";
 
 const Styled = {
   Root: styled.div<{ width: string; height: string }>`
     width: ${({ width }) => width};
     height: ${({ height }) => height};
-
-    overflow: hidden;
   `,
 };
 
@@ -28,7 +27,7 @@ interface Props {
 
 function KakaoMapContainer({
   width = "auto",
-  height = "100vh",
+  height = "calc(var(--vh, 1vh) * 100);",
   lat = 강남역.lat,
   lng = 강남역.lng,
   level = 3,
@@ -39,6 +38,10 @@ function KakaoMapContainer({
     query: { curationId },
   } = useRouter();
   const setModalRestaurantId = useSetRecoilState(modalRestaurantIdState);
+  const size = useWindowSize();
+
+  let vh = size && size.height * 0.01;
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
 
   React.useEffect(() => {
     const { kakao } = window;

@@ -27,11 +27,24 @@ const Styled = {
 
   Headline: styled.div`
     /* margin-right: 92px; */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translate(0, 30px);
+      }
+      to {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+    animation: 0.8s ease fadeIn;
+
     & > h2 {
       font-size: 52px;
       line-height: 1.4;
       font-weight: bold;
       color: ${colors.green50};
+
       & > del {
         text-decoration-color: ${colors.orange50};
       }

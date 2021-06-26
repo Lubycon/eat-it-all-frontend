@@ -24,6 +24,11 @@ const Styled = {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      height: 100vh;
+    }
   `,
 
   Modal: styled.div`
@@ -31,6 +36,12 @@ const Styled = {
     background-color: ${colors.ivory10};
     box-shadow: 0px 4px 32px rgba(79, 62, 43, 0.35);
     border-radius: 16px;
+
+    @media (max-width: 768px) {
+      border-radius: 0;
+      width: 100%;
+      height: 100vh;
+    }
 
     @keyframes fadeIn {
       from {
@@ -44,6 +55,10 @@ const Styled = {
     }
 
     animation: 0.4s ease fadeIn;
+
+    @media (max-width: 768px) {
+      overflow-y: scroll;
+    }
   `,
 
   Header: styled.div<{ imageUrl: string; height: number }>`
@@ -58,6 +73,10 @@ const Styled = {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
+    @media (max-width: 768px) {
+      border-radius: 0;
+    }
   `,
 
   Main: styled.div`
@@ -120,10 +139,14 @@ const Styled = {
   Content: styled.div`
     display: flex;
     margin: 12px 8px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
   `,
 
   MapWrapper: styled.div`
-    margin: 20px 16px;
+    margin: 20px 24px;
     border-radius: 8px;
     border: 1px solid #e9e9e9;
   `,
