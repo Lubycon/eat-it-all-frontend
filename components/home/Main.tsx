@@ -85,7 +85,10 @@ function Main() {
   const isMobile = useMobile();
   const size = useWindowSize();
   let vh = size && size.height * 0.01;
-  document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+  React.useEffect(() => {
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  }, []);
 
   return (
     <Styled.Root>
