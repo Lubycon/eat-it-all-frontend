@@ -75,7 +75,7 @@ function CategoryCarousel() {
         {curations?.map((curation) => (
           <Link key={curation.id} href={`/curation/${curation.id}`}>
             <Styled.SliderItem>
-              <CurationContent title={curation.title} height={200} />
+              <CurationContent title={curation.title} height={200} imageUrl={curation.imageUrl} />
             </Styled.SliderItem>
           </Link>
         ))}
