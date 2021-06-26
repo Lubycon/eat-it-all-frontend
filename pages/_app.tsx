@@ -21,8 +21,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="다먹어" />
+        <meta property="og:url" content="https://eat-all.io/" />
         <meta property="og:site_name" content="다먹어" />
         <meta property="og:description" content="다이어트 중이자만 맛있는건 먹고싶을떈, 다먹어" />
+        <meta property="og:image" content="https://file.eat-all.io/images/og_image.svg" />
         <script
           type="text/javascript"
           src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_API_KEY}`}
