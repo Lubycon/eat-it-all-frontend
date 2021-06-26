@@ -13,7 +13,7 @@ const Styled = {
     font-weight: bold;
     font-size: 18px;
     color: ${colors.beige30};
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   `,
 
   CategoryItem: styled.div`
