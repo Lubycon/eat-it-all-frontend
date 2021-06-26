@@ -10,6 +10,7 @@ import RestaurantMenu from "./RestaurantMenu";
 import MainIngredientContent from "./MainIngredientContent";
 import KakaoMapContainer from "../../map/KakaoMapContainer";
 import Place from "../../map/Place";
+import useWindowSize from "../../../hooks/useWindowSize";
 
 const Styled = {
   Dimmer: styled.div`
@@ -27,7 +28,7 @@ const Styled = {
 
     @media (max-width: 768px) {
       width: 100%;
-      height: 100vh;
+      height: calc(var(--vh, 1vh) * 100);
     }
   `,
 
@@ -40,7 +41,7 @@ const Styled = {
     @media (max-width: 768px) {
       border-radius: 0;
       width: 100%;
-      height: 100vh;
+      height: calc(var(--vh, 1vh) * 100);
     }
 
     @keyframes fadeIn {
@@ -160,7 +161,10 @@ interface Props {
 function RestaurantModal({ headerHeight = 164, showMap = false }: Props) {
   const [modalRestaurantId, setModalRestaurantId] = useRecoilState(modalRestaurantIdState);
   const { data: restaurant } = useGetRestaurant(modalRestaurantId as number);
-  console.log(`restaurant`, restaurant);
+
+  const size = useWindowSize();
+  let vh = size && size.height * 0.01;
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
 
   /** Dimmer 영역 스크롤 막기 */
   React.useEffect(() => {

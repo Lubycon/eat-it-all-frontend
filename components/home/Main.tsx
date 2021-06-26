@@ -4,11 +4,12 @@ import CategoryCarousel from "./CategoryCarousel";
 import { colors } from "../../lib/constants/colors";
 import ScrollDownButton from "../common/ScrollDownButton";
 import { useMobile } from "../../hooks/useMobile";
+import useWindowSize from "../../hooks/useWindowSize";
 
 const Styled = {
   Root: styled.div`
     margin-top: 96px;
-    height: calc(100vh - 96px);
+    height: calc(var(--vh, 1vh) * 100 - 96px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -82,6 +83,9 @@ const Styled = {
 
 function Main() {
   const isMobile = useMobile();
+  const size = useWindowSize();
+  let vh = size && size.height * 0.01;
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
 
   return (
     <Styled.Root>
