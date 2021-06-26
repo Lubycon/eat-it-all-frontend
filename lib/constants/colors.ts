@@ -7,6 +7,7 @@ export const colors = {
   beige20: "#DCCDAC",
   beige30: "#D7C192",
   beige40: "#C7A761",
+  beige50: "#B88615",
   ivory10: "#FFFBF2",
   white: "#FFFFFF",
   black: "#000000",

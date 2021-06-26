@@ -34,8 +34,8 @@ const Styled = {
     animation: 0.4s ease fadeIn;
   `,
 
-  MenuItem: styled.div`
-    background-color: ${colors.beige30};
+  MenuItem: styled.div<{ imageUrl?: string }>`
+    background-color: ${colors.beige50};
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,6 +48,12 @@ const Styled = {
     border-radius: 8px;
     transition: 0.2s ease-in-out;
     ${clickable}
+
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      ${({ imageUrl }) => imageUrl !== "" && `url("https://file.eat-all.io${imageUrl}")`};
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
     &:hover {
       box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
@@ -75,7 +81,7 @@ function DropdownMenu({ items, setOpenDropdown }: Props) {
   return (
     <Styled.Root isMobile={isMobile}>
       {items.map((item) => (
-        <Styled.MenuItem key={item.id} onClick={handleDropdownClick(item.id)}>
+        <Styled.MenuItem key={item.id} onClick={handleDropdownClick(item.id)} imageUrl={item.imageUrl}>
           {item.title}
         </Styled.MenuItem>
       ))}
