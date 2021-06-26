@@ -22,9 +22,12 @@ const Styled = {
     background-color: ${colors.beige10};
     border-radius: 8px;
     flex: 1;
-    max-height: 200px;
     padding: 14px 16px;
     overflow-y: scroll;
+
+    @media (min-width: 769px) {
+      max-height: 200px;
+    }
 
     & > h3 {
       font-weight: bold;
