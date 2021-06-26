@@ -6,7 +6,6 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider, { Settings } from "react-slick";
 import { useGetCurations } from "../../hooks/api/curation";
 import CurationContent from "./CurationContent";
-import Link from "next/link";
 import { clickable } from "../../lib/style/mixin";
 
 const Styled = {
@@ -73,11 +72,9 @@ function CategoryCarousel() {
       <Styled.Title>🥗 상황에 맞는 큐레이션을 선택해보세요</Styled.Title>
       <Slider {...sliderProps}>
         {curations?.map((curation) => (
-          <Link key={curation.id} href={`/curation/${curation.id}`}>
-            <Styled.SliderItem>
-              <CurationContent title={curation.title} height={200} imageUrl={curation.imageUrl} />
-            </Styled.SliderItem>
-          </Link>
+          <Styled.SliderItem>
+            <CurationContent id={curation.id} title={curation.title} height={200} imageUrl={curation.imageUrl} />
+          </Styled.SliderItem>
         ))}
       </Slider>
     </Styled.Root>

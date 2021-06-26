@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import React from "react";
+import Link from "next/link";
 
 const Styled = {
   Root: styled.div<{ height: number; imageUrl: string }>`
@@ -27,16 +28,19 @@ const Styled = {
 };
 
 interface Props {
+  id: number;
   title: string;
   height?: number;
   imageUrl: string;
 }
 
-function CurationContent({ title, height = 200, imageUrl }: Props) {
+function CurationContent({ id, title, height = 200, imageUrl }: Props) {
   return (
-    <Styled.Root height={height} imageUrl={imageUrl}>
-      <div>{title}</div>
-    </Styled.Root>
+    <Link key={id} href={`/curation/${id}`}>
+      <Styled.Root height={height} imageUrl={imageUrl}>
+        <div>{title}</div>
+      </Styled.Root>
+    </Link>
   );
 }
 

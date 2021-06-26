@@ -30,7 +30,7 @@ function MobileCategoryList() {
       {curations?.map((curation) => {
         return (
           <Styled.CategoryItem key={curation.id}>
-            <CurationContent title={curation.title} height={126} imageUrl={curation.imageUrl} />
+            <CurationContent id={curation.id} title={curation.title} height={126} imageUrl={curation.imageUrl} />
           </Styled.CategoryItem>
         );
       })}
