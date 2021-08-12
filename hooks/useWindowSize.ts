@@ -1,7 +1,8 @@
-import React from "react";
+/* eslint-disable react-hooks/rules-of-hooks */
+import React from 'react';
 
 function useWindowSize() {
-  const isClient = typeof window === "object";
+  const isClient = typeof window === 'object';
 
   if (!isClient) return;
 
@@ -17,8 +18,9 @@ function useWindowSize() {
       setWindowSize(getSize());
     };
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return windowSize;

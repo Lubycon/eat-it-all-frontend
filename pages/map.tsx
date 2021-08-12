@@ -1,18 +1,19 @@
-import React from "react";
-import { useRecoilValue } from "recoil";
-import { useRouter } from "next/router";
-import { 강남역 } from "../lib/constants";
-import Place from "../components/map/Place";
-import Spinner from "../components/common/Spinner";
-import BackHomeIcon from "../components/map/BackHomeIcon";
-import { modalRestaurantIdState } from "../store";
-import { useGetRestaurants } from "../hooks/api/restaurant";
-import overlayContent from "../components/map/overlayContent";
-import RestaurantList from "../components/map/RestaurantList";
-import CurationDropdown from "../components/map/CurationDropdown";
-import RestaurantModal from "../components/common/RestaurantModal";
-import KakaoMapContainer from "../components/map/KakaoMapContainer";
-import { useMobile } from "../hooks/useMobile";
+import { useRouter } from 'next/router';
+import React from 'react';
+import { useRecoilValue } from 'recoil';
+
+import RestaurantModal from '../components/common/RestaurantModal';
+import Spinner from '../components/common/Spinner';
+import BackHomeIcon from '../components/map/BackHomeIcon';
+import CurationDropdown from '../components/map/CurationDropdown';
+import KakaoMapContainer from '../components/map/KakaoMapContainer';
+import overlayContent from '../components/map/overlayContent';
+import Place from '../components/map/Place';
+import RestaurantList from '../components/map/RestaurantList';
+import { useGetRestaurants } from '../hooks/api/restaurant';
+import { useMobile } from '../hooks/useMobile';
+import { 강남역 } from '../lib/constants';
+import { modalRestaurantIdState } from '../store';
 
 function Map() {
   const { data: allRestaurants } = useGetRestaurants();

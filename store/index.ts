@@ -1,6 +1,6 @@
-import { atom } from "recoil";
+import { atom } from 'recoil';
 
 export const modalRestaurantIdState = atom<number | null>({
-  key: "modalRestaurantIdState",
+  key: 'modalRestaurantIdState',
   default: null,
 });

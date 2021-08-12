@@ -19,6 +19,11 @@
     "next/core-web-vitals"
   ],
   "rules": {
+    // set in eat-all
+    "@next/next/no-sync-scripts": "off",
+    "import/no-named-as-default-member": "off",
+    "jsx-a11y/accessible-emoji": "warn",
+    // set in other repo
     "@next/next/no-img-element": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
@@ -26,7 +31,6 @@
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "import/no-anonymous-default-export": 0,
-    "import/no-named-as-default-member": "off",
     "no-multiple-empty-lines": ["error", { "max": 1 }],
     "eol-last": ["error", "always"],
     "comma-dangle": ["error", "always-multiline"],

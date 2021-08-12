@@ -1,18 +1,19 @@
-import React from "react";
-import styled from "@emotion/styled";
-import { useRouter } from "next/router";
-import RestaurantListItem from "./RestaurantListItem";
-import { useGetRestaurants } from "../../../hooks/api/restaurant";
+import styled from '@emotion/styled';
+import { useRouter } from 'next/router';
+import React from 'react';
+
+import { useGetRestaurants } from '../../../hooks/api/restaurant';
+import RestaurantListItem from './RestaurantListItem';
 
 const Styled = {
   Root: styled.div`
     position: absolute;
     top: 0;
-    bottom: 0;
     right: 24px;
+    bottom: 0;
+    z-index: 10;
     padding: 36px 16px;
     overflow-x: scroll;
-    z-index: 10;
   `,
 };
 

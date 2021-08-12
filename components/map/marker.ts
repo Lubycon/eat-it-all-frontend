@@ -1,7 +1,7 @@
 const marker = (lat: number, lng: number) => {
   const { kakao } = window;
 
-  const imageSrc = "/assets/icons/marker.svg";
+  const imageSrc = '/assets/icons/marker.svg';
   const imageSize = new kakao.maps.Size(30, 40);
   const imageOption = { offset: new kakao.maps.Point(15, 40) };
 
