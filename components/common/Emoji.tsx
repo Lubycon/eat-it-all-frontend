@@ -1,4 +1,4 @@
-const EmojiType = {
+export const EmojiType = {
   샐러드: '🥗',
   메밀: '🌾',
   쌀국수: '🌾',

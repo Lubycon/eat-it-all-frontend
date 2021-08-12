@@ -3,6 +3,7 @@ import React from 'react';
 
 import { colors } from '../../../lib/constants/colors';
 import { Ingredient } from '../../../types';
+import Emoji from '../Emoji';
 
 const Styled = {
   Root: styled.div`
@@ -57,7 +58,9 @@ function MainIngredientContent({ ingredient }: Props) {
     <Styled.Root>
       <h5>주 재료</h5>
       <Styled.ContentBox>
-        <h3>{ingredient.name} 🌾</h3>
+        <h3>
+          {ingredient.name} <Emoji name={ingredient.name} />
+        </h3>
         <p>{ingredient.contents}</p>
       </Styled.ContentBox>
     </Styled.Root>
