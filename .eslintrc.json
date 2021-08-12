@@ -26,6 +26,7 @@
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "import/no-anonymous-default-export": 0,
+    "import/no-named-as-default-member": "off",
     "no-multiple-empty-lines": ["error", { "max": 1 }],
     "eol-last": ["error", "always"],
     "comma-dangle": ["error", "always-multiline"],
