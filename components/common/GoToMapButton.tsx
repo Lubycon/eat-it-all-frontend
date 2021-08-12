@@ -1,24 +1,20 @@
-import React from "react";
-import Link from "next/link";
-import styled from "@emotion/styled";
-import { clickable } from "../../lib/style/mixin";
-import { colors } from "../../lib/constants/colors";
+import styled from '@emotion/styled';
+import Link from 'next/link';
+import React from 'react';
+
+import { colors } from '../../lib/constants/colors';
+import { clickable } from '../../lib/style/mixin';
 
 const Styled = {
   Root: styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s ease-in-out;
     border-radius: 50px;
     background-color: ${colors.green50};
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 13px 24px;
-    transition: 0.2s ease-in-out;
     ${clickable};
-
-    @media (max-width: 768px) {
-      width: 180px;
-      padding: 8px 12px;
-    }
 
     &:hover {
       box-shadow: 0px 4px 8px rgba(155, 110, 69, 0.25);
@@ -26,11 +22,10 @@ const Styled = {
     }
 
     & > div {
-      font-weight: bold;
-      font-size: 16px;
-      color: ${colors.ivory10};
       margin-right: 4px;
-
+      color: ${colors.ivory10};
+      font-size: 16px;
+      font-weight: bold;
       @media (max-width: 768px) {
         font-size: 14px;
       }
@@ -39,11 +34,15 @@ const Styled = {
     & > img {
       width: 28px;
       height: 28px;
-
       @media (max-width: 768px) {
         width: 22px;
         height: 22px;
       }
+    }
+
+    @media (max-width: 768px) {
+      padding: 8px 12px;
+      width: 180px;
     }
   `,
 };

@@ -1,30 +1,30 @@
-import styled from "@emotion/styled";
-import React from "react";
-import { useRecoilState } from "recoil";
-import { useGetRestaurant } from "../../../hooks/api/restaurant";
-import { colors } from "../../../lib/constants/colors";
-import { clickable } from "../../../lib/style/mixin";
-import { modalRestaurantIdState } from "../../../store";
-import Spinner from "../Spinner";
-import RestaurantMenu from "./RestaurantMenu";
-import MainIngredientContent from "./MainIngredientContent";
-import KakaoMapContainer from "../../map/KakaoMapContainer";
-import Place from "../../map/Place";
-import useWindowSize from "../../../hooks/useWindowSize";
+import styled from '@emotion/styled';
+import React from 'react';
+import { useRecoilState } from 'recoil';
+
+import { useGetRestaurant } from '../../../hooks/api/restaurant';
+import useWindowSize from '../../../hooks/useWindowSize';
+import { colors } from '../../../lib/constants/colors';
+import { clickable } from '../../../lib/style/mixin';
+import { modalRestaurantIdState } from '../../../store';
+import KakaoMapContainer from '../../map/KakaoMapContainer';
+import Place from '../../map/Place';
+import Spinner from '../Spinner';
+import MainIngredientContent from './MainIngredientContent';
+import RestaurantMenu from './RestaurantMenu';
 
 const Styled = {
   Dimmer: styled.div`
+    display: flex;
     position: fixed;
     top: 0;
-    left: 0;
     right: 0;
     bottom: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
     z-index: 100;
     background: rgba(23, 23, 23, 0.5);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     @media (max-width: 768px) {
       width: 100%;
@@ -33,10 +33,12 @@ const Styled = {
   `,
 
   Modal: styled.div`
-    width: 600px;
-    background-color: ${colors.ivory10};
-    box-shadow: 0px 4px 32px rgba(79, 62, 43, 0.35);
     border-radius: 16px;
+    box-shadow: 0px 4px 32px rgba(79, 62, 43, 0.35);
+    background-color: ${colors.ivory10};
+    width: 600px;
+
+    animation: 0.4s ease fadeIn;
 
     @media (max-width: 768px) {
       border-radius: 0;
@@ -44,36 +46,34 @@ const Styled = {
       height: calc(var(--vh, 1vh) * 100);
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translate(0, 30px);
-      }
-      to {
-        opacity: 1;
-        transform: translate(0, 0);
-      }
-    }
-
-    animation: 0.4s ease fadeIn;
-
     @media (max-width: 768px) {
       overflow-y: scroll;
+    }
+
+    @keyframes fadeIn {
+      from {
+        transform: translate(0, 30px);
+        opacity: 0;
+      }
+      to {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
     }
   `,
 
   Header: styled.div<{ imageUrl: string; height: number }>`
-    height: ${({ height }) => `${height}px`};
-    padding: 24px 24px;
     display: flex;
     justify-content: space-between;
     border-radius: 16px 16px 0 0;
 
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
       ${({ imageUrl }) => `url("https://file.eat-all.io${imageUrl}")`};
-    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
+    padding: 24px 24px;
+    height: ${({ height }) => `${height}px`};
 
     @media (max-width: 768px) {
       border-radius: 0;
@@ -84,26 +84,26 @@ const Styled = {
     padding: 8px;
 
     & > h2 {
-      font-weight: bold;
-      font-size: 24px;
-      color: ${colors.white};
       margin-bottom: 16px;
+      color: ${colors.white};
+      font-size: 24px;
+      font-weight: bold;
 
       @media (max-width: 768px) {
-        font-size: 18px;
         margin-bottom: 6px;
+        font-size: 18px;
       }
     }
 
     & > h4 {
-      font-weight: 500;
-      font-size: 14px;
       margin-bottom: 20px;
       color: ${colors.ivory10};
+      font-size: 14px;
+      font-weight: 500;
 
       @media (max-width: 768px) {
-        font-size: 12px;
         margin-bottom: 8px;
+        font-size: 12px;
       }
     }
   `,
@@ -124,13 +124,13 @@ const Styled = {
   `,
 
   Tag: styled.div`
-    border-radius: 5px;
     margin-right: 6px;
-    color: ${colors.beige40};
+    border-radius: 5px;
     background-color: ${colors.ivory10};
     padding: 6px 8px;
-    font-weight: 500;
+    color: ${colors.beige40};
     font-size: 14px;
+    font-weight: 500;
 
     @media (max-width: 768px) {
       font-size: 12px;
@@ -148,8 +148,8 @@ const Styled = {
 
   MapWrapper: styled.div`
     margin: 20px 24px;
-    border-radius: 8px;
     border: 1px solid #e9e9e9;
+    border-radius: 8px;
   `,
 };
 
@@ -163,8 +163,9 @@ function RestaurantModal({ headerHeight = 164, showMap = false }: Props) {
   const { data: restaurant } = useGetRestaurant(modalRestaurantId as number);
 
   const size = useWindowSize();
-  let vh = size && size.height * 0.01;
-  document.documentElement.style.setProperty("--vh", `${vh}px`);
+  const vh = size && size.height * 0.01;
+
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
 
   /** Dimmer 영역 스크롤 막기 */
   React.useEffect(() => {
@@ -173,10 +174,12 @@ function RestaurantModal({ headerHeight = 164, showMap = false }: Props) {
       top: -${window.scrollY}px;
       overflow-y: scroll;
       width: 100%;`;
+
     return () => {
       const scrollY = document.body.style.top;
-      document.body.style.cssText = "";
-      window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+
+      document.body.style.cssText = '';
+      window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
     };
   }, []);
 
@@ -195,7 +198,11 @@ function RestaurantModal({ headerHeight = 164, showMap = false }: Props) {
               ))}
             </Styled.TagWrapper>
           </Styled.Main>
-          <Styled.CancelIcon onClick={() => setModalRestaurantId(null)} src="/assets/icons/ic_cancel.svg" alt="닫기" />
+          <Styled.CancelIcon
+            onClick={() => setModalRestaurantId(null)}
+            src="/assets/icons/ic_cancel.svg"
+            alt="닫기"
+          />
         </Styled.Header>
         <Styled.Content>
           <RestaurantMenu menus={restaurant.menus} />
@@ -203,8 +210,16 @@ function RestaurantModal({ headerHeight = 164, showMap = false }: Props) {
         </Styled.Content>
         {showMap && (
           <Styled.MapWrapper>
-            <KakaoMapContainer height="260px" lat={restaurant.kakaoMap.latitude} lng={restaurant.kakaoMap.longitude}>
-              <Place lat={restaurant.kakaoMap.latitude} lng={restaurant.kakaoMap.longitude} id={restaurant.id} />
+            <KakaoMapContainer
+              height="260px"
+              lat={restaurant.kakaoMap.latitude}
+              lng={restaurant.kakaoMap.longitude}
+            >
+              <Place
+                lat={restaurant.kakaoMap.latitude}
+                lng={restaurant.kakaoMap.longitude}
+                id={restaurant.id}
+              />
             </KakaoMapContainer>
           </Styled.MapWrapper>
         )}

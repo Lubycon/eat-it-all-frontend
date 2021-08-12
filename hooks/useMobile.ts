@@ -1,4 +1,4 @@
-import useWindowSize from "./useWindowSize";
+import useWindowSize from './useWindowSize';
 
 export const useMobile = () => {
   const size = useWindowSize();

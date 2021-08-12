@@ -1,19 +1,20 @@
-import React from "react";
-import styled from "@emotion/styled";
-import CategoryCarousel from "./CategoryCarousel";
-import { colors } from "../../lib/constants/colors";
-import ScrollDownButton from "../common/ScrollDownButton";
-import { useMobile } from "../../hooks/useMobile";
-import useWindowSize from "../../hooks/useWindowSize";
+import styled from '@emotion/styled';
+import React from 'react';
+
+import { useMobile } from '../../hooks/useMobile';
+import useWindowSize from '../../hooks/useWindowSize';
+import { colors } from '../../lib/constants/colors';
+import ScrollDownButton from '../common/ScrollDownButton';
+import CategoryCarousel from './CategoryCarousel';
 
 const Styled = {
   Root: styled.div`
-    margin-top: 96px;
-    height: calc(var(--vh, 1vh) * 100 - 96px);
     display: flex;
+    position: relative;
     flex-direction: column;
     align-items: center;
-    position: relative;
+    margin-top: 96px;
+    height: calc(var(--vh, 1vh) * 100 - 96px);
   `,
 
   Contents: styled.div`
@@ -30,21 +31,21 @@ const Styled = {
     /* margin-right: 92px; */
     @keyframes fadeIn {
       from {
-        opacity: 0;
         transform: translate(0, 30px);
+        opacity: 0;
       }
       to {
-        opacity: 1;
         transform: translate(0, 0);
+        opacity: 1;
       }
     }
     animation: 0.8s ease fadeIn;
 
     & > h2 {
-      font-size: 52px;
       line-height: 1.4;
-      font-weight: bold;
       color: ${colors.green50};
+      font-size: 52px;
+      font-weight: bold;
 
       & > del {
         text-decoration-color: ${colors.orange50};
@@ -55,9 +56,9 @@ const Styled = {
     }
     & > h1 {
       margin-top: 18px;
-      font-weight: bold;
-      font-size: 18px;
       color: ${colors.green50};
+      font-size: 18px;
+      font-weight: bold;
     }
 
     @media (max-width: 768px) {
@@ -84,10 +85,10 @@ const Styled = {
 function Main() {
   const isMobile = useMobile();
   const size = useWindowSize();
-  let vh = size && size.height * 0.01;
+  const vh = size && size.height * 0.01;
 
   React.useEffect(() => {
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
   }, []);
 
   return (

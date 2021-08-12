@@ -1,13 +1,14 @@
-import styled from "@emotion/styled";
-import React, { ReactElement } from "react";
-import marker from "./marker";
-import overlay from "./overlay";
-import { PlaceProps } from "./Place";
-import { 강남역 } from "../../lib/constants";
-import { useRouter } from "next/router";
-import { useSetRecoilState } from "recoil";
-import { modalRestaurantIdState } from "../../store";
-import useWindowSize from "../../hooks/useWindowSize";
+import styled from '@emotion/styled';
+import { useRouter } from 'next/router';
+import React, { ReactElement } from 'react';
+import { useSetRecoilState } from 'recoil';
+
+import useWindowSize from '../../hooks/useWindowSize';
+import { 강남역 } from '../../lib/constants';
+import { modalRestaurantIdState } from '../../store';
+import marker from './marker';
+import overlay from './overlay';
+import { PlaceProps } from './Place';
 
 const Styled = {
   Root: styled.div<{ width: string; height: string }>`
@@ -26,8 +27,8 @@ interface Props {
 }
 
 function KakaoMapContainer({
-  width = "auto",
-  height = "calc(var(--vh, 1vh) * 100);",
+  width = 'auto',
+  height = 'calc(var(--vh, 1vh) * 100);',
   lat = 강남역.lat,
   lng = 강남역.lng,
   level = 3,
@@ -40,8 +41,9 @@ function KakaoMapContainer({
   const setModalRestaurantId = useSetRecoilState(modalRestaurantIdState);
   const size = useWindowSize();
 
-  let vh = size && size.height * 0.01;
-  document.documentElement.style.setProperty("--vh", `${vh}px`);
+  const vh = size && size.height * 0.01;
+
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
 
   React.useEffect(() => {
     const { kakao } = window;
@@ -61,7 +63,7 @@ function KakaoMapContainer({
       placeMarker.setMap(map);
       content && placeOverlay.setMap(map);
 
-      kakao.maps.event.addListener(placeMarker, "click", () => setModalRestaurantId(id));
+      kakao.maps.event.addListener(placeMarker, 'click', () => setModalRestaurantId(id));
     });
   }, [curationId]);
 

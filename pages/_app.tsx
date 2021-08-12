@@ -1,9 +1,10 @@
-import "reset-css";
-import Head from "next/head";
-import "../styles/globals.css";
-import "../styles/overlayContent.css";
-import type { AppProps } from "next/app";
-import { RecoilRoot } from "recoil";
+import 'reset-css';
+import '../styles/globals.css';
+import '../styles/overlayContent.css';
+
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import { RecoilRoot } from 'recoil';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

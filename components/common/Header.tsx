@@ -1,29 +1,30 @@
-import React from "react";
-import styled from "@emotion/styled";
-import Link from "next/link";
-import GoToMapButton from "./GoToMapButton";
-import { useRouter } from "next/router";
-import { clickable } from "../../lib/style/mixin";
+import styled from '@emotion/styled';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React from 'react';
+
+import { clickable } from '../../lib/style/mixin';
+import GoToMapButton from './GoToMapButton';
 
 const Styled = {
   Root: styled.div`
+    display: flex;
     position: fixed;
     top: 0;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
     width: 100%;
     height: 96px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 20;
   `,
 
   NavBar: styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
     width: 1200px;
     height: 100%;
-    padding: 0 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   `,
 
   Logo: styled.img`

@@ -1,48 +1,49 @@
-import React from "react";
-import styled from "@emotion/styled";
-import { colors } from "../../../lib/constants/colors";
-import { Ingredient } from "../../../types";
+import styled from '@emotion/styled';
+import React from 'react';
+
+import { colors } from '../../../lib/constants/colors';
+import { Ingredient } from '../../../types';
 
 const Styled = {
   Root: styled.div`
-    flex: 1;
-    padding: 16px;
     display: flex;
+    flex: 1;
     flex-direction: column;
+    padding: 16px;
 
     & > h5 {
-      font-weight: bold;
-      font-size: 18px;
-      color: ${colors.beige40};
       margin-bottom: 12px;
+      color: ${colors.beige40};
+      font-size: 18px;
+      font-weight: bold;
     }
   `,
 
   ContentBox: styled.div`
-    background-color: ${colors.beige10};
-    border-radius: 8px;
     flex: 1;
+    border-radius: 8px;
+    background-color: ${colors.beige10};
     padding: 14px 16px;
     overflow-y: scroll;
 
-    @media (min-width: 769px) {
-      max-height: 200px;
-    }
-
     & > h3 {
-      font-weight: bold;
-      font-size: 18px;
-      color: ${colors.green50};
       margin-bottom: 6px;
+      color: ${colors.green50};
+      font-size: 18px;
+      font-weight: bold;
     }
 
     & > p {
-      font-weight: normal;
-      font-size: 16px;
+      margin-right: 8px;
       line-height: 1.7;
       letter-spacing: -0.03em;
       color: ${colors.green50};
-      margin-right: 8px;
+      font-size: 16px;
+      font-weight: normal;
+    }
+
+    @media (min-width: 769px) {
+      max-height: 200px;
     }
   `,
 };

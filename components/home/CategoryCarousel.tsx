@@ -1,17 +1,26 @@
-import React from "react";
-import styled from "@emotion/styled";
-import { colors } from "../../lib/constants/colors";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider, { Settings } from "react-slick";
-import { useGetCurations } from "../../hooks/api/curation";
-import CurationContent from "./CurationContent";
-import { clickable } from "../../lib/style/mixin";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+import styled from '@emotion/styled';
+import React from 'react';
+import Slider, { Settings } from 'react-slick';
+
+import { useGetCurations } from '../../hooks/api/curation';
+import { colors } from '../../lib/constants/colors';
+import { clickable } from '../../lib/style/mixin';
+import CurationContent from './CurationContent';
 
 const Styled = {
   Root: styled.div`
-    width: 1200px;
     padding: 0 16px;
+    width: 1200px;
+
+    .slick-arrow {
+      &:before {
+        color: ${colors.green50};
+        font-size: 24px;
+      }
+    }
 
     @media (max-width: calc(1200px + 32px)) {
       width: 960px;
@@ -20,21 +29,14 @@ const Styled = {
     @media (max-width: calc(1024px + 32px)) {
       width: calc(768px - 32px);
     }
-
-    .slick-arrow {
-      &:before {
-        color: ${colors.green50};
-        font-size: 24px;
-      }
-    }
   `,
 
   Title: styled.div`
-    font-weight: bold;
-    font-size: 18px;
-    color: ${colors.beige30};
-    padding: 10px;
     margin-bottom: 12px;
+    padding: 10px;
+    color: ${colors.beige30};
+    font-size: 18px;
+    font-weight: bold;
   `,
 
   SliderItem: styled.div`
@@ -72,8 +74,13 @@ function CategoryCarousel() {
       <Styled.Title>🥗 상황에 맞는 큐레이션을 선택해보세요</Styled.Title>
       <Slider {...sliderProps}>
         {curations?.map((curation) => (
-          <Styled.SliderItem>
-            <CurationContent id={curation.id} title={curation.title} height={200} imageUrl={curation.imageUrl} />
+          <Styled.SliderItem key={curation.id}>
+            <CurationContent
+              id={curation.id}
+              title={curation.title}
+              height={200}
+              imageUrl={curation.imageUrl}
+            />
           </Styled.SliderItem>
         ))}
       </Slider>
