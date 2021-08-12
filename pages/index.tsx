@@ -1,10 +1,11 @@
-import React from "react";
-import Main from "../components/home/Main";
-import Header from "../components/common/Header";
-import MobileCategoryList from "../components/home/MobileCategoryList";
-import { useMobile } from "../hooks/useMobile";
-import { useSetRecoilState } from "recoil";
-import { modalRestaurantIdState } from "../store";
+import React from 'react';
+import { useSetRecoilState } from 'recoil';
+
+import Header from '../components/common/Header';
+import Main from '../components/home/Main';
+import MobileCategoryList from '../components/home/MobileCategoryList';
+import { useMobile } from '../hooks/useMobile';
+import { modalRestaurantIdState } from '../store';
 
 function Home() {
   const isMobile = useMobile();

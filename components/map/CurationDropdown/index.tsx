@@ -1,14 +1,15 @@
-import React from "react";
-import styled from "@emotion/styled";
-import DropdownMenu from "./DropdownMenu";
-import { clickable } from "../../../lib/style/mixin";
-import { colors } from "../../../lib/constants/colors";
-import { useGetCurations } from "../../../hooks/api/curation";
-import { Curation } from "../../../types";
-import { useRouter } from "next/router";
-import { useMobile } from "../../../hooks/useMobile";
-import { css } from "@emotion/react";
-import Link from "next/link";
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import React from 'react';
+
+import { useGetCurations } from '../../../hooks/api/curation';
+import { useMobile } from '../../../hooks/useMobile';
+import { colors } from '../../../lib/constants/colors';
+import { clickable } from '../../../lib/style/mixin';
+import { Curation } from '../../../types';
+import DropdownMenu from './DropdownMenu';
 
 const Styled = {
   Root: styled.div<{ isMobile?: boolean }>`
@@ -19,35 +20,39 @@ const Styled = {
     ${({ isMobile }) =>
       isMobile
         ? css`
-            width: 100%;
             top: 16px;
             padding: 0 16px;
+            width: 100%;
           `
         : css`
-            left: calc(50% - 200px);
             top: 36px;
+            left: calc(50% - 200px);
           `}
   `,
 
   DropdownHeader: styled.div<{ isFocus?: boolean; isMobile?: boolean }>`
-    height: 60px;
-    background: ${colors.white};
-    box-shadow: 0px 3px 15px rgba(79, 62, 43, 0.45);
-    border-radius: 6px;
-    padding: 12px 12px;
-    font-weight: bold;
-    font-size: 18px;
-    color: ${colors.gray90};
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    border: 2px solid ${({ isFocus }) => (isFocus ? colors.green40 : colors.white)};
+    justify-content: space-between;
     transition: 0.2s ease-in-out;
+    border: 2px solid ${({ isFocus }) => (isFocus ? colors.green40 : colors.white)};
+    border-radius: 6px;
+    box-shadow: 0px 3px 15px rgba(79, 62, 43, 0.45);
+    background: ${colors.white};
+    padding: 12px 12px;
+    height: 60px;
+    color: ${colors.gray90};
+    font-size: 18px;
+    font-weight: bold;
     ${clickable}
 
+    &:hover {
+      border: 2px solid ${colors.green40};
+    }
+
     @media (max-width: 768px) {
-      font-size: 16px;
       line-height: 1.2;
+      font-size: 16px;
     }
 
     ${({ isMobile }) =>
@@ -58,10 +63,6 @@ const Styled = {
         : css`
             width: 400px;
           `}
-
-    &:hover {
-      border: 2px solid ${colors.green40};
-    }
   `,
 
   CurationLeft: styled.div`
@@ -75,8 +76,8 @@ const Styled = {
   `,
 
   ArrowIcon: styled.img<{ isRotate: boolean }>`
+    transform: rotate(${({ isRotate }) => (isRotate ? '0.5turn' : '0turn')});
     transition: 0.2s ease-in-out;
-    transform: rotate(${({ isRotate }) => (isRotate ? "0.5turn" : "0turn")});
   `,
 
   BackIcon: styled.img`
@@ -84,7 +85,7 @@ const Styled = {
   `,
 };
 
-type DropdownItem = Pick<Curation, "id" | "title" | "imageUrl">;
+type DropdownItem = Pick<Curation, 'id' | 'title' | 'imageUrl'>;
 
 function CurationDropdown() {
   const { data: curations } = useGetCurations();
@@ -103,12 +104,14 @@ function CurationDropdown() {
 
   const all: DropdownItem = {
     id: 0,
-    title: "전체",
-    imageUrl: "",
+    title: '전체',
+    imageUrl: '',
   };
 
   const dropdownItems = [all, ...curations];
-  const selectedDropdownItem = dropdownItems.find((item) => item.id === Number(curationId)) as DropdownItem;
+  const selectedDropdownItem = dropdownItems.find(
+    (item) => item.id === Number(curationId),
+  ) as DropdownItem;
 
   return (
     <Styled.Root isMobile={isMobile}>

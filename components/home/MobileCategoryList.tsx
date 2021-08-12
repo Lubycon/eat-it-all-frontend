@@ -1,8 +1,9 @@
-import React from "react";
-import { colors } from "../../lib/constants/colors";
-import styled from "@emotion/styled";
-import { useGetCurations } from "../../hooks/api/curation";
-import CurationContent from "./CurationContent";
+import styled from '@emotion/styled';
+import React from 'react';
+
+import { useGetCurations } from '../../hooks/api/curation';
+import { colors } from '../../lib/constants/colors';
+import CurationContent from './CurationContent';
 
 const Styled = {
   Root: styled.div`
@@ -10,10 +11,10 @@ const Styled = {
   `,
 
   Title: styled.div`
-    font-weight: bold;
-    font-size: 18px;
-    color: ${colors.beige30};
     margin-bottom: 24px;
+    color: ${colors.beige30};
+    font-size: 18px;
+    font-weight: bold;
   `,
 
   CategoryItem: styled.div`
@@ -30,7 +31,12 @@ function MobileCategoryList() {
       {curations?.map((curation) => {
         return (
           <Styled.CategoryItem key={curation.id}>
-            <CurationContent id={curation.id} title={curation.title} height={126} imageUrl={curation.imageUrl} />
+            <CurationContent
+              id={curation.id}
+              title={curation.title}
+              height={126}
+              imageUrl={curation.imageUrl}
+            />
           </Styled.CategoryItem>
         );
       })}
