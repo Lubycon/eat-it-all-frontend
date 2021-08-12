@@ -3,6 +3,7 @@ import React from 'react';
 
 import { useGetCurations } from '../../hooks/api/curation';
 import { colors } from '../../lib/constants/colors';
+import Emoji from '../common/Emoji';
 import CurationContent from './CurationContent';
 
 const Styled = {
@@ -27,7 +28,9 @@ function MobileCategoryList() {
 
   return (
     <Styled.Root>
-      <Styled.Title>🥗 상황에 맞는 큐레이션을 선택해보세요</Styled.Title>
+      <Styled.Title>
+        <Emoji name="샐러드" /> 상황에 맞는 큐레이션을 선택해보세요
+      </Styled.Title>
       {curations?.map((curation) => {
         return (
           <Styled.CategoryItem key={curation.id}>
