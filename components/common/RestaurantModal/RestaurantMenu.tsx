@@ -1,7 +1,8 @@
-import React from "react";
-import styled from "@emotion/styled";
-import { Menu } from "../../../types";
-import { colors } from "../../../lib/constants/colors";
+import styled from '@emotion/styled';
+import React from 'react';
+
+import { colors } from '../../../lib/constants/colors';
+import { Menu } from '../../../types';
 
 const Styled = {
   Root: styled.div`
@@ -9,30 +10,30 @@ const Styled = {
     padding: 16px;
 
     & > h5 {
-      font-weight: bold;
-      font-size: 18px;
-      color: ${colors.beige40};
       margin-bottom: 16px;
+      color: ${colors.beige40};
+      font-size: 18px;
+      font-weight: bold;
     }
   `,
 
   MenuItem: styled.div`
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 12px;
 
     & > h6 {
-      font-weight: normal;
-      font-size: 16px;
       color: ${colors.gray90};
+      font-size: 16px;
+      font-weight: normal;
     }
 
     & > div {
-      font-weight: normal;
-      font-size: 16px;
-      color: ${colors.green50};
       letter-spacing: 0.02em;
+      color: ${colors.green50};
+      font-size: 16px;
+      font-weight: normal;
     }
   `,
 };
