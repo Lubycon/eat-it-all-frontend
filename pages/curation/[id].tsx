@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
-import { useQueryParam } from '@lubycon/react';
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -16,6 +15,7 @@ import { useMobile } from '../../hooks/useMobile';
 import http from '../../lib/api';
 import { colors } from '../../lib/constants/colors';
 import { modalRestaurantIdState } from '../../store';
+import { Curation } from '../../types';
 
 const Styled = {
   Header: styled.div<{ image?: string }>`
@@ -92,14 +92,19 @@ const Styled = {
   `,
 };
 
-function Curation() {
+interface Props {
+  curation: Curation;
+}
+
+function CurationPage({ curation: prefetchedCuration }: Props) {
   const {
     query: { id: curationId },
   } = useRouter();
 
-  // const a = useQueryParam('id');
+  const { data: curation } = useGetCuration(Number(curationId), {
+    initialData: prefetchedCuration,
+  });
 
-  const { data: curation } = useGetCuration(Number(curationId));
   const modalRestaurantId = useRecoilValue(modalRestaurantIdState);
 
   const isMobile = useMobile();
@@ -147,17 +152,19 @@ function Curation() {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const curationId = context.params?.id as string | undefined;
+  const curationId = context.params?.id;
 
-  if (curationId == undefined) {
-    return {
-      notFound: true,
-    };
+  if (curationId == undefined || Array.isArray(curationId)) {
+    return { notFound: true };
   }
 
-  const curation = http.get<GetCurations>(`/curation/${curationId}`);
+  try {
+    const curation = await http.get<Curation>(`/curation/${curationId}`);
 
-  return { props: { curation } };
+    return { props: { curation } };
+  } catch {
+    return { notFound: true };
+  }
 };
 
-export default Curation;
+export default CurationPage;

@@ -1,4 +1,4 @@
-import useSWR from 'swr';
+import useSWR, { SWRConfiguration } from 'swr';
 
 import http from '../../lib/api';
 import { Curation } from '../../types';
@@ -17,8 +17,8 @@ export const useGetCurations = () => {
   return { data: data?.curations, error };
 };
 
-export const useGetCuration = (curationId: number) => {
-  const { data, error } = useSWR(`/curation/${curationId}`, (url) => http.get<GetCuration>(url));
+export const useGetCuration = (curationId: number, config?: SWRConfiguration) => {
+  const { data, error } = useSWR<GetCuration>(`/curation/${curationId}`, http.get, config);
 
   return { data: data?.curation, error };
 };
