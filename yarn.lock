@@ -444,6 +444,20 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
+"@lubycon/react@^1.11.5":
+  version "1.11.5"
+  resolved "https://registry.yarnpkg.com/@lubycon/react/-/react-1.11.5.tgz#ca839aa2e2c8b007460ab0d671898253f80e06ef"
+  integrity sha512-Xw9kQJJlmQY2hHftZO4w6cQBQ9LCm43QHQyYt0Zt4To5MHsUexGRo5VK7/Ou7psMluE7q2+bnFZu9M5YYCmeHg==
+  dependencies:
+    "@lubycon/utils" "1.9.0"
+
+"@lubycon/utils@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@lubycon/utils/-/utils-1.9.0.tgz#99e78acde77d2d6e9f317319400a3001cda49aa1"
+  integrity sha512-u58WZsLj0ewdDqsFwAHwMBU/kmgbqlZctDdWIrHvHnTHAYmZqmHYBbqp1nMs4V4U/jiMfR1q/nDbGnej+mOt/Q==
+  dependencies:
+    date-fns "^2.22.1"
+
 "@next/env@10.2.2":
   version "10.2.2"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-10.2.2.tgz#cb61f6c29f349815108184c2f1926ada65458e28"
@@ -1396,6 +1410,11 @@ data-uri-to-buffer@3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/data-uri-to-buffer/-/data-uri-to-buffer-3.0.1.tgz#594b8973938c5bc2c33046535785341abc4f3636"
   integrity sha512-WboRycPNsVw3B3TL559F7kuBUM4d8CgMEvk6xEJlOp7OBPjt6G7z8WMWlD2rOFZLk6OYfFIUGsCOWzcQH9K2og==
+
+date-fns@^2.22.1:
+  version "2.23.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.23.0.tgz#4e886c941659af0cf7b30fafdd1eaa37e88788a9"
+  integrity sha512-5ycpauovVyAk0kXNZz6ZoB9AYMZB4DObse7P3BPWmyEjXNORTI8EJ6X0uaSAq4sCHzM1uajzrkr6HnsLQpxGXA==
 
 debug@2, debug@^2.6.9:
   version "2.6.9"

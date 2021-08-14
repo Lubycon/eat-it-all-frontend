@@ -1,4 +1,6 @@
 import styled from '@emotion/styled';
+import { useQueryParam } from '@lubycon/react';
+import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -9,8 +11,9 @@ import Header from '../../components/common/Header';
 import RestaurantModal from '../../components/common/RestaurantModal';
 import Spinner from '../../components/common/Spinner';
 import CurationContentItem from '../../components/Curation/CurationContentItem';
-import { useGetCuration } from '../../hooks/api/curation';
+import { GetCurations, useGetCuration } from '../../hooks/api/curation';
 import { useMobile } from '../../hooks/useMobile';
+import http from '../../lib/api';
 import { colors } from '../../lib/constants/colors';
 import { modalRestaurantIdState } from '../../store';
 
@@ -93,6 +96,9 @@ function Curation() {
   const {
     query: { id: curationId },
   } = useRouter();
+
+  // const a = useQueryParam('id');
+
   const { data: curation } = useGetCuration(Number(curationId));
   const modalRestaurantId = useRecoilValue(modalRestaurantIdState);
 
@@ -107,7 +113,7 @@ function Curation() {
           <Styled.GoToMapBtnWrapper>
             <GoToMapButton curationId={Number(curationId || 0)} />
           </Styled.GoToMapBtnWrapper>
-          <Link href="/">
+          <Link href="/" passHref>
             <Styled.BackIcon src="/assets/icons/ic_back_white.svg" alt="홈으로" />
           </Link>
         </>
@@ -139,5 +145,19 @@ function Curation() {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const curationId = context.params?.id as string | undefined;
+
+  if (curationId == undefined) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const curation = http.get<GetCurations>(`/curation/${curationId}`);
+
+  return { props: { curation } };
+};
 
 export default Curation;
