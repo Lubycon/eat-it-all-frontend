@@ -3,7 +3,7 @@ import useSWR, { SWRConfiguration } from 'swr';
 import http from '../../lib/api';
 import { Curation } from '../../types';
 
-export interface GetCurations {
+interface GetCurations {
   curations: Curation[];
 }
 
