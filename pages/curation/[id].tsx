@@ -8,7 +8,6 @@ import { useRecoilValue } from 'recoil';
 import GoToMapButton from '../../components/common/GoToMapButton';
 import Header from '../../components/common/Header';
 import RestaurantModal from '../../components/common/RestaurantModal';
-import Spinner from '../../components/common/Spinner';
 import CurationContentItem from '../../components/Curation/CurationContentItem';
 import { useGetCuration } from '../../hooks/api/curation';
 import { useMobile } from '../../hooks/useMobile';
@@ -101,15 +100,14 @@ function CurationPage({ curation: prefetchedCuration }: Props) {
     query: { id: curationId },
   } = useRouter();
 
-  const { data: curation } = useGetCuration(Number(curationId), {
+  const { data } = useGetCuration(Number(curationId), {
     initialData: prefetchedCuration,
   });
+  const curation = data as Curation;
 
   const modalRestaurantId = useRecoilValue(modalRestaurantIdState);
 
   const isMobile = useMobile();
-
-  if (curation == null) return <Spinner />;
 
   return (
     <>
