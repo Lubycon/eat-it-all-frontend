@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -10,7 +10,7 @@ import Header from '../../components/common/Header';
 import RestaurantModal from '../../components/common/RestaurantModal';
 import Spinner from '../../components/common/Spinner';
 import CurationContentItem from '../../components/Curation/CurationContentItem';
-import { GetCurations, useGetCuration } from '../../hooks/api/curation';
+import { useGetCuration } from '../../hooks/api/curation';
 import { useMobile } from '../../hooks/useMobile';
 import http from '../../lib/api';
 import { colors } from '../../lib/constants/colors';
