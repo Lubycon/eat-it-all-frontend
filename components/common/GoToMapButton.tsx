@@ -43,7 +43,6 @@ const Styled = {
 
     @media (max-width: 768px) {
       padding: 8px 12px;
-      width: 180px;
     }
   `,
 };
