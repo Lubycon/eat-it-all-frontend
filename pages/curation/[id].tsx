@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -8,12 +9,13 @@ import GoToMapButton from '../../components/common/GoToMapButton';
 import Header from '../../components/common/Header';
 import IconButton from '../../components/common/IconButton';
 import RestaurantModal from '../../components/common/RestaurantModal';
-import Spinner from '../../components/common/Spinner';
 import CurationContentItem from '../../components/Curation/CurationContentItem';
 import { useGetCuration } from '../../hooks/api/curation';
 import { useMobile } from '../../hooks/useMobile';
+import http from '../../lib/api';
 import { colors } from '../../lib/constants/colors';
 import { modalRestaurantIdState } from '../../store';
+import { Curation } from '../../types';
 
 const Styled = {
   Header: styled.div<{ image?: string }>`
@@ -90,16 +92,23 @@ const Styled = {
   `,
 };
 
-function Curation() {
+interface Props {
+  curation: Curation;
+}
+
+function CurationPage({ curation: prefetchedCuration }: Props) {
   const {
     query: { id: curationId },
   } = useRouter();
-  const { data: curation } = useGetCuration(Number(curationId));
+
+  const { data } = useGetCuration(Number(curationId), {
+    initialData: prefetchedCuration,
+  });
+  const curation = data as Curation;
+
   const modalRestaurantId = useRecoilValue(modalRestaurantIdState);
 
   const isMobile = useMobile();
-
-  if (curation == null) return <Spinner />;
 
   return (
     <>
@@ -139,4 +148,20 @@ function Curation() {
   );
 }
 
-export default Curation;
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const curationId = context.params?.id;
+
+  if (curationId == undefined || Array.isArray(curationId)) {
+    return { notFound: true };
+  }
+
+  try {
+    const curation = await http.get<Curation>(`/curation/${curationId}`);
+
+    return { props: { curation } };
+  } catch {
+    return { notFound: true };
+  }
+};
+
+export default CurationPage;

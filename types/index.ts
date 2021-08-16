@@ -1,3 +1,5 @@
+import { EmojiType } from '../components/common/Emoji';
+
 export interface Menu {
   id: number;
   name: string;
@@ -6,10 +8,12 @@ export interface Menu {
   description: string | null;
 }
 
+type IngredientName = keyof typeof EmojiType;
+
 export interface Ingredient {
   id: number;
   contents: string;
-  name: string;
+  name: IngredientName;
 }
 
 export interface Restaurant {
