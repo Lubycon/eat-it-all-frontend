@@ -5,6 +5,7 @@ import React from 'react';
 import { useMobile } from '../../../hooks/useMobile';
 import { colors } from '../../../lib/constants/colors';
 import { clickable } from '../../../lib/style/mixin';
+import { eatAllFileUrl } from '../../../lib/utils/path';
 import { Curation } from '../../../types';
 
 const Styled = {
@@ -41,7 +42,7 @@ const Styled = {
     transition: 0.2s ease-in-out;
     border-radius: 8px;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-      ${({ imageUrl }) => imageUrl !== '' && `url("https://file.eat-all.io${imageUrl}")`};
+      ${({ imageUrl }) => imageUrl !== '' && `url(${eatAllFileUrl(imageUrl)})`};
     background-color: ${colors.beige50};
     background-position: center;
     background-repeat: no-repeat;

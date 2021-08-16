@@ -13,6 +13,7 @@ import { useGetCuration } from '../../hooks/api/curation';
 import { useMobile } from '../../hooks/useMobile';
 import http from '../../lib/api';
 import { colors } from '../../lib/constants/colors';
+import { eatAllFileUrl } from '../../lib/utils/path';
 import { modalRestaurantIdState } from '../../store';
 import { Curation } from '../../types';
 
@@ -123,7 +124,7 @@ function CurationPage({ curation: prefetchedCuration }: Props) {
       ) : (
         <Header />
       )}
-      <Styled.Header image={`https://file.eat-all.io${curation.imageUrl}`}>
+      <Styled.Header image={eatAllFileUrl(curation.imageUrl)}>
         <Styled.CurationTitle>{curation.title}</Styled.CurationTitle>
       </Styled.Header>
       <Styled.CurationContent>
