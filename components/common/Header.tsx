@@ -26,10 +26,6 @@ const Styled = {
     width: 1200px;
     height: 100%;
   `,
-
-  Logo: styled.img`
-    ${clickable}
-  `,
 };
 
 function Header() {
