@@ -6,10 +6,21 @@ type IconType = keyof typeof svg;
 
 interface IconProps {
   name: IconType;
+  className?: string;
+  style?: React.CSSProperties;
+  width?: number;
+  height?: number;
+  color?: string;
 }
 
-function Icon({ name }: IconProps) {
-  return React.createElement(svg[name]);
+function Icon({ name, className, style, width, height, color }: IconProps) {
+  return React.createElement(svg[name], {
+    className,
+    width,
+    height,
+    fill: color,
+    style,
+  });
 }
 
 export default Icon;
