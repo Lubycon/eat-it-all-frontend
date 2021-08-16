@@ -2,12 +2,15 @@ import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
 import React, { MouseEvent, MouseEventHandler, useCallback } from 'react';
 
+import { clickable } from '../../lib/style/mixin';
 import Icon, { IconProps } from './Icon';
 
+type routerType = 'push' | 'replace';
+
 type IconButtonProps = {
-  to: string;
-  routerType: 'push' | 'replace';
-  onClick: MouseEventHandler<HTMLButtonElement>;
+  to?: string;
+  routerType?: routerType;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 } & IconProps;
 
 function IconButton({
@@ -18,7 +21,7 @@ function IconButton({
   height,
   color,
   to,
-  routerType,
+  routerType = 'push',
   onClick,
 }: IconButtonProps) {
   const router = useRouter();
@@ -49,8 +52,15 @@ function IconButton({
 
 const Styled = {
   IconButton: styled.button<{ width?: number; height?: number }>`
-    width: ${({ width }) => `${width}px`};
-    height: ${({ height }) => `${height}px`};
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    background: transparent;
+
+    ${({ width }) => width && `width: ${width}px`};
+    ${({ height }) => height && `height: ${height}px`};
+    ${clickable}
   `,
 };
 
