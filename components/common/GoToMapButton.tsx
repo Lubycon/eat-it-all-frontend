@@ -4,6 +4,7 @@ import React from 'react';
 
 import { colors } from '../../lib/constants/colors';
 import { clickable } from '../../lib/style/mixin';
+import Icon from './Icon';
 
 const Styled = {
   Root: styled.div`
@@ -53,10 +54,10 @@ interface Props {
 
 function GoToMapButton({ curationId = 0 }: Props) {
   return (
-    <Link href={`/map?curationId=${curationId}`}>
+    <Link href={`/map?curationId=${curationId}`} passHref>
       <Styled.Root>
         <div>더 많은 식당 보러가기</div>
-        <img src="/assets/icons/ic_map_white.svg" alt="지도" />
+        <Icon name="map" color={colors.ivory10} width={29} height={29} />
       </Styled.Root>
     </Link>
   );
