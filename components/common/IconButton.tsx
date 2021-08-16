@@ -11,14 +11,12 @@ type IconButtonProps = {
   to?: string;
   routerType?: routerType;
   onClick?: MouseEventHandler<HTMLButtonElement>;
-} & IconProps;
+} & Omit<IconProps, 'width' | 'height'>;
 
 function IconButton({
   name,
   className,
   style,
-  width,
-  height,
   color,
   to,
   routerType = 'push',
@@ -37,23 +35,21 @@ function IconButton({
   );
 
   return (
-    <Styled.IconButton onClick={handleClick} width={width} height={height}>
+    <Styled.IconButton onClick={handleClick} className={className} style={style}>
       <Icon
         name={name}
-        className={className}
-        style={style}
-        width={width}
-        height={height}
         color={color}
+        style={{
+          width: '100%',
+          height: '100%',
+        }}
       />
     </Styled.IconButton>
   );
 }
 
 const Styled = {
-  IconButton: styled.button<{ width?: number; height?: number }>`
-    ${({ width }) => width && `width: ${width}px`};
-    ${({ height }) => height && `height: ${height}px`};
+  IconButton: styled.button`
     ${removeDefaultButtonStyle}
     ${clickable}
   `,
