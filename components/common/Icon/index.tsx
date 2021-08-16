@@ -4,7 +4,7 @@ import * as svg from './svg';
 
 type IconType = keyof typeof svg;
 
-interface IconProps {
+export interface IconProps {
   name: IconType;
   className?: string;
   style?: React.CSSProperties;
