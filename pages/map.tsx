@@ -4,7 +4,7 @@ import { useRecoilValue } from 'recoil';
 
 import RestaurantModal from '../components/common/RestaurantModal';
 import Spinner from '../components/common/Spinner';
-import BackHomeIcon from '../components/map/BackHomeIcon';
+import BackToHomeButton from '../components/map/BackToHomeButton';
 import CurationDropdown from '../components/map/CurationDropdown';
 import KakaoMapContainer from '../components/map/KakaoMapContainer';
 import overlayContent from '../components/map/overlayContent';
@@ -33,7 +33,7 @@ function Map() {
 
   return (
     <>
-      {isMobile || <BackHomeIcon />}
+      {isMobile || <BackToHomeButton />}
       <CurationDropdown />
       <KakaoMapContainer lat={강남역.lat} lng={강남역.lng} level={6}>
         {restaurants.map(({ id, name, kakaoMap: { latitude, longitude } }) => (

@@ -2,13 +2,12 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import useWindowSize from '../../hooks/useWindowSize';
-import mixin from '../../lib/style/mixin';
+import IconButton from './IconButton';
 
 const Styled = {
-  Img: styled.img`
+  Root: styled(IconButton)`
     position: absolute;
     bottom: 20px;
-    ${mixin.clickable}
   `,
 };
 
@@ -19,7 +18,7 @@ function ScrollDownButton() {
     window.scrollTo({ top: size?.height, behavior: 'smooth' });
   };
 
-  return <Styled.Img onClick={scrollDown} src="/assets/icons/scroll_down.svg" alt="scroll-down" />;
+  return <Styled.Root name="arrow_down_wide" onClick={scrollDown} />;
 }
 
 export default ScrollDownButton;

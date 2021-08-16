@@ -9,6 +9,8 @@ import { clickable } from '../../../lib/style/mixin';
 import { modalRestaurantIdState } from '../../../store';
 import KakaoMapContainer from '../../map/KakaoMapContainer';
 import Place from '../../map/Place';
+import Icon from '../Icon';
+import IconButton from '../IconButton';
 import Spinner from '../Spinner';
 import MainIngredientContent from './MainIngredientContent';
 import RestaurantMenu from './RestaurantMenu';
@@ -108,10 +110,9 @@ const Styled = {
     }
   `,
 
-  CancelIcon: styled.img`
+  CancelButton: styled(IconButton)`
     width: 48px;
     height: 48px;
-    ${clickable}
 
     @media (max-width: 768px) {
       width: 32px;
@@ -198,10 +199,10 @@ function RestaurantModal({ headerHeight = 164, showMap = false }: Props) {
               ))}
             </Styled.TagWrapper>
           </Styled.Main>
-          <Styled.CancelIcon
+          <Styled.CancelButton
+            name="cancel"
+            color={colors.white}
             onClick={() => setModalRestaurantId(null)}
-            src="/assets/icons/ic_cancel.svg"
-            alt="닫기"
           />
         </Styled.Header>
         <Styled.Content>

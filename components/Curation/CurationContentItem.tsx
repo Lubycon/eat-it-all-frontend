@@ -5,6 +5,7 @@ import { useSetRecoilState } from 'recoil';
 import { colors } from '../../lib/constants/colors';
 import { clickable } from '../../lib/style/mixin';
 import { modalRestaurantIdState } from '../../store';
+import Icon from '../common/Icon';
 
 const Styled = {
   Root: styled.div`
@@ -66,7 +67,7 @@ const Styled = {
     }
   `,
 
-  ArrowIcon: styled.img`
+  ArrowIcon: styled(Icon)`
     width: 48px;
     height: 48px;
 
@@ -107,7 +108,7 @@ function CurationContentItem({ id, name, hashTags, address, imageUrl, descriptio
             ))}
           </Styled.TagWrapper>
         </Styled.Main>
-        <Styled.ArrowIcon src="/assets/icons/ic_arrow.svg" alt="상세보기" />
+        <Styled.ArrowIcon name="arrow_right" color={colors.beige40} />
       </Styled.Header>
       <Styled.ThumbnailImage src={`https://file.eat-all.io${imageUrl}`} alt={name} />
       <div className="description">{description}</div>

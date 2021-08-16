@@ -9,6 +9,8 @@ import { useMobile } from '../../../hooks/useMobile';
 import { colors } from '../../../lib/constants/colors';
 import { clickable } from '../../../lib/style/mixin';
 import { Curation } from '../../../types';
+import Icon from '../../common/Icon';
+import IconButton from '../../common/IconButton';
 import DropdownMenu from './DropdownMenu';
 
 const Styled = {
@@ -75,13 +77,18 @@ const Styled = {
     }
   `,
 
-  ArrowIcon: styled.img<{ isRotate: boolean }>`
+  ArrowIcon: styled(Icon)<{ isRotate: boolean }>`
     transform: rotate(${({ isRotate }) => (isRotate ? '0.5turn' : '0turn')});
     transition: 0.2s ease-in-out;
+    width: 32px;
+    height: 32px;
   `,
 
-  BackIcon: styled.img`
+  BackToHomeButton: styled(IconButton)`
     transform: rotate(0.5turn);
+    margin-right: 4px;
+    width: 32px;
+    height: 32px;
   `,
 };
 
@@ -122,15 +129,13 @@ function CurationDropdown() {
       >
         <Styled.CurationLeft>
           {isMobile ? (
-            <Link href="/">
-              <Styled.BackIcon src="/assets/icons/ic_arrow.svg" width={32} height={32} />
-            </Link>
+            <Styled.BackToHomeButton name="arrow_right" to="/" color={colors.beige40} />
           ) : (
-            <img src="/assets/icons/ic_curation_star.svg" />
+            <Icon name="star" />
           )}
           <div>{selectedDropdownItem?.title}</div>
         </Styled.CurationLeft>
-        <Styled.ArrowIcon src="/assets/icons/ic_dropdown.svg" isRotate={openDropdown} />
+        <Styled.ArrowIcon name="dropdown" isRotate={openDropdown} />
       </Styled.DropdownHeader>
       {openDropdown && <DropdownMenu items={dropdownItems} setOpenDropdown={setOpenDropdown} />}
     </Styled.Root>

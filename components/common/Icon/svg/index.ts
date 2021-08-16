@@ -1,23 +1,21 @@
-import { ReactComponent as ic_arrow } from './ic_arrow.svg';
-import { ReactComponent as ic_back_white } from './ic_back_white.svg';
-import { ReactComponent as ic_cancel } from './ic_cancel.svg';
-import { ReactComponent as ic_curation_star } from './ic_curation_star.svg';
-import { ReactComponent as ic_dropdown } from './ic_dropdown.svg';
-import { ReactComponent as ic_map_back } from './ic_map_back.svg';
+import { ReactComponent as arrow_down_wide } from './arrow_down_wide.svg';
+import { ReactComponent as arrow_left_circle } from './arrow_left_circle.svg';
+import { ReactComponent as arrow_left_shadow } from './arrow_left_shadow.svg';
+import { ReactComponent as arrow_right } from './arrow_right.svg';
+import { ReactComponent as cancel } from './cancel.svg';
+import { ReactComponent as dropdown } from './dropdown.svg';
 import { ReactComponent as logo } from './logo.svg';
 import { ReactComponent as map } from './map.svg';
-import { ReactComponent as marker } from './marker.svg';
-import { ReactComponent as scroll_down } from './scroll_down.svg';
+import { ReactComponent as star } from './star.svg';
 
 export {
-  ic_arrow,
-  ic_back_white,
-  ic_cancel,
-  ic_curation_star,
-  ic_dropdown,
-  ic_map_back,
+  arrow_down_wide,
+  arrow_left_circle,
+  arrow_left_shadow,
+  arrow_right,
+  cancel,
+  dropdown,
   logo,
   map,
-  marker,
-  scroll_down,
+  star,
 };
