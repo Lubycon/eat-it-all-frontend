@@ -12,6 +12,7 @@ import CurationContentItem from '../../components/Curation/CurationContentItem';
 import { useGetCuration } from '../../hooks/api/curation';
 import { useMobile } from '../../hooks/useMobile';
 import { colors } from '../../lib/constants/colors';
+import { eatAllFileUrl } from '../../lib/utils/path';
 import { modalRestaurantIdState } from '../../store';
 
 const Styled = {
@@ -114,7 +115,7 @@ function Curation() {
       ) : (
         <Header />
       )}
-      <Styled.Header image={`https://file.eat-all.io${curation.imageUrl}`}>
+      <Styled.Header image={eatAllFileUrl(curation.imageUrl)}>
         <Styled.CurationTitle>{curation.title}</Styled.CurationTitle>
       </Styled.Header>
       <Styled.CurationContent>

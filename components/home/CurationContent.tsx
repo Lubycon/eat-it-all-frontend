@@ -2,6 +2,8 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import React from 'react';
 
+import { eatAllFileUrl } from '../../lib/utils/path';
+
 const Styled = {
   Root: styled.div<{ height: number; imageUrl: string }>`
     display: flex;
@@ -10,7 +12,7 @@ const Styled = {
     border-radius: 10px;
 
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-      ${({ imageUrl }) => `url("https://file.eat-all.io${imageUrl}")`};
+      ${({ imageUrl }) => `url(${eatAllFileUrl(imageUrl)})`};
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

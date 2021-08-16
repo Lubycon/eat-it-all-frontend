@@ -4,6 +4,7 @@ import { useSetRecoilState } from 'recoil';
 
 import { colors } from '../../lib/constants/colors';
 import { clickable } from '../../lib/style/mixin';
+import { eatAllFileUrl } from '../../lib/utils/path';
 import { modalRestaurantIdState } from '../../store';
 
 const Styled = {
@@ -109,7 +110,7 @@ function CurationContentItem({ id, name, hashTags, address, imageUrl, descriptio
         </Styled.Main>
         <Styled.ArrowIcon src="/assets/icons/ic_arrow.svg" alt="상세보기" />
       </Styled.Header>
-      <Styled.ThumbnailImage src={`https://file.eat-all.io${imageUrl}`} alt={name} />
+      <Styled.ThumbnailImage src={eatAllFileUrl(imageUrl)} alt={name} />
       <div className="description">{description}</div>
     </Styled.Root>
   );

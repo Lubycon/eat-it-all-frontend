@@ -6,6 +6,7 @@ import { useGetRestaurant } from '../../../hooks/api/restaurant';
 import useWindowSize from '../../../hooks/useWindowSize';
 import { colors } from '../../../lib/constants/colors';
 import { clickable } from '../../../lib/style/mixin';
+import { eatAllFileUrl } from '../../../lib/utils/path';
 import { modalRestaurantIdState } from '../../../store';
 import KakaoMapContainer from '../../map/KakaoMapContainer';
 import Place from '../../map/Place';
@@ -68,7 +69,7 @@ const Styled = {
     border-radius: 16px 16px 0 0;
 
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
-      ${({ imageUrl }) => `url("https://file.eat-all.io${imageUrl}")`};
+      ${({ imageUrl }) => `url(${eatAllFileUrl(imageUrl)})`};
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
