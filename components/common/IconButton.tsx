@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
 import React, { MouseEvent, MouseEventHandler, useCallback } from 'react';
 
-import { clickable } from '../../lib/style/mixin';
+import { clickable, removeDefaultButtonStyle } from '../../lib/style/mixin';
 import Icon, { IconProps } from './Icon';
 
 type routerType = 'push' | 'replace';
@@ -52,14 +52,9 @@ function IconButton({
 
 const Styled = {
   IconButton: styled.button<{ width?: number; height?: number }>`
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border: none;
-    background: transparent;
-
     ${({ width }) => width && `width: ${width}px`};
     ${({ height }) => height && `height: ${height}px`};
+    ${removeDefaultButtonStyle}
     ${clickable}
   `,
 };
