@@ -6,6 +6,9 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { RecoilRoot } from 'recoil';
 
+import Spinner from '../components/common/Spinner';
+import SSRSafeSuspense from '../components/common/SSRSafeSuspense';
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <RecoilRoot>
@@ -31,7 +34,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_API_KEY}`}
         ></script>
       </Head>
-      <Component {...pageProps} />
+      <SSRSafeSuspense fallback={<Spinner />}>
+        <Component {...pageProps} />
+      </SSRSafeSuspense>
     </RecoilRoot>
   );
 }
