@@ -68,7 +68,7 @@ const sliderProps: Settings = {
 };
 
 function CategoryCarousel() {
-  const { data: curations } = useGetCurations();
+  const { data: curations } = useGetCurations({ suspense: true });
 
   return (
     <Styled.Root>
