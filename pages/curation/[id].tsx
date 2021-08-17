@@ -102,7 +102,7 @@ function CurationPage({ curation: prefetchedCuration }: Props) {
   } = useRouter();
 
   const { data } = useGetCuration(Number(curationId), {
-    initialData: prefetchedCuration,
+    // initialData: prefetchedCuration,
   });
   const curation = data as Curation;
 
@@ -150,20 +150,22 @@ function CurationPage({ curation: prefetchedCuration }: Props) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const curationId = context.params?.id;
+// FIX: Amplify SSR 배포 이슈로 임시 주석 처리
 
-  if (curationId == undefined || Array.isArray(curationId)) {
-    return { notFound: true };
-  }
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+//   const curationId = context.params?.id;
 
-  try {
-    const curation = await http.get<Curation>(`/curation/${curationId}`);
+//   if (curationId == undefined || Array.isArray(curationId)) {
+//     return { notFound: true };
+//   }
 
-    return { props: { curation } };
-  } catch {
-    return { notFound: true };
-  }
-};
+//   try {
+//     const curation = await http.get<Curation>(`/curation/${curationId}`);
+
+//     return { props: { curation } };
+//   } catch {
+//     return { notFound: true };
+//   }
+// };
 
 export default CurationPage;
