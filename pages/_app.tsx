@@ -5,9 +5,11 @@ import '../styles/overlayContent.css';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { RecoilRoot } from 'recoil';
+import { SWRConfig } from 'swr';
 
 import Spinner from '../components/common/Spinner';
 import SSRSafeSuspense from '../components/common/SSRSafeSuspense';
+import http from '../lib/api';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -35,7 +37,15 @@ function MyApp({ Component, pageProps }: AppProps) {
         ></script>
       </Head>
       <SSRSafeSuspense fallback={<Spinner />}>
-        <Component {...pageProps} />
+        <SWRConfig
+          value={{
+            revalidateOnFocus: false,
+            errorRetryCount: 2,
+            fetcher: http.get,
+          }}
+        >
+          <Component {...pageProps} />
+        </SWRConfig>
       </SSRSafeSuspense>
     </RecoilRoot>
   );
