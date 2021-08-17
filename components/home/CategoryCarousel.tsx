@@ -8,6 +8,7 @@ import Slider, { Settings } from 'react-slick';
 import { useGetCurations } from '../../hooks/api/curation';
 import { colors } from '../../lib/constants/colors';
 import { clickable } from '../../lib/style/mixin';
+import Emoji from '../common/Emoji';
 import CurationContent from './CurationContent';
 
 const Styled = {
@@ -67,11 +68,13 @@ const sliderProps: Settings = {
 };
 
 function CategoryCarousel() {
-  const { data: curations } = useGetCurations();
+  const { data: curations } = useGetCurations({ suspense: true });
 
   return (
     <Styled.Root>
-      <Styled.Title>🥗 상황에 맞는 큐레이션을 선택해보세요</Styled.Title>
+      <Styled.Title>
+        <Emoji name="샐러드" /> 상황에 맞는 큐레이션을 선택해보세요
+      </Styled.Title>
       <Slider {...sliderProps}>
         {curations?.map((curation) => (
           <Styled.SliderItem key={curation.id}>

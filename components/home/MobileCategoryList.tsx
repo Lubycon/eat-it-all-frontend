@@ -24,7 +24,7 @@ const Styled = {
 };
 
 function MobileCategoryList() {
-  const { data: curations } = useGetCurations();
+  const { data: curations } = useGetCurations({ suspense: true });
 
   return (
     <Styled.Root>

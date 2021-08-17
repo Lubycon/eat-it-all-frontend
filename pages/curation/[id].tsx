@@ -104,6 +104,7 @@ function CurationPage({ curation: prefetchedCuration }: Props) {
 
   const { data } = useGetCuration(Number(curationId), {
     // initialData: prefetchedCuration,
+    suspense: true,
   });
   const curation = data as Curation;
 

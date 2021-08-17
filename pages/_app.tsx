@@ -5,6 +5,11 @@ import '../styles/overlayContent.css';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { RecoilRoot } from 'recoil';
+import { SWRConfig } from 'swr';
+
+import Spinner from '../components/common/Spinner';
+import SSRSafeSuspense from '../components/common/SSRSafeSuspense';
+import http from '../lib/api';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -31,7 +36,17 @@ function MyApp({ Component, pageProps }: AppProps) {
           src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_API_KEY}`}
         ></script>
       </Head>
-      <Component {...pageProps} />
+      <SSRSafeSuspense fallback={<Spinner />}>
+        <SWRConfig
+          value={{
+            revalidateOnFocus: false,
+            errorRetryCount: 2,
+            fetcher: http.get,
+          }}
+        >
+          <Component {...pageProps} />
+        </SWRConfig>
+      </SSRSafeSuspense>
     </RecoilRoot>
   );
 }
