@@ -35,7 +35,7 @@ const Styled = {
     }
   `,
 
-  MenuItem: styled.div<{ imageUrl?: string }>`
+  MenuItem: styled.div<{ imageUrl: string }>`
     display: flex;
     align-items: center;
     justify-content: center;
