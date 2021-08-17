@@ -5,6 +5,8 @@ function useMounted() {
 
   React.useEffect(() => {
     setIsMounted(true);
+
+    return () => setIsMounted(false);
   }, []);
 
   return isMounted;
