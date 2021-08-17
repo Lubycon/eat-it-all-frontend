@@ -5,6 +5,7 @@ export interface PlaceProps {
   content?: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function Place({ id, lat, lng, content }: PlaceProps) {
   return null;
 }
