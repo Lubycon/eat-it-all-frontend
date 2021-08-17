@@ -41,6 +41,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           value={{
             revalidateOnFocus: false,
             errorRetryCount: 2,
+            suspense: true,
             fetcher: http.get,
           }}
         >
