@@ -7,6 +7,7 @@ import { useRecoilValue } from 'recoil';
 
 import GoToMapButton from '../../components/common/GoToMapButton';
 import Header from '../../components/common/Header';
+import IconButton from '../../components/common/IconButton';
 import RestaurantModal from '../../components/common/RestaurantModal';
 import CurationContentItem from '../../components/Curation/CurationContentItem';
 import { useGetCuration } from '../../hooks/api/curation';
@@ -84,7 +85,7 @@ const Styled = {
     animation: 0.8s ease fadeIn;
   `,
 
-  BackIcon: styled.img`
+  BackButton: styled(IconButton)`
     position: absolute;
     top: 20px;
     left: 16px;
@@ -117,9 +118,7 @@ function CurationPage({ curation: prefetchedCuration }: Props) {
           <Styled.GoToMapBtnWrapper>
             <GoToMapButton curationId={Number(curationId || 0)} />
           </Styled.GoToMapBtnWrapper>
-          <Link href="/" passHref>
-            <Styled.BackIcon src="/assets/icons/ic_back_white.svg" alt="홈으로" />
-          </Link>
+          <Styled.BackButton name="arrow_left_shadow" to="/" color={colors.white} />
         </>
       ) : (
         <Header />

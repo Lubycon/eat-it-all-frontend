@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const EmojiType = {
   샐러드: '🥗',
   메밀: '🌾',
@@ -26,4 +28,4 @@ function Emoji({ name }: Props) {
   );
 }
 
-export default Emoji;
+export default React.memo(Emoji);

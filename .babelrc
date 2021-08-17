@@ -1,6 +1,6 @@
 {
   "presets": ["next/babel"],
-
+  "plugins": ["inline-react-svg"],
   "env": {
     "production": {
       "plugins": ["transform-remove-console"]

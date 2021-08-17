@@ -23,6 +23,7 @@
     "@next/next/no-sync-scripts": "off",
     "import/no-named-as-default-member": "off",
     "jsx-a11y/accessible-emoji": "warn",
+    "import/namespace": "off",
     // set in other repo
     "@next/next/no-img-element": "off",
     "react-hooks/rules-of-hooks": "error",

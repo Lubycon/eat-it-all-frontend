@@ -12,4 +12,14 @@ export const clickable = css`
   pointer-events: all;
 `;
 
+export const removeDefaultButtonStyle = css`
+  outline: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+`;
+
 export default { truncateText, clickable };

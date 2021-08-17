@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <RecoilRoot>
       <Head>
         <title>다이어트 중이지만 맛있는건 먹고싶어</title>
-        <link rel="icon" href="/assets/icons/favicon.svg" />
+        <link rel="icon" href="/assets/favicon.svg" />
         <meta charSet="UTF-8" />
         <meta
           name="viewport"

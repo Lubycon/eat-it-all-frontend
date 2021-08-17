@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
 
 import { clickable } from '../../lib/style/mixin';
 import GoToMapButton from './GoToMapButton';
+import IconButton from './IconButton';
 
 const Styled = {
   Root: styled.div`
@@ -26,10 +26,6 @@ const Styled = {
     width: 1200px;
     height: 100%;
   `,
-
-  Logo: styled.img`
-    ${clickable}
-  `,
 };
 
 function Header() {
@@ -40,9 +36,7 @@ function Header() {
   return (
     <Styled.Root>
       <Styled.NavBar>
-        <Link href="/">
-          <Styled.Logo src="/assets/icons/logo.svg" />
-        </Link>
+        <IconButton name="logo" to="/" />
         <GoToMapButton curationId={Number(curationId || 0)} />
       </Styled.NavBar>
     </Styled.Root>
