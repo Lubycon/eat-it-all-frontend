@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
 import React from 'react';
 
-import { clickable } from '../../lib/style/mixin';
 import GoToMapButton from './GoToMapButton';
 import IconButton from './IconButton';
 
