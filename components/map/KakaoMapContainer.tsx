@@ -65,6 +65,7 @@ function KakaoMapContainer({
 
       kakao.maps.event.addListener(placeMarker, 'click', () => setModalRestaurantId(id));
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [curationId]);
 
   return <Styled.Root ref={kakaoMap} width={width} height={height} />;

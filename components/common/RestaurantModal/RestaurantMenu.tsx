@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { commaizeNumber } from '@lubycon/utils';
 import React from 'react';
 
 import { colors } from '../../../lib/constants/colors';
@@ -49,7 +50,7 @@ function RestaurantMenu({ menus }: Props) {
       {menus.map((menu) => (
         <Styled.MenuItem key={menu.id}>
           <h6>{menu.name}</h6>
-          <div>{menu.price}원</div>
+          <div>{commaizeNumber(menu.price)}원</div>
         </Styled.MenuItem>
       ))}
     </Styled.Root>
